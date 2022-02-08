@@ -3,14 +3,14 @@
 @section('content')
     <!-- ========== title-wrapper start ========== -->
     <div class="title-wrapper pt-30">
-        <div class="row align-items-center">
+        {{-- <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title mb-30">
                     <h2>{{ __('Users') }}</h2>
                 </div>
             </div>
             <!-- end col -->
-        </div>
+        </div> --}}
         <!-- end row -->
     </div>
     <!-- ========== title-wrapper end ========== -->
@@ -30,7 +30,7 @@
                 <div class="table-wrapper table-responsive">
                     <table class="table striped-table">
                         <thead>
-                        <tr>
+                        <tr style="text-align: center;">
                             <th><h6>ID</h6></th>
                             <th><h6>Name</h6></th>
                             <th><h6>Email</h6></th>
@@ -40,7 +40,7 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user)
-                            <tr>
+                            <tr style="text-align: center;">
                                 <td>
                                     <p>{{ $user->id }}</p>
                                 </td>
