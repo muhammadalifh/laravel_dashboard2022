@@ -15,3 +15,9 @@ untuk menjalankan data seeder lakukan command berikut :
     php artisan db:seed --class=CreateUserSeeder
 
     php artisan db:seed --class=CreatePegawaiSeeder
+
+| Role | Keterangan |
+| ----------- | ----------- |
+| 0 | Owner |
+| 1  | Admin |
+| 2  | Super Admin |
