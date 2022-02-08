@@ -21,7 +21,7 @@ class PegawaiController extends Controller
     {
         // $pegawai = Pegawai::all();
         $pegawai = Pegawai::paginate(5);
-        return view('users.pegawai', compact('pegawai'));
+        return view('users.pegawai.index', compact('pegawai'));
     }
 
 
@@ -49,7 +49,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.pegawai.create');
     }
 
     /**
@@ -60,7 +60,16 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pegawai::create([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'tgl_lahir' => $request->tgl_lahir,
+            'no_telp' => $request->no_telp,
+        ]);
+
+        Alert::success('Congrats!', 'Data berhasil disimpan!');
+
+        return redirect()->route('users.pegawai.index');
     }
 
     /**
@@ -82,7 +91,9 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('users.pegawai.edit',[
+            'pegawai' => Pegawai::findOrFail($id),
+        ]);
     }
 
     /**
@@ -94,7 +105,18 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        $pegawai->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'tgl_lahir' => $request->tgl_lahir,
+            'no_telp' => $request->no_telp,
+        ]);
+
+        Alert::success('Berhasil!', 'Data berhasil diupdate!');
+        // session()->flash('success', 'Data berhasil diupdate');
+
+        return redirect()->route('users.pegawai.index');
     }
 
     /**
@@ -105,6 +127,11 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pegawai = Pegawai::find($id);
+        $pegawai->delete();
+
+        toast('Data berhasil dihapus!','success');
+
+        return redirect()->route('users.pegawai.index');
     }
 }

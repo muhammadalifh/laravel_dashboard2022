@@ -15,10 +15,11 @@
     </div>
     <!-- ========== title-wrapper end ========== -->
     <!-- Button trigger modal -->
-    <a target="_blank" href="{{ route('exportpegawai') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
-    <a href="#" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-upload"></i> Import Excel</a>
-
-
+    <center>
+        <a target="_blank" href="{{ route('exportpegawai') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
+        <a href="#" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-upload"></i> Import Excel</a>
+        <a href="{{ route('users.pegawai.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah Pegawai</a>
+    </center>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -35,7 +36,7 @@
                     </div>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Selesai</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             <button type="submit" class="btn btn-primary">Import</button>
             </div>
         </div>
@@ -64,6 +65,7 @@
                             <th><h6>Alamat</h6></th>
                             <th><h6>Tanggal Lahir</h6></th>
                             <th><h6>No. Telepon</h6></th>
+                            <th><h6>Action</h6></th>
                         </tr>
                         <!-- end table row-->
                         </thead>
@@ -82,14 +84,14 @@
                                 <td>
                                     <p>{{ $item->no_telp }}</p>
                                 </td>
-                                {{-- <td>
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a>
-                                <form class="d-inline" action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                <td>
+                                    <a href="{{ route('users.pegawai.edit', $item->id) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a>
+                                <form class="d-inline" action="{{ route('users.pegawai.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                 </form>
-                                </td> --}}
+                                </td>
                             </tr>
                         @endforeach
                         <!-- end table row -->

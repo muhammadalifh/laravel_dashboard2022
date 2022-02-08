@@ -26,8 +26,8 @@
         </a>
     </li>
 
-    <li class="nav-item @if(request()->routeIs('users.pegawai')) active @endif">
-        <a href="{{ route('users.pegawai') }}">
+    <li class="nav-item @if(request()->routeIs('users.pegawai.index')) active @endif">
+        <a href="{{ route('users.pegawai.index') }}">
               <span class="icon">
                 <i class="fas fa-user-tie"></i>
                 {{-- <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
