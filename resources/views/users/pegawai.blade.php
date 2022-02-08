@@ -14,7 +14,36 @@
         <!-- end row -->
     </div>
     <!-- ========== title-wrapper end ========== -->
-    <a href="{{ route('users.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah User</a>
+    <!-- Button trigger modal -->
+    <a target="_blank" href="{{ route('exportpegawai') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
+    <a href="#" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-upload"></i> Import Excel</a>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Import File Excel</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('importpegawai') }}" method="POST" enctype="multipart/form-data">
+            <div class="modal-body">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <input type="file" name="file" required="required">
+                    </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Selesai</button>
+            <button type="submit" class="btn btn-primary">Import</button>
+            </div>
+        </div>
+    </form>
+        </div>
+    </div>
+
+
     <div class="card-styles">
         <div class="card-style-3 mb-30">
             <div class="card-content">
@@ -31,37 +60,36 @@
                     <table class="table striped-table">
                         <thead>
                         <tr style="text-align: center;">
-                            <th><h6>ID</h6></th>
-                            <th><h6>Name</h6></th>
-                            <th><h6>Email</h6></th>
-                            <th><h6>Role</h6></th>
-                            <th><h6>Action</h6></th>
+                            <th><h6>Nama</h6></th>
+                            <th><h6>Alamat</h6></th>
+                            <th><h6>Tanggal Lahir</h6></th>
+                            <th><h6>No. Telepon</h6></th>
                         </tr>
                         <!-- end table row-->
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @foreach($pegawai as $item)
                             <tr style="text-align: center;">
                                 <td>
-                                    <p>{{ $user->id }}</p>
+                                    <p>{{ $item->nama }}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $user->name }}</p>
+                                    <p>{{ $item->alamat }}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $user->email }}</p>
+                                    <p>{{ $item->tgl_lahir }}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $user->role }}</p>
+                                    <p>{{ $item->no_telp }}</p>
                                 </td>
-                                <td>
+                                {{-- <td>
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a>
                                 <form class="d-inline" action="{{ route('users.destroy', $user->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                 </form>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                         <!-- end table row -->
@@ -69,7 +97,7 @@
                     </table>
                     <!-- end table -->
 
-                    {{ $users->links() }}
+                    {{ $pegawai->links() }}
                 </div>
 
             </div>
