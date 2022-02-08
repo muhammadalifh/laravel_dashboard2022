@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileUpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -23,6 +24,8 @@ class ProfileController extends Controller
             'email' => $request->email,
         ]);
 
-        return redirect()->back()->with('success', 'Profile updated.');
+        Alert::success('Berhasil!', 'Data berhasil diupdate!');
+        return redirect()->back();
+        // return redirect()->back()->with('success', 'Profile updated.');
     }
 }
