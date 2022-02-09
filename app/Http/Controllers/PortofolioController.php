@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PortofolioExport;
 use App\Models\Klien;
 use App\Models\Jenis;
+use App\Models\Teknologi;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PortofolioController extends Controller
@@ -20,7 +21,7 @@ class PortofolioController extends Controller
     public function index()
     {
         // $portofolio = Portofolio::all();
-        $portofolio = Portofolio::with('klien', 'jenis')->paginate(5);
+        $portofolio = Portofolio::with('klien', 'jenis', 'teknologi')->paginate(5);
         return view ('portofolio.index', compact('portofolio'));
     }
 
@@ -38,8 +39,9 @@ class PortofolioController extends Controller
     {
         $klien_create = Klien::all();
         $jenis_create = Jenis::all();
+        $teknologi_create = Teknologi::all();
 
-        return view('portofolio.create', compact('klien_create', 'jenis_create'));
+        return view('portofolio.create', compact('klien_create', 'jenis_create', 'teknologi_create'));
     }
 
     /**
@@ -56,6 +58,7 @@ class PortofolioController extends Controller
             'tahun' => $request->tahun,
             'jenis_id' => $request->jenis_id,
             'kapasitas' => $request->kapasitas,
+            'teknologi_id' => $request->teknologi_id,
             'nilai_kontrak' => $request->nilai_kontrak,
         ]);
 
@@ -85,9 +88,11 @@ class PortofolioController extends Controller
     {
         $klien_create = Klien::all();
         $jenis_create = Jenis::all();
-        $portofolio = Portofolio::with('klien','jenis')->findOrFail($id);
+        $teknologi_create = Teknologi::all();
 
-        return view('portofolio.edit', compact('portofolio', 'klien_create', 'jenis_create'));
+        $portofolio = Portofolio::with('klien','jenis','teknologi')->findOrFail($id);
+
+        return view('portofolio.edit', compact('portofolio', 'klien_create', 'jenis_create','teknologi_create'));
 
         // return view('portofolio.edit', compact('klien_create'),[
         //     'portofolio' => Portofolio::with('klien')->findOrFail($id),
@@ -110,6 +115,7 @@ class PortofolioController extends Controller
             'tahun' => $request->tahun,
             'jenis_id' => $request->jenis_id,
             'kapasitas' => $request->kapasitas,
+            'teknologi_id' => $request->teknologi_id,
             'nilai_kontrak' => $request->nilai_kontrak,
         ]);
 

@@ -77,6 +77,18 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="teknologi" class="col-md-4 col-form-label text-md-end">{{ __('Teknologi') }}</label>
+                            <div class="col-md-6">
+                                <select name="teknologi_id" id="teknologi_id" class="form-control select2">
+                                    <option disabled value selected>Pilih Teknologi</option>
+                                    @foreach ($teknologi_create as $item)
+                                            <option value="{{ $item->id }}">{{ $item->teknologi }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="nilai_kontrak" class="col-md-4 col-form-label text-md-end">{{ __('Nilai Kontrak') }}</label>
 
                             <div class="col-md-6">

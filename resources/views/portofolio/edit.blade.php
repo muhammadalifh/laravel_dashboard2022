@@ -69,15 +69,26 @@
 
                         <div class="row mb-3">
                             <label for="kapasitas" class="col-md-4 col-form-label text-md-end">{{ __('Kapasitas (m3/hari)') }}</label>
-
                             <div class="col-md-6">
                                 <input id="kapasitas" type="text" class="form-control @error('kapasitas') is-invalid @enderror" name="kapasitas" value="{{ old('kapasitas') ?? $portofolio->kapasitas }}" required autocomplete="kapasitas">
-
                                 @error('kapasitas')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="teknologi" class="col-md-4 col-form-label text-md-end">{{ __('Teknologi') }}</label>
+                            <div class="col-md-6">
+                                <select name="teknologi_id" id="teknologi_id" class="form-control select2">
+                                    {{-- <option disabled value selected>Pilih Klien</option> --}}
+                                    <option  value="{{ $portofolio->teknologi_id }}">{{ $portofolio->teknologi->teknologi }}</option>
+                                    @foreach ($teknologi_create as $item)
+                                            <option value="{{ $item->id }}">{{ $item->teknologi }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
