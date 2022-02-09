@@ -22,6 +22,7 @@ class CreatePortofoliosTable extends Migration
             $table->string('kapasitas', 100);
             $table->integer('teknologi_id');
             $table->string('nilai_kontrak', 500);
+            $table->integer('status_id');
             $table->timestamps();
         });
     }

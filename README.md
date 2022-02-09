@@ -16,6 +16,14 @@ untuk menjalankan data seeder lakukan command berikut :
 
     php artisan db:seed --class=CreatePegawaiSeeder
 
+    php artisan db:seed --class=CreateJenisSeeder
+
+    php artisan db:seed --class=CreateStatusSeeder
+
+    php artisan db:seed --class=CreateKlienSeeder
+
+    php artisan db:seed --class=CreateTeknologiSeeder
+
 | Role | Keterangan |
 | ----------- | ----------- |
 | 0 | Owner |

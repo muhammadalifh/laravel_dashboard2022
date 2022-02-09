@@ -39,6 +39,7 @@
                             <th><h6>Kapasitas <br> (m3/hari)</h6></th>
                             <th><h6>Teknologi</h6></th>
                             <th><h6>Nilai Kontrak</h6></th>
+                            <th><h6>Status</h6></th>
                             <th><h6>Action</h6></th>
                         </tr>
                         <!-- end table row-->
@@ -68,8 +69,11 @@
                                     <p>Rp. {{ $item->nilai_kontrak }}</p>
                                 </td>
                                 <td>
-                                    <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a>
-                                <form class="d-inline" action="{{ route('portofolio.destroy', $item->id) }}" method="POST">
+                                    <p>{{ $item->status->status }}</p>
+                                </td>
+                                <td>
+                                    <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a> <br> &nbsp;
+                                <form action="{{ route('portofolio.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Delete" class="btn btn-danger btn-sm">

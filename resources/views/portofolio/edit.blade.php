@@ -94,15 +94,26 @@
 
                         <div class="row mb-3">
                             <label for="nilai_kontrak" class="col-md-4 col-form-label text-md-end">{{ __('Nilai Kontrak') }}</label>
-
                             <div class="col-md-6">
                                 <input id="nilai_kontrak" type="text" class="form-control @error('nilai_kontrak') is-invalid @enderror" name="nilai_kontrak" value="{{ old('nilai_kontrak') ?? $portofolio->nilai_kontrak }}" required autocomplete="nilai_kontrak">
-
                                 @error('nilai_kontrak')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
+                            <div class="col-md-6">
+                                <select name="status_id" id="status_id" class="form-control select2">
+                                    {{-- <option disabled value selected>Pilih Klien</option> --}}
+                                    <option  value="{{ $portofolio->status_id }}">{{ $portofolio->status->status }}</option>
+                                    @foreach ($status_create as $item)
+                                            <option value="{{ $item->id }}">{{ $item->status }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
