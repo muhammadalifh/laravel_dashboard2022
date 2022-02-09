@@ -14,6 +14,7 @@
         </a>
     </li>
 
+    @if(auth()->user()->role == "2")
     <li class="nav-item @if(request()->routeIs('users.index')) active @endif">
         <a href="{{ route('users.index') }}">
               <span class="icon">
@@ -25,6 +26,8 @@
             <span class="text">{{ __('Users') }}</span>
         </a>
     </li>
+
+    @endif
 
     <li class="nav-item @if(request()->routeIs('portofolio.index')) active @endif">
         <a href="{{ route('portofolio.index') }}">
@@ -38,6 +41,8 @@
         </a>
     </li>
 
+
+    @if(auth()->user()->role == "2")
     <li class="nav-item @if(request()->routeIs('users.pegawai.index')) active @endif">
         <a href="{{ route('users.pegawai.index') }}">
               <span class="icon">
@@ -49,6 +54,7 @@
             <span class="text">{{ __('Pegawai') }}</span>
         </a>
     </li>
+    @endif
 
     <li class="nav-item @if(request()->routeIs('about')) active @endif">
         <a href="{{ route('about') }}">

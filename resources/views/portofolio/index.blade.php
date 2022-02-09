@@ -16,7 +16,9 @@
     <!-- ========== title-wrapper end ========== -->
     <center>
         <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
-        <a href="{{ route('portofolio.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah Portofolio</a>
+        @if(auth()->user()->role == "1" || auth()->user()->role == "2")
+            <a href="{{ route('portofolio.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah Portofolio</a>
+        @endif
     </center>
     <div class="card-styles">
         <div class="card-style-3 mb-30">
