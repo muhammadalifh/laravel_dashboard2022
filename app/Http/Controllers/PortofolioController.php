@@ -26,6 +26,13 @@ class PortofolioController extends Controller
         return view ('portofolio.index', compact('portofolio'));
     }
 
+    public function cetakPortofolio()
+    {
+        // $portofolio = Portofolio::all();
+        $portofoliocetak = Portofolio::with('klien', 'jenis', 'teknologi','status')->get();
+        return view ('portofolio.cetak', compact('portofoliocetak'));
+    }
+
     public function portofolioexport()
     {
         return Excel::download(new PortofolioExport, 'portofolio.xlsx');

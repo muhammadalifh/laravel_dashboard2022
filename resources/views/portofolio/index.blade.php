@@ -15,7 +15,8 @@
     </div>
     <!-- ========== title-wrapper end ========== -->
     <center>
-        <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
+        <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a> &nbsp;&nbsp;&nbsp;
+        <a target="_blank" href="{{ route('portofolio.cetak') }}" class="btn btn-info mb-2"> <i class="fas fa-print"></i></i></i> Cetak Laporan</a> &nbsp;&nbsp;&nbsp;
         @if(auth()->user()->role == "1" || auth()->user()->role == "2")
             <a href="{{ route('portofolio.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah Portofolio</a>
         @endif

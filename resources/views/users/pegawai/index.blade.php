@@ -16,8 +16,8 @@
     <!-- ========== title-wrapper end ========== -->
     <!-- Button trigger modal -->
     <center>
-        <a target="_blank" href="{{ route('exportpegawai') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
-        <a href="#" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-upload"></i> Import Excel</a>
+        <a target="_blank" href="{{ route('exportpegawai') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a> &nbsp;&nbsp;&nbsp;
+        {{-- <a href="#" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-upload"></i> Import Excel</a> &nbsp;&nbsp;&nbsp; --}}
         <a href="{{ route('users.pegawai.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah Pegawai</a>
     </center>
     <!-- Modal -->

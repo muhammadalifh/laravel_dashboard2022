@@ -55,6 +55,8 @@ Route::middleware('auth','cekrole:2')->group(function () { //Auth cekrole middle
     Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
     Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
 
+    // Cetak/ Print Portofolio
+    Route::get('/cetakportofolio', [\App\Http\Controllers\PortofolioController::class, 'cetakPortofolio'])->name('portofolio.cetak');
 });
 
 Route::middleware('auth','cekrole:1,2')->group(function () { //Auth cekrole middleware (super admin & admin)
