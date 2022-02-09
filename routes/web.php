@@ -46,4 +46,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/pegawai/{id}', [\App\Http\Controllers\PegawaiController::class, 'update'])->name('users.pegawai.update');
     Route::delete('/pegawai/{id}', [\App\Http\Controllers\PegawaiController::class, 'destroy'])->name('users.pegawai.destroy');
 
+    //Data portofolio + CRUD
+    Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
+    Route::get('/exportportofolio', [\App\Http\Controllers\PortofolioController::class, 'portofolioexport'])->name('exportportofolio');
+    Route::get('/portofolio/create', [\App\Http\Controllers\PortofolioController::class, 'create'])->name('portofolio.create');
+    Route::post('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
+    Route::get('/portofolio/{id}/edit', [\App\Http\Controllers\PortofolioController::class, 'edit'])->name('portofolio.edit');
+    Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
+    Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
+
 });
