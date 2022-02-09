@@ -14,8 +14,10 @@
         <!-- end row -->
     </div>
     <!-- ========== title-wrapper end ========== -->
-    <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
-    <a href="{{ route('portofolio.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah Portofolio</a>
+    <center>
+        <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i class="fas fa-file-export"></i> Export Excel</a>
+        <a href="{{ route('portofolio.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah Portofolio</a>
+    </center>
     <div class="card-styles">
         <div class="card-style-3 mb-30">
             <div class="card-content">

@@ -14,8 +14,10 @@
         <!-- end row -->
     </div>
     <!-- ========== title-wrapper end ========== -->
-    <a href="{{ route('users.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah User</a>
-    <div class="card-styles">
+    <center>
+        <a href="{{ route('users.create') }}" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah User</a>
+    </center>
+        <div class="card-styles">
         <div class="card-style-3 mb-30">
             <div class="card-content">
 
