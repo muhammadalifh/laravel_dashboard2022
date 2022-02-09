@@ -53,6 +53,18 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="jenis" class="col-md-4 col-form-label text-md-end">{{ __('Jenis (Project)') }}</label>
+                            <div class="col-md-6">
+                                <select name="jenis_id" id="jenis_id" class="form-control select2">
+                                    <option disabled value selected>Pilih Jenis</option>
+                                    @foreach ($jenis_create as $item)
+                                            <option value="{{ $item->id }}">{{ $item->jenis }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="kapasitas" class="col-md-4 col-form-label text-md-end">{{ __('Kapasitas (m3/hari)') }}</label>
 
                             <div class="col-md-6">

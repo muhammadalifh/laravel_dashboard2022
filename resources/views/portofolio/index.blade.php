@@ -35,7 +35,8 @@
                             <th><h6>Klien</h6></th>
                             <th><h6>Perusahaan</h6></th>
                             <th><h6>Tahun</h6></th>
-                            <th><h6>Kapasitas (m3/hari)</h6></th>
+                            <th><h6>Jenis <br>(Project)</h6></th>
+                            <th><h6>Kapasitas <br> (m3/hari)</h6></th>
                             <th><h6>Nilai Kontrak</h6></th>
                             <th><h6>Action</h6></th>
                         </tr>
@@ -52,6 +53,9 @@
                                 </td>
                                 <td>
                                     <p>{{ $item->tahun }}</p>
+                                </td>
+                                <td>
+                                    <p>{{ $item->jenis->jenis }}</p>
                                 </td>
                                 <td>
                                     <p>{{ $item->kapasitas }}</p>

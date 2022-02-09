@@ -13,6 +13,7 @@ class Portofolio extends Model
         'klien_id',
         'perusahaan',
         'tahun',
+        'jenis_id',
         'kapasitas',
         'nilai_kontrak'
     ];
@@ -20,6 +21,11 @@ class Portofolio extends Model
     public function klien()
     {
         return $this->belongsTo(Klien::class);
+    }
+
+    public function jenis()
+    {
+        return $this->belongsTo(Jenis::class);
     }
 
     use HasFactory;
