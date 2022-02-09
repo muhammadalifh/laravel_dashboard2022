@@ -32,6 +32,7 @@
                     <table class="table striped-table">
                         <thead>
                         <tr style="text-align: center;">
+                            <th><h6>Klien</h6></th>
                             <th><h6>Perusahaan</h6></th>
                             <th><h6>Tahun</h6></th>
                             <th><h6>Kapasitas (m3/hari)</h6></th>
@@ -43,6 +44,9 @@
                         <tbody>
                         @foreach($portofolio as $item)
                             <tr style="text-align: center;">
+                                <td>
+                                    <p>{{ $item->klien->klien }}</p>
+                                </td>
                                 <td>
                                     <p>{{ $item->perusahaan }}</p>
                                 </td>

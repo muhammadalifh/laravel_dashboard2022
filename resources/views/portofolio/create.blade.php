@@ -13,6 +13,18 @@
                         @csrf
 
                         <div class="row mb-3">
+                            <label for="klien" class="col-md-4 col-form-label text-md-end">{{ __('Klien') }}</label>
+                            <div class="col-md-6">
+                                <select name="klien_id" id="klien_id" class="form-control select2">
+                                    <option disabled value selected>Pilih Klien</option>
+                                    @foreach ($klien_create as $item)
+                                            <option value="{{ $item->id }}">{{ $item->klien }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="perusahaan" class="col-md-4 col-form-label text-md-end">{{ __('Perusahaan') }}</label>
 
                             <div class="col-md-6">

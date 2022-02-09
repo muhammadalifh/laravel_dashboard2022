@@ -6,6 +6,7 @@ use App\Models\Portofolio;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PortofolioExport;
+use App\Models\Klien;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PortofolioController extends Controller
@@ -18,7 +19,7 @@ class PortofolioController extends Controller
     public function index()
     {
         // $portofolio = Portofolio::all();
-        $portofolio = Portofolio::paginate(5);
+        $portofolio = Portofolio::with('klien')->paginate(5);
         return view ('portofolio.index', compact('portofolio'));
     }
 
@@ -34,7 +35,9 @@ class PortofolioController extends Controller
      */
     public function create()
     {
-        return view('portofolio.create');
+        $klien_create = Klien::all();
+
+        return view('portofolio.create', compact('klien_create'));
     }
 
     /**
@@ -46,6 +49,7 @@ class PortofolioController extends Controller
     public function store(Request $request)
     {
         Portofolio::create([
+            'klien_id' => $request->klien_id,
             'perusahaan' => $request->perusahaan,
             'tahun' => $request->tahun,
             'kapasitas' => $request->kapasitas,
@@ -76,9 +80,14 @@ class PortofolioController extends Controller
      */
     public function edit($id)
     {
-        return view('portofolio.edit',[
-            'portofolio' => Portofolio::findOrFail($id),
-        ]);
+        $klien_create = Klien::all();
+        $portofolio = Portofolio::with('klien')->findOrFail($id);
+
+        return view('portofolio.edit', compact('portofolio', 'klien_create'));
+
+        // return view('portofolio.edit', compact('klien_create'),[
+        //     'portofolio' => Portofolio::with('klien')->findOrFail($id),
+        // ]);
     }
 
     /**
@@ -90,8 +99,9 @@ class PortofolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pegawai = Portofolio::find($id);
-        $pegawai->update([
+        $portofolio = Portofolio::find($id);
+        $portofolio->update([
+            'klien_id' => $request->klien_id,
             'perusahaan' => $request->perusahaan,
             'tahun' => $request->tahun,
             'kapasitas' => $request->kapasitas,
