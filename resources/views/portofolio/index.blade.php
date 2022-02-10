@@ -73,15 +73,30 @@
                                 <td>
                                     <p>{{ $item->nilai_kontrak }}</p>
                                 </td>
+                                @if($item->status->id == "1")
+                                    <td>
+                                        <p style="color:white;" class="btn btn-danger pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}</p>
+                                    </td>
+                                @endif
+                                @if($item->status->id == "2")
+                                    <td>
+                                        <p style="color:white;" class="btn btn-warning pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}</p>
+                                    </td>
+                                @endif
+                                @if($item->status->id == "3")
                                 <td>
-                                    <p>{{ $item->status->status }}</p>
+                                    <p style="color:white;" class="btn btn-success pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}</p>
                                 </td>
+                            @endif
+                                {{-- <td>
+                                    <p>{{ $item->status->status }}</p>
+                                </td> --}}
                                 <td>
-                                    <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a> <br> &nbsp;
+                                    <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning"> <i class="fas fa-edit"></i> Edit</a> <br> &nbsp;
                                 <form action="{{ route('portofolio.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <input type="submit" value="Delete" class="btn btn-danger">
                                 </form>
                                 </td>
                             </tr>

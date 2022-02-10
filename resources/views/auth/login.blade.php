@@ -74,6 +74,10 @@
                         </div>
                     </div>
                     <!-- end row -->
+                    <br>
+                    <center>
+                        <a href="{{ route('register') }}">{{ __("Didn't have an account?") }}</a>
+                    </center>
                 </form>
             </div>
         </div>

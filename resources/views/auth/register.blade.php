@@ -77,6 +77,10 @@
                         </div>
                     </div>
                     <!-- end row -->
+                    <br>
+                    <center>
+                        <a href="{{ route('login') }}">{{ __("I have already registered") }}</a>
+                    </center>
                 </form>
             </div>
         </div>
