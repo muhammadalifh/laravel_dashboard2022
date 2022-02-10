@@ -15,8 +15,8 @@
 </div>
 <!-- ========== title-wrapper end ========== -->
 <center>
-    <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i
-            class="fas fa-file-export"></i> Export Excel</a> &nbsp;&nbsp;&nbsp;
+    {{-- <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i
+            class="fas fa-file-export"></i> Export Excel</a> &nbsp;&nbsp;&nbsp; --}}
     <a target="_blank" href="{{ route('portofolio.cetak') }}" class="btn btn-info mb-2"> <i
             class="fas fa-print"></i></i></i> Cetak Laporan</a> &nbsp;&nbsp;&nbsp;
     @if(auth()->user()->role == "1" || auth()->user()->role == "2")
@@ -62,11 +62,16 @@
                                 <h6>Nilai <br> Kontrak</h6>
                             </th>
                             <th>
-                                <h6>Status</h6>
+                                <h6> </h6>
                             </th>
                             <th>
-                                <h6>Action</h6>
+                                <h6>Status</h6>
                             </th>
+                            @if(auth()->user()->role == "1" || auth()->user()->role == "2")
+                                <th>
+                                    <h6>Action</h6>
+                                </th>
+                            @endif
                         </tr>
                         <!-- end table row-->
                     </thead>
@@ -94,52 +99,121 @@
                             <td>
                                 <p>{{ $item->nilai_kontrak }}</p>
                             </td>
-                            @if($item->status->id == "1")
-                            <td>
-                                <p style="color:white;" class="btn btn-danger pe-none" tabindex="-1"
-                                    aria-disabled="true">{{ $item->status->status }}</p>
-                                {{-- <span style="height: 25px;
-                                                    width: 25px;
-                                                    background-color: #f44c44;
-                                                    border-radius: 50%;
-                                                    display: inline-block;">
-                                        </span> --}}
-                            </td>
+
+<td>
+                            @if(auth()->user()->role == "1" || auth()->user()->role == "2")
+                                @if($item->status->id == "1")
+                                <td>
+                                    {{-- <p style="color:white;" class="btn btn-warning pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}
+                                    </p> --}}
+                                    <span style="height: 25px;
+                                        width: 25px;
+                                        background-color: #f44c44;
+                                        border-radius: 50%;
+                                        color: white;
+                                        display: inline-block;"> P </span>
+                                </td>
+                                @endif
                             @endif
-                            @if($item->status->id == "2")
-                            <td>
-                                <p style="color:white;" class="btn btn-warning pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}
-                                </p>
-                                {{-- <span style="height: 25px;
-                                    width: 25px;
-                                    background-color: #ffc404;
-                                    border-radius: 50%;
-                                    display: inline-block;"></span> --}}
-                            </td>
+
+                                @if(auth()->user()->role == "0")
+                                    @if($item->status->id == "1")
+                                    <td>
+                                        <p style="color:white;" class="btn btn-danger pe-none" tabindex="-1"
+                                            aria-disabled="true">{{ $item->status->status }}</p>
+                                        {{-- <span style="height: 25px;
+                                                            width: 25px;
+                                                            background-color: #f44c44;
+                                                            border-radius: 50%;
+                                                            color: white;
+                                                            display: inline-block;">
+                                                P </span> --}}
+                                    </td>
+                                    @endif
+                                @endif
+</td>
+
+                            @if(auth()->user()->role == "1" || auth()->user()->role == "2")
+                                @if($item->status->id == "2")
+                                <td>
+                                    {{-- <p style="color:white;" class="btn btn-warning pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}
+                                    </p> --}}
+                                    <span style="height: 25px;
+                                        width: 25px;
+                                        background-color: #ffc404;
+                                        border-radius: 50%;
+                                        color: white;
+                                        display: inline-block;"> R </span>
+                                </td>
+                                @endif
                             @endif
-                            @if($item->status->id == "3")
-                            <td>
-                                <p style="color:white;" class="btn btn-success pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}
-                                </p>
-                                {{-- <span style="height: 25px;
-                                    width: 25px;
-                                    background-color: #147c4c;
-                                    border-radius: 50%;
-                                    display: inline-block;"></span> --}}
-                            </td>
+
+                            @if(auth()->user()->role == "0")
+                                    @if($item->status->id == "2")
+                                    <td>
+                                        <p style="color:white;" class="btn btn-warning pe-none" tabindex="-1"
+                                            aria-disabled="true">{{ $item->status->status }}</p>
+                                        {{-- <span style="height: 25px;
+                                                            width: 25px;
+                                                            background-color: #ffc404;
+                                                            border-radius: 50%;
+                                                            color: white;
+                                                            display: inline-block;">
+                                                P </span> --}}
+                                    </td>
+                                    @endif
+                                @endif
+
+                            @if(auth()->user()->role == "1" || auth()->user()->role == "2")
+                                @if($item->status->id == "3")
+                                <td>
+                                    {{-- <p style="color:white;" class="btn btn-success pe-none"tabindex="-1" aria-disabled="true">{{ $item->status->status }}
+                                    </p> --}}
+                                    <span style="height: 25px;
+                                        width: 25px;
+                                        background-color: #147c4c;
+                                        color: white;
+                                        border-radius: 50%;
+                                        display: inline-block;"> F </span>
+                                </td>
+                                @endif
                             @endif
+
+                            @if(auth()->user()->role == "0")
+                                    @if($item->status->id == "3")
+                                    <td>
+                                        <p style="color:white;" class="btn btn-success pe-none" tabindex="-1"
+                                            aria-disabled="true">{{ $item->status->status }}</p>
+                                        {{-- <span style="height: 25px;
+                                                            width: 25px;
+                                                            background-color: #147c4c;
+                                                            border-radius: 50%;
+                                                            color: white;
+                                                            display: inline-block;">
+                                                P </span> --}}
+                                    </td>
+                                    @endif
+                                @endif
+
+
+
+
                             {{-- <td>
                                     <p>{{ $item->status->status }}</p>
                             </td> --}}
-                            <td>
-                                <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning"> <i
-                                        class="fas fa-edit"></i> Edit</a> <br> &nbsp;
-                                <form action="{{ route('portofolio.destroy', $item->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" value="Delete" class="btn btn-danger">
-                                </form>
-                            </td>
+                                <td>
+                                    @if(auth()->user()->role == "1" || auth()->user()->role == "2")
+                                    <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning"> <i
+                                            class="fas fa-edit"></i> Edit</a> <br> &nbsp;
+                                    @endif
+                            @if(auth()->user()->role == "2")
+                                    <form action="{{ route('portofolio.destroy', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                    </form>
+                                </td>
+                            @endif
                         </tr>
                         @endforeach
                         <!-- end table row -->

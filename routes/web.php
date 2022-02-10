@@ -37,14 +37,14 @@ Route::middleware('auth','cekrole:2')->group(function () { //Auth cekrole middle
     Route::delete('/users/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 
     //Data Pegawai + CRUD
-    Route::get('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'index'])->name('users.pegawai.index');
-    Route::get('/exportpegawai', [\App\Http\Controllers\PegawaiController::class, 'pegawaiexport'])->name('exportpegawai');
-    Route::post('/importpegawai', [\App\Http\Controllers\PegawaiController::class, 'pegawaiimport'])->name('importpegawai');
-    Route::get('/pegawai/create', [\App\Http\Controllers\PegawaiController::class, 'create'])->name('users.pegawai.create');
-    Route::post('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'store'])->name('users.pegawai.store');
-    Route::get('/pegawai/{id}/edit', [\App\Http\Controllers\PegawaiController::class, 'edit'])->name('users.pegawai.edit');
-    Route::put('/pegawai/{id}', [\App\Http\Controllers\PegawaiController::class, 'update'])->name('users.pegawai.update');
-    Route::delete('/pegawai/{id}', [\App\Http\Controllers\PegawaiController::class, 'destroy'])->name('users.pegawai.destroy');
+    // Route::get('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'index'])->name('users.pegawai.index');
+    // Route::get('/exportpegawai', [\App\Http\Controllers\PegawaiController::class, 'pegawaiexport'])->name('exportpegawai');
+    // Route::post('/importpegawai', [\App\Http\Controllers\PegawaiController::class, 'pegawaiimport'])->name('importpegawai');
+    // Route::get('/pegawai/create', [\App\Http\Controllers\PegawaiController::class, 'create'])->name('users.pegawai.create');
+    // Route::post('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'store'])->name('users.pegawai.store');
+    // Route::get('/pegawai/{id}/edit', [\App\Http\Controllers\PegawaiController::class, 'edit'])->name('users.pegawai.edit');
+    // Route::put('/pegawai/{id}', [\App\Http\Controllers\PegawaiController::class, 'update'])->name('users.pegawai.update');
+    // Route::delete('/pegawai/{id}', [\App\Http\Controllers\PegawaiController::class, 'destroy'])->name('users.pegawai.destroy');
 
     //Data portofolio + CRUD
     Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
