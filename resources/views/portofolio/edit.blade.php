@@ -59,7 +59,7 @@
                             <div class="col-md-6">
                                 <select name="jenis_id" id="jenis_id" class="form-control select2">
                                     {{-- <option disabled value selected>Pilih Klien</option> --}}
-                                    <option  value="{{ $portofolio->jenis }}">{{ $portofolio->jenis->jenis }}</option>
+                                    <option  value="{{ $portofolio->jenis_id }}">{{ $portofolio->jenis->jenis }}</option>
                                     @foreach ($jenis_create as $item)
                                             <option value="{{ $item->id }}">{{ $item->jenis }}</option>
                                     @endforeach
