@@ -43,7 +43,7 @@
                             <th><h6>Jenis <br>(Project)</h6></th>
                             <th><h6>Kapasitas <br> (m3/hari)</h6></th>
                             <th><h6>Teknologi</h6></th>
-                            <th><h6>Nilai Kontrak</h6></th>
+                            <th><h6>Nilai <br> Kontrak</h6></th>
                             <th><h6>Status</h6></th>
                             <th><h6>Action</h6></th>
                         </tr>
@@ -71,7 +71,7 @@
                                     <p>{{ $item->teknologi->teknologi }}</p>
                                 </td>
                                 <td>
-                                    <p>Rp. {{ $item->nilai_kontrak }}</p>
+                                    <p>{{ $item->nilai_kontrak }}</p>
                                 </td>
                                 <td>
                                     <p>{{ $item->status->status }}</p>
