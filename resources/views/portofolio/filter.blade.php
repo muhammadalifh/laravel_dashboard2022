@@ -163,7 +163,7 @@
                                             background-color: #f44c44;
                                             border-radius: 50%;
                                             color: white;
-                                            display: inline-block;"> P </span>
+                                            display: inline-block;" title='Penawaran'> P </span>
                                     </td>
                                     @endif
                                 @endif
@@ -195,7 +195,7 @@
                                             background-color: #ffc404;
                                             border-radius: 50%;
                                             color: white;
-                                            display: inline-block;"> R </span>
+                                            display: inline-block;" title='Running'> R </span>
                                     </td>
                                     @endif
                                 @endif
@@ -226,7 +226,7 @@
                                             background-color: #147c4c;
                                             color: white;
                                             border-radius: 50%;
-                                            display: inline-block;"> F </span>
+                                            display: inline-block;" title='Finish'> F </span>
                                     </td>
                                     @endif
                                 @endif
