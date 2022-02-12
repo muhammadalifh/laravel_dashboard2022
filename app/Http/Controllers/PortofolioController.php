@@ -11,6 +11,7 @@ use App\Models\Jenis;
 use App\Models\Status;
 use App\Models\Teknologi;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class PortofolioController extends Controller
 {
@@ -72,7 +73,7 @@ class PortofolioController extends Controller
             'status_id' => $request->status_id,
         ]);
 
-        Alert::success('Congrats!', 'Data berhasil disimpan!');
+        Alert::success('Berhasil!', 'Data berhasil disimpan!');
 
         return redirect()->route('portofolio.index');
     }
@@ -144,11 +145,25 @@ class PortofolioController extends Controller
      */
     public function destroy($id)
     {
-        $pegawai = Portofolio::find($id);
-        $pegawai->delete();
+        $portofolio = Portofolio::find($id);
+        $portofolio->delete();
 
-        toast('Data berhasil dihapus!','success');
+        Alert::success('Berhasil!', 'Data berhasil dihapus!');
 
         return redirect()->route('portofolio.index');
+    }
+
+    public function filter(Request $request)
+    {
+
+
+
+        $klien_create = Klien::all();
+        $jenis_create = Jenis::all();
+        $status_create = Status::all();
+
+        $portofolio = Portofolio::with('klien', 'jenis', 'teknologi','status')->paginate(5);
+        return view('portofolio.filter', compact('portofolio','klien_create', 'jenis_create','status_create'));
+
     }
 }

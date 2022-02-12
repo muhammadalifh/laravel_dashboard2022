@@ -54,6 +54,7 @@ Route::middleware('auth','cekrole:2')->group(function () { //Auth cekrole middle
     Route::get('/portofolio/{id}/edit', [\App\Http\Controllers\PortofolioController::class, 'edit'])->name('portofolio.edit');
     Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
     Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
+
 });
 
 Route::middleware('auth','cekrole:1,2')->group(function () { //Auth cekrole middleware (super admin & admin)
@@ -91,4 +92,7 @@ Route::middleware('auth','cekrole:1,2,0')->group(function () { //Auth cekrole mi
 
     // Cetak/ Print Portofolio
     Route::get('/cetakportofolio', [\App\Http\Controllers\PortofolioController::class, 'cetakPortofolio'])->name('portofolio.cetak');
+
+    // Filter Portofolio
+    Route::get('/filter', [\App\Http\Controllers\PortofolioController::class, 'filter'])->name('portofolio.filter');
 });

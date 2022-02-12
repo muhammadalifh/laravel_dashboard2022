@@ -26,6 +26,10 @@
 </center>
 <div class="card-styles">
     <div class="card-style-3 mb-30">
+        <div class="col-md-12">
+            <h4 class="text-center">Portofolio Database Pekerjaan</h4>
+        </div>
+        <br><br>
         <div class="card-content">
 
             {{-- <div class="alert-box primary-alert">
@@ -203,14 +207,18 @@
                             </td> --}}
                                 <td>
                                     @if(auth()->user()->role == "1" || auth()->user()->role == "2")
-                                    <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning"> <i
-                                            class="fas fa-edit"></i> Edit</a> <br> &nbsp;
+                                    <a href="{{ route('portofolio.edit', $item->id) }}" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title='Edit'> <i
+                                            class="fas fa-edit"></i></a> <br> &nbsp;
                                     @endif
                             @if(auth()->user()->role == "2")
                                     <form action="{{ route('portofolio.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <input type="submit" value="Delete" class="btn btn-danger">
+                                        {{-- <button class="btn btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </button> --}}
+
+                                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fas fa-trash"></i></button>
                                     </form>
                                 </td>
                             @endif
@@ -221,11 +229,12 @@
                 </table>
                 <!-- end table -->
 
-                {{ $portofolio->links() }}
+                <div class="pagination justify-content-center">
+                    {{ $portofolio->links() }}
+                </div>
             </div>
 
         </div>
     </div>
 </div>
-
 @endsection

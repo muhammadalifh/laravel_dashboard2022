@@ -19,6 +19,10 @@
     </center>
         <div class="card-styles">
         <div class="card-style-3 mb-30">
+            <div class="col-md-12">
+                <h4 class="text-center">Database User</h4>
+            </div>
+            <br><br>
             <div class="card-content">
 
                 {{-- <div class="alert-box primary-alert">
@@ -57,11 +61,12 @@
                                     <p>{{ $user->role }}</p>
                                 </td>
                                 <td>
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm"> <i class="fas fa-edit"></i> Edit</a>
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-xs btn-flat" data-toggle="tooltip" title='Edit'> <i
+                                        class="fas fa-edit"></i></a>
                                 <form class="d-inline" action="{{ route('users.destroy', $user->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                    <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fas fa-trash"></i></button>
                                 </form>
                                 </td>
                             </tr>
@@ -71,7 +76,9 @@
                     </table>
                     <!-- end table -->
 
-                    {{ $users->links() }}
+                    <div class="pagination justify-content-center">
+                        {{ $users->links() }}
+                    </div>
                 </div>
 
             </div>
