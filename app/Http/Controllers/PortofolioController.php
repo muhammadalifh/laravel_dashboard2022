@@ -12,6 +12,7 @@ use App\Models\Status;
 use App\Models\Teknologi;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class PortofolioController extends Controller
 {
@@ -23,7 +24,7 @@ class PortofolioController extends Controller
     public function index()
     {
         // $portofolio = Portofolio::all();
-        $portofolio = Portofolio::with('klien', 'jenis', 'teknologi','status')->paginate(5);
+        $portofolio = Portofolio::with('klien', 'jenis', 'teknologi','status')->get();
         return view ('portofolio.index', compact('portofolio'));
     }
 
@@ -153,17 +154,26 @@ class PortofolioController extends Controller
         return redirect()->route('portofolio.index');
     }
 
-    public function filter(Request $request)
+    public function filter()
     {
-
-
-
         $klien_create = Klien::all();
         $jenis_create = Jenis::all();
         $status_create = Status::all();
 
-        $portofolio = Portofolio::with('klien', 'jenis', 'teknologi','status')->paginate(5);
+        $portofolio = Portofolio::with('klien', 'jenis', 'teknologi','status')->get();
         return view('portofolio.filter', compact('portofolio','klien_create', 'jenis_create','status_create'));
 
     }
+
+    public function server()
+    {
+        return view('portofolio.serverside');
+    }
+
+    public function filter_json()
+    {
+        return Datatables::of(Portofolio::limit(10))->make(true);
+    }
+
+
 }

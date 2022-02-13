@@ -41,7 +41,7 @@
                 </div> --}}
 
             <div class="table-wrapper table-responsive">
-                <table class="table striped-table">
+                <table class="table table-striped" id="table-striped">
                     <thead>
                         <tr style="text-align: center;">
                             <th>
@@ -64,9 +64,6 @@
                             </th>
                             <th>
                                 <h6>Nilai <br> Kontrak</h6>
-                            </th>
-                            <th>
-                                <h6> </h6>
                             </th>
                             <th>
                                 <h6>Status</h6>
@@ -104,7 +101,6 @@
                                 <p>{{ $item->nilai_kontrak }}</p>
                             </td>
 
-<td>
                             @if(auth()->user()->role == "1" || auth()->user()->role == "2")
                                 @if($item->status->id == "1")
                                 <td>
@@ -135,7 +131,6 @@
                                     </td>
                                     @endif
                                 @endif
-</td>
 
                             @if(auth()->user()->role == "1" || auth()->user()->role == "2")
                                 @if($item->status->id == "2")
@@ -229,9 +224,10 @@
                 </table>
                 <!-- end table -->
 
-                <div class="pagination justify-content-center">
+                {{-- <div class="pagination justify-content-center">
                     {{ $portofolio->links() }}
-                </div>
+                </div> --}}
+
             </div>
 
         </div>

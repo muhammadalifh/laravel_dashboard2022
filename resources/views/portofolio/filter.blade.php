@@ -22,7 +22,7 @@
         </div>
         <br><br>
 
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <label for="">Perusahaan</label>
                 <input required id="perusahaan" type="text" onchange="filter()" class=" form-control @error('perusahaan') is-invalid @enderror" name="perusahaan" value="{{ old('perusahaan') }}" required autocomplete="perusahaan" autofocus>
 
@@ -73,13 +73,13 @@
                         <option value="{{ $item->id }}">{{ $item->status }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> --}}
 
 
 
     </div>
     <br>
-    <div class="dropdown-divider"></div>
+    {{-- <div class="dropdown-divider"></div> --}}
     <div class="card-styles">
 
             <div class="card-content">
@@ -93,7 +93,7 @@
                     </div> --}}
 
                 <div class="table-wrapper table-responsive">
-                    <table class="table striped-table">
+                    <table class="table table-striped">
                         <thead>
                             <tr style="text-align: center;">
                                 <th>
@@ -116,9 +116,6 @@
                                 </th>
                                 <th>
                                     <h6>Nilai <br> Kontrak</h6>
-                                </th>
-                                <th>
-                                    <h6> </h6>
                                 </th>
                                 <th>
                                     <h6>Status</h6>
@@ -152,7 +149,6 @@
                                     <p>{{ $item->nilai_kontrak }}</p>
                                 </td>
 
-    <td>
                                 @if(auth()->user()->role == "1" || auth()->user()->role == "2")
                                     @if($item->status->id == "1")
                                     <td>
@@ -163,7 +159,7 @@
                                             background-color: #f44c44;
                                             border-radius: 50%;
                                             color: white;
-                                            display: inline-block;" title='Penawaran'> P </span>
+                                            display: inline-block;"> P </span>
                                     </td>
                                     @endif
                                 @endif
@@ -183,7 +179,6 @@
                                         </td>
                                         @endif
                                     @endif
-    </td>
 
                                 @if(auth()->user()->role == "1" || auth()->user()->role == "2")
                                     @if($item->status->id == "2")
@@ -195,7 +190,7 @@
                                             background-color: #ffc404;
                                             border-radius: 50%;
                                             color: white;
-                                            display: inline-block;" title='Running'> R </span>
+                                            display: inline-block;"> R </span>
                                     </td>
                                     @endif
                                 @endif
@@ -226,7 +221,7 @@
                                             background-color: #147c4c;
                                             color: white;
                                             border-radius: 50%;
-                                            display: inline-block;" title='Finish'> F </span>
+                                            display: inline-block;"> F </span>
                                     </td>
                                     @endif
                                 @endif
@@ -253,9 +248,9 @@
                     </table>
                     <!-- end table -->
 
-                    <div class="pagination justify-content-center">
+                    {{-- <div class="pagination justify-content-center">
                         {{ $portofolio->links() }}
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
