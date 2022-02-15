@@ -43,6 +43,7 @@ class PortofolioController extends Controller
         ->join('jenis', 'jenis.id', '=', 'portofolio.jenis_id')
         ->join('status', 'status.id', '=', 'portofolio.status_id')
         ->join('teknologi', 'teknologi.id', '=', 'portofolio.teknologi_id')
+        ->select('portofolio.*', 'klien.klien', 'jenis.jenis', 'status.status', 'teknologi.teknologi')
         ->get();
         if (request()->ajax()) {
             return datatables()->of($data)
