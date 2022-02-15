@@ -135,7 +135,6 @@
                                 <div class="modal-body">
                                     @csrf
                                     <div class="form-group">
-                                        {{-- <input type="hidden" id="id" name="id"> --}}
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Klien') }}</label>
                                         <select required name="klien_id" id="klien_id" class="form-control select2">
                                             <option disabled value selected>Pilih Klien</option>
@@ -146,6 +145,7 @@
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">Perusahaan</label>
                                         <input required type="text" class="form-control" id="perusahaan"  name="perusahaan" placeholder="Masukkan Nama Perusahaan">
+                                        <input type="hidden" id="id" name="id">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">Tahun</label>

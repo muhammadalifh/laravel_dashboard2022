@@ -24,17 +24,24 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth','cekrole:2')->group(function () { //Auth cekrole middleware (super admin)
     Route::view('about', 'about')->name('about');
 
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     // CRUD Users
-    Route::get('/users/create', [\App\Http\Controllers\UserController::class, 'create'])->name('users.create');
-    Route::post('/users', [\App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-    Route::get('/users/{id}/edit', [\App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{id}', [\App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/json', [\App\Http\Controllers\UserController::class, 'user_json'])->name('users.index');
+    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::post('/users/store_users', [\App\Http\Controllers\UserController::class, 'store_users'])->name('users.store_users');
+    Route::post('/users/edits_users', [\App\Http\Controllers\UserController::class, 'edits_users'])->name('users.edits_users');
+    Route::post('/users/updates_users', [\App\Http\Controllers\UserController::class, 'updates_users'])->name('users.updates_users');
+    Route::post('/users/hapus_users', [\App\Http\Controllers\UserController::class, 'hapus_users'])->name('users.hapus_users');
+
+
+    // Route::get('/users/create', [\App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+    // Route::post('/users', [\App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+    // Route::get('/users/{id}/edit', [\App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+    // Route::put('/users/{id}', [\App\Http\Controllers\UserController::class, 'update'])->name('users.update');
+    // Route::delete('/users/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 
     //Data Pegawai + CRUD
     // Route::get('/pegawai', [\App\Http\Controllers\PegawaiController::class, 'index'])->name('users.pegawai.index');

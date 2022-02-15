@@ -130,6 +130,7 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/sweet.js') }}"></script>
 <script src="{{ asset('js/datatables.js') }}"></script>
+<script src="{{ asset('js/datatables_users.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {{-- Data Tables --}}
@@ -143,6 +144,10 @@
 
 $(document).ready( function () {
     $('#table-index-portofolio').DataTable();
+} );
+
+$(document).ready( function () {
+    $('#table-index-user').DataTable();
 } );
 
 

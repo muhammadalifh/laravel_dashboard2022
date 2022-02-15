@@ -108,12 +108,12 @@ class PortofolioController extends Controller
         $data->teknologi_id = $request->teknologi_id;
         $data->nilai_kontrak = $request->nilai_kontrak;
         $data->status_id = $request->status_id;
-        $simpan = $data->save();
-        if ($simpan == 200) {
-            return response()->json(['data' => $data, 'text' => 'data berhasi disimpan']);
-        } else {
-            return response()->json(['data' => $data, 'text' => 'data berhasi disimpan']);
-        }
+        $data->save();
+        // if ($simpan == 200) {
+        //     return response()->json(['data' => $data, 'text' => 'data berhasi disimpan']);
+        // } else {
+        //     return response()->json(['data' => $data, 'text' => 'data berhasi disimpan']);
+        // }
 
         // Portofolio::create([
         //     'klien_id' => $request->klien_id,
