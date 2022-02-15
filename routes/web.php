@@ -47,13 +47,14 @@ Route::middleware('auth','cekrole:2')->group(function () { //Auth cekrole middle
     // Route::delete('/pegawai/{id}', [\App\Http\Controllers\PegawaiController::class, 'destroy'])->name('users.pegawai.destroy');
 
     //Data portofolio + CRUD
-    Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
+
+    // Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
     Route::get('/exportportofolio', [\App\Http\Controllers\PortofolioController::class, 'portofolioexport'])->name('exportportofolio');
     Route::get('/portofolio/create', [\App\Http\Controllers\PortofolioController::class, 'create'])->name('portofolio.create');
-    Route::post('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
-    Route::get('/portofolio/{id}/edit', [\App\Http\Controllers\PortofolioController::class, 'edit'])->name('portofolio.edit');
-    Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
-    Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
+    // Route::post('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
+    // Route::get('/portofolio/{id}/edit', [\App\Http\Controllers\PortofolioController::class, 'edit'])->name('portofolio.edit');
+    // Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
+    // Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
 
 });
 
@@ -65,13 +66,15 @@ Route::middleware('auth','cekrole:1,2')->group(function () { //Auth cekrole midd
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     //Data portofolio + CRUD
-    Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
+    // Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
     Route::get('/exportportofolio', [\App\Http\Controllers\PortofolioController::class, 'portofolioexport'])->name('exportportofolio');
-    Route::get('/portofolio/create', [\App\Http\Controllers\PortofolioController::class, 'create'])->name('portofolio.create');
-    Route::post('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
-    Route::get('/portofolio/{id}/edit', [\App\Http\Controllers\PortofolioController::class, 'edit'])->name('portofolio.edit');
-    Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
-    Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
+    // Route::get('/portofolio/create', [\App\Http\Controllers\PortofolioController::class, 'create'])->name('portofolio.create');
+    Route::post('/portofolio/store', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
+    Route::post('/portofolio/edits', [\App\Http\Controllers\PortofolioController::class, 'edits'])->name('portofolio.edits');
+    Route::post('/portofolio/updates', [\App\Http\Controllers\PortofolioController::class, 'updates'])->name('portofolio.updates');
+    Route::post('/portofolio/hapus', [\App\Http\Controllers\PortofolioController::class, 'hapus'])->name('portofolio.hapus');
+    // Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
+    // Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
 });
 
 Route::middleware('auth','cekrole:1,2,0')->group(function () { //Auth cekrole middleware (super admin & admin & user/owner )
@@ -82,13 +85,14 @@ Route::middleware('auth','cekrole:1,2,0')->group(function () { //Auth cekrole mi
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
     //Data portofolio + CRUD
+    Route::get('/portofolio/json', [\App\Http\Controllers\PortofolioController::class, 'portofolio_json'])->name('portofolio.index');
     Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');
     Route::get('/exportportofolio', [\App\Http\Controllers\PortofolioController::class, 'portofolioexport'])->name('exportportofolio');
-    Route::get('/portofolio/create', [\App\Http\Controllers\PortofolioController::class, 'create'])->name('portofolio.create');
-    Route::post('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
-    Route::get('/portofolio/{id}/edit', [\App\Http\Controllers\PortofolioController::class, 'edit'])->name('portofolio.edit');
-    Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
-    Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
+    // Route::get('/portofolio/create', [\App\Http\Controllers\PortofolioController::class, 'create'])->name('portofolio.create');
+    // Route::post('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
+    // Route::get('/portofolio/{id}/edit', [\App\Http\Controllers\PortofolioController::class, 'edit'])->name('portofolio.edit');
+    // Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
+    // Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
 
     // Cetak/ Print Portofolio
     Route::get('/cetakportofolio', [\App\Http\Controllers\PortofolioController::class, 'cetakPortofolio'])->name('portofolio.cetak');

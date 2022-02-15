@@ -1,6 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .link {
+        color: blue;
+        cursor: pointer;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .dataTables_length {
+        padding-left: 10px;
+        padding-top: 15px;
+    }
+
+    .dataTables_filter {
+        padding-right: 10px;
+        padding-top: 15px;
+    }
+
+    .dataTables_info {
+        padding-left: 10px;
+        padding-bottom: 15px;
+    }
+
+    .dataTables_paginate {
+        padding-right: 10px;
+        padding-bottom: 15px;
+    }
+
+    .table tbody tr:first-child>* {
+        font-size: 14px;
+    }
+    .table.dataTable td, table.dataTable th {
+        font-size: 14px;
+    }
+    .table > :not(:first-child) {
+        text-align: center;
+    }
+    </style>
 <!-- ========== title-wrapper start ========== -->
 <script type="text/javascript" src="{{ asset('js/server.js') }}"></script>
 <div class="title-wrapper pt-30">
@@ -94,7 +138,7 @@
                     </div> --}}
 
                 <div class="table-wrapper table-responsive">
-                    <table class="table table-striped" id="table-striped">
+                    <table class="table table-striped" id="table-server">
                         <thead>
                             <tr style="text-align: center;">
                                 <th>
