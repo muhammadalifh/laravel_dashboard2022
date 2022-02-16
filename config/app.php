@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sistem Informasi Manajemen Penawaran Mitra Prima Enviro'),
+    'name' => env('APP_NAME', 'Sistem Informasi Pelanggan Mitra Prima Enviro'),
 
     /*
     |--------------------------------------------------------------------------

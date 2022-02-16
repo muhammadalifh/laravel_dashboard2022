@@ -132,9 +132,11 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Form Tambah Portofolio</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="card-body">
+                                <div class="row">
+                                    <div class="modal-body">
                                     @csrf
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Klien') }}</label>
                                         <select required name="klien_id" id="klien_id" class="form-control select2">
                                             <option disabled value selected>Pilih Klien</option>
@@ -142,19 +144,82 @@
                                             <option value="2">PEMERINTAH</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">Perusahaan</label>
                                         <input required type="text" class="form-control" id="perusahaan"  name="perusahaan" placeholder="Masukkan Nama Perusahaan">
                                         <input type="hidden" id="id" name="id">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">Tahun</label>
                                         <input required
                                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                type = "number"
-                                                maxlength = "4" class="form-control" id="tahun"  name="tahun" placeholder="Masukkan Tahun">
+                                                type = "number" maxlength = "4" class="form-control" id="tahun"  name="tahun" placeholder="Masukkan Tahun"
+                                                list="tahun-list" autocomplete="off">
+                                        <datalist id="tahun-list">
+                                            <option value="1990"></option>
+                                            <option value="1991"></option>
+                                            <option value="1992"></option>
+                                            <option value="1993"></option>
+                                            <option value="1994"></option>
+                                            <option value="1995"></option>
+                                            <option value="1996"></option>
+                                            <option value="1997"></option>
+                                            <option value="1998"></option>
+                                            <option value="1999"></option>
+                                            <option value="2000"></option>
+                                            <option value="2001"></option>
+                                            <option value="2002"></option>
+                                            <option value="2003"></option>
+                                            <option value="2004"></option>
+                                            <option value="2005"></option>
+                                            <option value="2006"></option>
+                                            <option value="2007"></option>
+                                            <option value="2008"></option>
+                                            <option value="2009"></option>
+                                            <option value="2010"></option>
+                                            <option value="2011"></option>
+                                            <option value="2012"></option>
+                                            <option value="2013"></option>
+                                            <option value="2014"></option>
+                                            <option value="2015"></option>
+                                            <option value="2016"></option>
+                                            <option value="2017"></option>
+                                            <option value="2018"></option>
+                                            <option value="2019"></option>
+                                            <option value="2020"></option>
+                                            <option value="2021"></option>
+                                            <option value="2022"></option>
+                                            <option value="2023"></option>
+                                            <option value="2024"></option>
+                                            <option value="2025"></option>
+                                            <option value="2026"></option>
+                                            <option value="2027"></option>
+                                            <option value="2028"></option>
+                                            <option value="2029"></option>
+                                            <option value="2030"></option>
+                                            <option value="2031"></option>
+                                            <option value="2032"></option>
+                                            <option value="2033"></option>
+                                            <option value="2034"></option>
+                                            <option value="2035"></option>
+                                            <option value="2036"></option>
+                                            <option value="2037"></option>
+                                            <option value="2038"></option>
+                                            <option value="2039"></option>
+                                            <option value="2040"></option>
+                                            <option value="2041"></option>
+                                            <option value="2042"></option>
+                                            <option value="2043"></option>
+                                            <option value="2044"></option>
+                                            <option value="2045"></option>
+                                            <option value="2046"></option>
+                                            <option value="2047"></option>
+                                            <option value="2048"></option>
+                                            <option value="2049"></option>
+                                            <option value="2050"></option>
+                                        </datalist>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis') }}</label>
                                         <select required name="jenis_id" id="jenis_id" class="form-control select2">
                                             <option disabled value selected>Pilih Jenis</option>
@@ -164,11 +229,11 @@
                                             <option value="4">IPAL LABORATORIUM</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">Kapasitas</label>
-                                        <input required type = "number" class="form-control" id="kapasitas"  name="kapasitas" placeholder="Masukkan Kapasitas">
+                                        <input required type = "number" class="form-control" id="kapasitas" autocomplete="off" name="kapasitas" placeholder="Jika ada koma gunakan titik misal (1.5)">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Teknologi') }}</label>
                                         <select required name="teknologi_id" id="teknologi_id" class="form-control select2">
                                             <option disabled value selected>Pilih Teknologi</option>
@@ -178,11 +243,11 @@
                                             <option value="4">WETLAND</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
                                         <input required type = "text" class="form-control" id="nilai_kontrak"  name="nilai_kontrak" placeholder="Masukkan Nilai Kontrak">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-md-12">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Status') }}</label>
                                         <select required name="status_id" id="status_id" class="form-control select2">
                                             <option disabled value selected>Pilih Status</option>
@@ -192,6 +257,8 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                                 <div class="modal-footer">
                                 <button type="button" name="tutup" id="tutup" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 <button type="button" name="simpan" id="simpan" class="btn btn-primary">Simpan</button>

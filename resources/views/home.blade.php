@@ -19,7 +19,15 @@
         <div class="card-style-3 mb-30">
             <div class="card-content">
                 <p>
-                    {{ __('You are logged in!') }}
+                    @if(auth()->user()->role == "2")
+                    {{ __('Selamat Datang Kembali, Anda Login sebagai Super Admin!') }}
+                    @endif
+                    @if(auth()->user()->role == "1")
+                    {{ __('Selamat Datang Kembali, Anda Login sebagai Admin!') }}
+                    @endif
+                    @if(auth()->user()->role == "0")
+                    {{ __('Selamat Datang Kembali, Anda Login sebagai Owner!') }}
+                    @endif
                 </p>
             </div>
         </div>

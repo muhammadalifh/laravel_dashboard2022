@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>{{ config('app.name', 'Sistem Informasi Manajemen Penawaran Mitra Prima Enviro') }}</title>
+    <title>{{ config('app.name', 'Sistem Informasi Pelanggan Mitra Prima Enviro') }}</title>
 
     <!-- ========== All CSS files linkup ========= -->
+    <link rel="icon" href="{{ asset('images/logo/prima2.png') }}">
     <link rel="stylesheet" href="{{ asset('css/lineicons.css') }}"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -22,7 +23,7 @@
 <aside class="sidebar-nav-wrapper">
     <div class="navbar-logo">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('images/logo/logo.svg') }}" alt="logo"/>
+            <img src="{{ asset('images/logo/prima2.png') }}" width="140" height="70" class="img-fluid" alt="logo"/>
         </a>
     </div>
     <nav class="sidebar-nav">

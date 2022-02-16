@@ -59,9 +59,9 @@
     </div>
     <!-- ========== title-wrapper end ========== -->
     <center>
-        <button type="button" data-bs-toggle="modal" id="tambah" data-bs-target="#exampleModal" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah
+        <button type="button" data-bs-toggle="modal" id="tambah" data-bs-target="#exampleModal" class="btn btn-outline-info"> <i class="fas fa-user-plus"></i> Tambah
             User</button>
-    </center>
+    </center> &nbsp;
         <div class="card-styles">
         <div class="card-style-3 mb-30">
             <div class="col-md-12">
@@ -104,20 +104,27 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Nama Lengkap</label>
-                                        <input required type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Lengkap">
+                                        <input required type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Lengkap" autocomplete="off" >
                                         <input type="hidden" id="id" name="id">
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" autocomplete="off" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Role</label>
-                                        <input required type="number" name="role" class="form-control" id="role" cols="30" rows="5"></input>
+                                        <input required
+                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                            maxlength = "1" autocomplete="off"  type="number" name="role" class="form-control" id="role" cols="30" rows="5" list="role-user">
                                     </div>
+                                    <datalist id="role-user">
+                                            <option value="0"></option>
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                    </datalist>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Password</label>
-                                        <input required type="password" name="password" class="form-control" id="password" cols="30" rows="5"></input>
+                                        <input required type="password" name="password" class="form-control" id="password" cols="30" rows="5" autocomplete="off" >
                                     </div>
                                     {{-- <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Password Confirmation</label>
