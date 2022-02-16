@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/cetak.css') }}" rel="stylesheet">
+    <title>{{ config('app.name', 'Sistem Informasi Manajemen Penawaran Mitra Prima Enviro') }}</title>
     <title>Laporan Portofolio</title>
 </head>
 <body class="landscape">
