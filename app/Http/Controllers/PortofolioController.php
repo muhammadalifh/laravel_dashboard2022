@@ -225,15 +225,15 @@ class PortofolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $portofolio = Portofolio::find($id);
-        $portofolio->delete();
+    // public function destroy($id)
+    // {
+    //     $portofolio = Portofolio::find($id);
+    //     $portofolio->delete();
 
-        Alert::success('Berhasil!', 'Data berhasil dihapus!');
+    //     Alert::success('Berhasil!', 'Data berhasil dihapus!');
 
-        return redirect()->route('portofolio.index');
-    }
+    //     return redirect()->route('portofolio.index');
+    // }
 
     public function filter()
     {

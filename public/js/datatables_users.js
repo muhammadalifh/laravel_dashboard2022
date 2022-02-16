@@ -79,11 +79,11 @@ $(function(){
                 $('#email').val(null);
                 $('#role').val(null);
                 $('#password').val(null);
-            },
-            error: function(xhr){
-                // swal("Error deleting!", "Please try again", "error");
-                // alert(xhr.responseJSON.text);
             }
+            // error: function(xhr){
+            //     swal("Error Create User!", "Please try again", "error");
+            //     // alert(xhr.responseJSON.text);
+            // }
         });
     }
 
@@ -103,7 +103,6 @@ $(function(){
             success: function(res){
                 console.log(res.data);
                 swal("Sukses!", "Data berhasil diperbaharui.", "success");
-                // alert(res.data.text)
                 $('#tutup').click();
                 $('#table-index-user').DataTable().ajax.reload();
                 $('#nama').val(null);
@@ -111,31 +110,65 @@ $(function(){
                 $('#role').val(null);
                 // $('#password').val(null);
                 $('#simpan').text('Simpan');
-            },
-            error: function(xhr){
-                // swal("Error deleting!", "Please try again", "error");
-                // alert(xhr.responseJSON.text);
             }
+            // error: function(xhr){
+            //     swal("Error Editing User!", "Please try again", "error");
+            //     // alert(xhr.responseJSON.text);
+            // }
         });
     }
 
 
-    $(document).on('click','.hapus_users', function(){
-        let id = $(this).attr('id')
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: 'users/hapus_users',
-            type: 'post',
-            data: {
-                id: id,
-                _token: $('meta[name="csrf-token"]').attr('content'),
-            },
-            success: function(res){
-                console.log(res.data);
-                swal("Sukses!", "Data berhasil terhapus.", "success");
-                $('#table-index-user').DataTable().ajax.reload();
+    // $(document).on('click','.hapus_users', function(){
+    //     let id = $(this).attr('id')
+    //     $.ajax({
+    //         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //         url: 'users/hapus_users',
+    //         type: 'post',
+    //         data: {
+    //             id: id,
+    //             _token: $('meta[name="csrf-token"]').attr('content'),
+    //         },
+    //         success: function(res){
+    //             console.log(res.data);
+    //             swal("Sukses!", "Data berhasil terhapus.", "success");
+    //             $('#table-index-user').DataTable().ajax.reload();
+    //         }
+    //     });
+    // });
+
+    $(document).on('click','.hapus_users', function(event){
+        let id = $(this).attr('id');
+        event.preventDefault();
+        swal({
+            title: "Apakah Anda yakin?",
+            text: "Data yang dihapus tidak dapat di kembalikan lagi!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((result)=>{
+            if (result) {
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: 'users/hapus_users',
+                    type: 'post',
+                    data: {
+                        id: id,
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                    },
+                    success: function(res){
+                        console.log(res.data);
+                        swal("Sukses!", "Data berhasil terhapus.", "success");
+                        $('#table-index-user').DataTable().ajax.reload();
+                    }
+                    // error: function(xhr){
+                    //     swal("Error Deleting User!", "Please try again", "error");
+                    //     // alert(xhr.responseJSON.text);
+                    // }
+                });
             }
         });
+
     });
 
 });

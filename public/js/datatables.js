@@ -122,7 +122,7 @@ $(function(){
             },
             error: function(xhr){
                 swal("Error Creating!", "Please try again", "error");
-                alert(xhr.responseJSON.text);
+                // alert(xhr.responseJSON.text);
             }
         });
     }
@@ -159,11 +159,11 @@ $(function(){
                 $('#nilai_kontrak').val(null);
                 $('#status_id').val(null);
                 $('#simpan').text('Simpan');
-            },
-            error: function(xhr){
-                swal("Error Editing!", "Please try again", "error");
-                alert(xhr.responseJSON.text);
             }
+            // error: function(xhr){
+            //     swal("Error Editing!", "Please try again", "error");
+            //     // alert(xhr.responseJSON.text);
+            // }
         });
     }
 
@@ -194,7 +194,7 @@ $(function(){
                     },
                     error: function(xhr){
                         swal("Error Deleting!", "Please try again", "error");
-                        alert(xhr.responseJSON.text);
+                        // alert(xhr.responseJSON.text);
                     }
                 });
             }
@@ -257,7 +257,6 @@ $(function(){
     $(function(){
         $('#filter-perusahaan').on('change',function(){
             perusahaan = $(this).val();
-            // alert(value);
             console.log(perusahaan);
             $('#table-server').DataTable().ajax.reload(null, false);
         });
@@ -266,7 +265,6 @@ $(function(){
     $(function(){
         $('#filter-tahun').on('change',function(){
             tahun = $(this).val();
-            // alert(value);
             console.log(tahun);
             $('#table-server').DataTable().ajax.reload(null, false);
         });
@@ -276,7 +274,6 @@ $(function(){
     $(function(){
         $('#filter-klien').on('change',function(){
             klien = $(this).val();
-            // alert(value);
             console.log(klien);
             $('#table-server').DataTable().ajax.reload(null, false);
         });
@@ -285,7 +282,6 @@ $(function(){
     $(function(){
         $('#filter-jenis').on('change',function(){
             jenis = $(this).val();
-            // alert(jenis);
             console.log(jenis);
             $('#table-server').DataTable().ajax.reload(null, false);
         });
@@ -294,7 +290,6 @@ $(function(){
     $(function(){
         $('#filter-teknologi').on('change',function(){
             teknologi = $(this).val();
-            // alert(teknologi);
             console.log(teknologi);
             $('#table-server').DataTable().ajax.reload(null, false);
         });
@@ -303,7 +298,6 @@ $(function(){
     $(function(){
         $('#filter-status').on('change',function(){
             status = $(this).val();
-            // alert(status);
             console.log(status);
             $('#table-server').DataTable().ajax.reload(null, false);
         });
