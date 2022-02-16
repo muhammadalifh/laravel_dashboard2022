@@ -106,9 +106,9 @@ Route::middleware('auth','cekrole:1,2,0')->group(function () { //Auth cekrole mi
 
     // Filter Portofolio
     // Route::get('/filter/json', [\App\Http\Controllers\PortofolioController::class, 'filter_json'])->name('portofolio.filter');
-    Route::get('/filter', [\App\Http\Controllers\PortofolioController::class, 'filter'])->name('portofolio.filter');
-    Route::post('/serverside/json', [\App\Http\Controllers\PortofolioController::class, 'server_json'])->name('portofolio.serverside');
-    Route::get('/serverside', [\App\Http\Controllers\PortofolioController::class, 'server'])->name('portofolio.serverside');
+    // Route::get('/filter', [\App\Http\Controllers\PortofolioController::class, 'filter'])->name('portofolio.filter');
+    Route::post('/filter/json', [\App\Http\Controllers\PortofolioController::class, 'server_json'])->name('portofolio.serverside');
+    Route::get('/filter', [\App\Http\Controllers\PortofolioController::class, 'server'])->name('portofolio.serverside');
 
 
 });

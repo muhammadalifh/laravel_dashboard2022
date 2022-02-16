@@ -213,7 +213,7 @@ $(function(){
         pageLength: 5,
         lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
         ajax:{
-            url: 'serverside/json',
+            url: 'filter/json',
             type: 'post',
             data: function(d){
                 // d.perusahaan = $('#filter-perusahaan').val();

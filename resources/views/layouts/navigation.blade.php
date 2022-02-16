@@ -40,17 +40,17 @@
         </a>
     </li>
 
-    <li class="nav-item @if(request()->routeIs('portofolio.filter')) active @endif">
+    {{-- <li class="nav-item @if(request()->routeIs('portofolio.filter')) active @endif">
         <a href="{{ route('portofolio.filter') }}">
             <span class="icon">
-                <i class="fas fa-filter"></i>
+                <i class="fas fa-filter"></i> --}}
                 {{-- <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg> --}}
-            </span>
+            {{-- </span>
             <span class="text">{{ __('Filter') }}</span>
         </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item @if(request()->routeIs('portofolio.serverside')) active @endif">
         <a href="{{ route('portofolio.serverside') }}">
@@ -60,7 +60,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg> --}}
             </span>
-            <span class="text">{{ __('Server Side Filter') }}</span>
+            <span class="text">{{ __('Filter') }}</span>
         </a>
     </li>
 
