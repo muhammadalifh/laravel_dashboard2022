@@ -168,22 +168,38 @@ $(function(){
     }
 
 
-    $(document).on('click','.hapus', function(){
-        let id = $(this).attr('id')
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: 'portofolio/hapus',
-            type: 'post',
-            data: {
-                id: id,
-                _token: $('meta[name="csrf-token"]').attr('content'),
-            },
-            success: function(res){
-                console.log(res.data);
-                swal("Sukses!", "Data berhasil terhapus.", "success");
-                $('#table-index-portofolio').DataTable().ajax.reload();
+    $(document).on('click','.hapus', function(event){
+        let id = $(this).attr('id');
+        event.preventDefault();
+        swal({
+            title: "Apakah Anda yakin?",
+            text: "Data yang dihapus tidak dapat di kembalikan lagi!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((result)=>{
+            if (result) {
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: 'portofolio/hapus',
+                    type: 'post',
+                    data: {
+                        id: id,
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                    },
+                    success: function(res){
+                        console.log(res.data);
+                        swal("Sukses!", "Data berhasil terhapus.", "success");
+                        $('#table-index-portofolio').DataTable().ajax.reload();
+                    },
+                    error: function(xhr){
+                        swal("Error deleting!", "Please try again", "error");
+                        alert(xhr.responseJSON.text);
+                    }
+                });
             }
         });
+
     });
 
 });
@@ -214,10 +230,11 @@ $(function(){
         lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
         ajax:{
             url: 'filter/json',
-            type: 'post',
+    type: 'post',
             data: function(d){
                 // d.perusahaan = $('#filter-perusahaan').val();
                 // d.tahun = $('#filter-tahun').val();
+                url: 'serverside/json',
                 d.klien = $('#filter-klien').val();
                 d.jenis = $('#filter-jenis').val();
                 d.teknologi = $('#filter-teknologi').val();
@@ -335,6 +352,8 @@ $(function(){
     //         console.log([klien, jenis, status]);
     //     });
     // });
+
+
 
 
 });
