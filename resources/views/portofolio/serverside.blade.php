@@ -205,7 +205,7 @@
 
                             <br><br><br><br>
                             <center>
-                                <button type="button" name="reset" id="reset" class="btn btn-primary btn-sm">Reset</button>
+                                <button type="button" name="reset" id="reset" class="btn btn-outline-success"><i class="fas fa-sync"></i> Refresh Tabel</button>
                             </center>
 
 

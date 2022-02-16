@@ -61,10 +61,10 @@
 <center>
     {{-- <a target="_blank" href="{{ route('exportportofolio') }}" class="btn btn-success mb-2"> <i
             class="fas fa-file-export"></i> Export Excel</a> &nbsp;&nbsp;&nbsp; --}}
-    <a target="_blank" href="{{ route('portofolio.cetak') }}" class="btn btn-info mb-2"> <i
+    <a target="_blank" href="{{ route('portofolio.cetak') }}" class="btn btn-outline-dark mb-2"> <i
             class="fas fa-print"></i></i></i> Cetak Laporan</a> &nbsp;&nbsp;&nbsp;
     @if(auth()->user()->role == "1" || auth()->user()->role == "2")
-    <button type="button" data-bs-toggle="modal" id="tambah" data-bs-target="#exampleModal" class="btn btn-primary mb-2"> <i class="fas fa-plus"></i> Tambah
+    <button type="button" data-bs-toggle="modal" id="tambah" data-bs-target="#exampleModal" class="btn btn-outline-primary mb-2"> <i class="fas fa-plus"></i> Tambah
         Portofolio</button>
     @endif
 </center>

@@ -35,7 +35,7 @@
                         <td style="text-align: center">{{ $item->jenis->jenis }}</td>
                         <td style="text-align: center">{{ $item->kapasitas }}</td>
                         <td style="text-align: center">{{ $item->teknologi->teknologi }}</td>
-                        <td style="text-align: center">Rp. {{ $item->nilai_kontrak }}</td>
+                        <td style="text-align: center">{{ $item->nilai_kontrak }}</td>
                         <td style="text-align: center">{{ $item->status->status }}</td>
                     </tr>
                         @endforeach
