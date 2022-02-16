@@ -121,8 +121,8 @@ $(function(){
                 $('#status_id').val(null);
             },
             error: function(xhr){
-                // swal("Error deleting!", "Please try again", "error");
-                // alert(xhr.responseJSON.text);
+                swal("Error Creating!", "Please try again", "error");
+                alert(xhr.responseJSON.text);
             }
         });
     }
@@ -161,8 +161,8 @@ $(function(){
                 $('#simpan').text('Simpan');
             },
             error: function(xhr){
-                // swal("Error deleting!", "Please try again", "error");
-                // alert(xhr.responseJSON.text);
+                swal("Error Editing!", "Please try again", "error");
+                alert(xhr.responseJSON.text);
             }
         });
     }
@@ -193,7 +193,7 @@ $(function(){
                         $('#table-index-portofolio').DataTable().ajax.reload();
                     },
                     error: function(xhr){
-                        swal("Error deleting!", "Please try again", "error");
+                        swal("Error Deleting!", "Please try again", "error");
                         alert(xhr.responseJSON.text);
                     }
                 });
