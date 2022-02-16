@@ -10,6 +10,14 @@
 
 5. `php artisan migrate`
 
+
+command Singkatnya :
+
+    php artisan db:seed --class=DatabaseSeeder
+
+***note : Jika sudah menjalankan command ini tidak perlu menjalankan command di bawahnya***
+
+
 untuk menjalankan data seeder lakukan command berikut :
 
     php artisan db:seed --class=CreateUserSeeder
@@ -23,6 +31,8 @@ untuk menjalankan data seeder lakukan command berikut :
     php artisan db:seed --class=CreateKlienSeeder
 
     php artisan db:seed --class=CreateTeknologiSeeder
+
+    php artisan db:seed --class=CreatePortofolioSeeder
 
 | Role | Keterangan |
 | ----------- | ----------- |
