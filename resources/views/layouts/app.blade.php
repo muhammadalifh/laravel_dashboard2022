@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
     {{-- Data Tables --}}
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"> --}}
 </head>
 <body>
     @include('sweetalert::alert')
@@ -131,6 +131,8 @@
 <script src="{{ asset('js/sweet.js') }}"></script>
 <script src="{{ asset('js/datatables.js') }}"></script>
 <script src="{{ asset('js/datatables_users.js') }}"></script>
+<script src="{{ asset('js/server.js') }}"></script>
+<script src="{{ asset('js/rupiah.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 {{-- Data Tables --}}
@@ -138,8 +140,9 @@
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    $(document).ready( function () {
-    $('#table-server').DataTable();
+
+$(document).ready( function () {
+$('#table-server').DataTable();
 } );
 
 $(document).ready( function () {
@@ -150,13 +153,44 @@ $(document).ready( function () {
     $('#table-index-user').DataTable();
 } );
 
+$(document).ready( function () {
+    $('#row-server');
+} );
+
+
+// $(document).ready( function () {
+//     $('#filter-perusahaan');
+// } );
+
+// $(document).ready( function () {
+//     $('#filter-tahun');
+// } );
+
+$(document).ready( function () {
+    $('#reset');
+} );
+
+$(document).ready( function () {
+    $('#filter-klien');
+} );
+
+$(document).ready( function () {
+    $('#filter-jenis');
+} );
+
+$(document).ready( function () {
+    $('#filter-status');
+} );
+
+$(document).ready( function () {
+    $('.filter');
+} );
 
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
-
 
 </script>
 

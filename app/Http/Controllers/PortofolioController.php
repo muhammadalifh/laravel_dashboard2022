@@ -255,12 +255,20 @@ class PortofolioController extends Controller
     {
 
         // return Datatables::of(Portofolio::limit(10))->make(true);
-        $query = DB::select('SELECT k.klien, j.jenis, t.teknologi, s.status, perusahaan, tahun, kapasitas, nilai_kontrak FROM
-        klien k, jenis j, teknologi t, status s,  portofolio p WHERE
-        p.klien_id = k.id AND
-        p.teknologi_id = t.id AND
-        p.jenis_id = j.id AND
-        p.status_id = s.id');
+        // $query = DB::select('SELECT k.klien, j.jenis, t.teknologi, s.status, perusahaan, tahun, kapasitas, nilai_kontrak FROM
+        // klien k, jenis j, teknologi t, status s,  portofolio p WHERE
+        // p.klien_id = k.id AND
+        // p.teknologi_id = t.id AND
+        // p.jenis_id = j.id AND
+        // p.status_id = s.id');
+
+        $query = DB::table('portofolio')
+        ->join('klien', 'klien.id', '=', 'portofolio.klien_id')
+        ->join('jenis', 'jenis.id', '=', 'portofolio.jenis_id')
+        ->join('status', 'status.id', '=', 'portofolio.status_id')
+        ->join('teknologi', 'teknologi.id', '=', 'portofolio.teknologi_id')
+        ->select('portofolio.*', 'klien.klien', 'jenis.jenis', 'status.status', 'teknologi.teknologi')
+        ->get();
 
 
         // $data = DB::table('klien')
@@ -269,6 +277,45 @@ class PortofolioController extends Controller
         // $id = $request->query('klien_id');
         // $event = DB::table('portofolio')->where('id',$id)->get();
         // $pics = DB::table('pictures')->where('event_id',$id)->get();
+
+        return Datatables::of($query)->make(true);
+    }
+
+    public function server_json(Request $request)
+    {
+        $query = DB::table('portofolio')
+        ->join('klien', 'klien.id', '=', 'portofolio.klien_id')
+        ->join('jenis', 'jenis.id', '=', 'portofolio.jenis_id')
+        ->join('status', 'status.id', '=', 'portofolio.status_id')
+        ->join('teknologi', 'teknologi.id', '=', 'portofolio.teknologi_id')
+        ->select('portofolio.*', 'klien.klien', 'jenis.jenis', 'status.status', 'teknologi.teknologi')
+        ->get();
+
+
+        // if($request->input('perusahaan')){
+        //     $query = $query->where('perusahaan', 'like', '%' .request('perusahaan'). '%');
+        // }
+
+        // if($request->input('tahun')){
+        //     $query = $query->where('tahun', $request->tahun);
+        // }
+
+        if($request->input('klien')!= null){
+            // $query = $query->where('klien.klien', 'like', '%'.$request->input('klien').'%');
+            $query = $query->where('klien_id', $request-> klien);
+        }
+        if($request->input('jenis')!= null){
+            // $query = $query->where('jenis.jenis', 'like', '%'.$request->input('jenis').'%');
+            $query = $query->where('jenis_id', $request-> jenis);
+        }
+        if($request->input('teknologi')!= null){
+            // $query = $query->where('teknologi.teknologi', 'like', '%'.$request->input('teknologi').'%');
+            $query = $query->where('teknologi_id', $request-> teknologi);
+        }
+        if($request->input('status')!= null){
+            // $query = $query->where('status.status', 'like', '%'.$request->input('status').'%');
+            $query = $query->where('status_id', $request-> status);
+        }
 
         return Datatables::of($query)->make(true);
     }

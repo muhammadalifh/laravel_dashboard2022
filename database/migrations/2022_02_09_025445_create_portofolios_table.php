@@ -16,12 +16,12 @@ class CreatePortofoliosTable extends Migration
         Schema::create('portofolio', function (Blueprint $table) {
             $table->integer('klien_id');
             $table->id();
-            $table->string('perusahaan', 100);
-            $table->string('tahun', 4);
+            $table->string('perusahaan', 200);
+            $table->double('tahun', 4);
             $table->integer('jenis_id');
-            $table->string('kapasitas', 100);
+            $table->double('kapasitas');
             $table->integer('teknologi_id');
-            $table->string('nilai_kontrak', 500);
+            $table->string('nilai_kontrak');
             $table->integer('status_id');
             $table->timestamps();
         });

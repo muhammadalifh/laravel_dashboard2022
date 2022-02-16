@@ -37,10 +37,10 @@
     }
 
     .table tbody tr:first-child>* {
-        font-size: 14px;
+        font-size: 13px;
     }
     .table.dataTable td, table.dataTable th {
-        font-size: 14px;
+        font-size: 13px;
     }
     .table > :not(:first-child) {
         text-align: center;
@@ -149,7 +149,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">Tahun</label>
-                                        <input required type="text" class="form-control" id="tahun"  name="tahun" placeholder="Masukkan Tahun">
+                                        <input required
+                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                type = "number"
+                                                maxlength = "4" class="form-control" id="tahun"  name="tahun" placeholder="Masukkan Tahun">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis') }}</label>
@@ -163,7 +166,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">Kapasitas</label>
-                                        <input required type="text" class="form-control" id="kapasitas"  name="kapasitas" placeholder="Masukkan Kapasitas">
+                                        <input required type = "number" class="form-control" id="kapasitas"  name="kapasitas" placeholder="Masukkan Kapasitas">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Teknologi') }}</label>
@@ -177,7 +180,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
-                                        <input required type="text" class="form-control" id="nilai_kontrak"  name="nilai_kontrak" placeholder="Masukkan Nilai Kontrak">
+                                        <input required type = "text" class="form-control" id="nilai_kontrak"  name="nilai_kontrak" placeholder="Masukkan Nilai Kontrak">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Status') }}</label>

@@ -190,8 +190,15 @@ $(function(){
 
 
 
-
 $(function(){
+
+    // let perusahaan = $('#filter-perusahaan').val();
+    // let tahun = $('#filter-tahun').val();
+    let klien = $('#filter-klien').val();
+    let jenis = $('#filter-jenis').val();
+    let teknologi = $('#filter-teknologi').val();
+    let status = $('#filter-status').val();
+
     $('#table-server').DataTable({
         scrollX:true,
         processing:true,
@@ -205,7 +212,19 @@ $(function(){
         autoWidth: false,
         pageLength: 5,
         lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
-        ajax: 'filter/json',
+        ajax:{
+            url: 'serverside/json',
+            type: 'post',
+            data: function(d){
+                // d.perusahaan = $('#filter-perusahaan').val();
+                // d.tahun = $('#filter-tahun').val();
+                d.klien = $('#filter-klien').val();
+                d.jenis = $('#filter-jenis').val();
+                d.teknologi = $('#filter-teknologi').val();
+                d.status = $('#filter-status').val();
+                return d;
+            },
+        },
         columns:[
             {data:'klien', name:'klien'},
             {data:'perusahaan', name:'perusahaan'},
@@ -217,4 +236,105 @@ $(function(){
             {data:'status', name:'status'}
         ]
     });
+
+    $(function(){
+        $('#filter-perusahaan').on('change',function(){
+            perusahaan = $(this).val();
+            // alert(value);
+            console.log(perusahaan);
+            $('#table-server').DataTable().ajax.reload(null, false);
+        });
+    });
+
+    $(function(){
+        $('#filter-tahun').on('change',function(){
+            tahun = $(this).val();
+            // alert(value);
+            console.log(tahun);
+            $('#table-server').DataTable().ajax.reload(null, false);
+        });
+    });
+
+
+    $(function(){
+        $('#filter-klien').on('change',function(){
+            klien = $(this).val();
+            // alert(value);
+            console.log(klien);
+            $('#table-server').DataTable().ajax.reload(null, false);
+        });
+    });
+
+    $(function(){
+        $('#filter-jenis').on('change',function(){
+            jenis = $(this).val();
+            // alert(jenis);
+            console.log(jenis);
+            $('#table-server').DataTable().ajax.reload(null, false);
+        });
+    });
+
+    $(function(){
+        $('#filter-teknologi').on('change',function(){
+            teknologi = $(this).val();
+            // alert(teknologi);
+            console.log(teknologi);
+            $('#table-server').DataTable().ajax.reload(null, false);
+        });
+    });
+
+    $(function(){
+        $('#filter-status').on('change',function(){
+            status = $(this).val();
+            // alert(status);
+            console.log(status);
+            $('#table-server').DataTable().ajax.reload(null, false);
+        });
+    });
+
+    $('#reset').click(function(){
+        $('#filter-klien').val('');
+        $('#filter-jenis').val('');
+        $('#filter-teknologi').val('');
+        $('#filter-status').val('');
+        // $('#table-server').DataTable().destroy();
+        $('#table-server').DataTable().ajax.reload(null, false);
+    });
+
+
+    /* Dengan Rupiah */
+    var dengan_rupiah = document.getElementById('nilai_kontrak');
+    dengan_rupiah.addEventListener('keyup', function(e)
+    {
+        dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
+    });
+
+    /* Fungsi */
+    function formatRupiah(angka, prefix)
+    {
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split    = number_string.split(','),
+            sisa     = split[0].length % 3,
+            rupiah     = split[0].substr(0, sisa),
+            ribuan     = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp.' + rupiah : '');
+    }
+
+    // $(function(){
+    //     $(".filter").on('change', function(){
+    //         let klien = $('#filter-klien').val();
+    //         let jenis = $('#filter-jenis').val();
+    //         let status = $('#filter-status').val();
+    //         console.log([klien, jenis, status]);
+    //     });
+    // });
+
+
 });

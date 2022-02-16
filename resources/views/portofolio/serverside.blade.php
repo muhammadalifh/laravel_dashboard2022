@@ -36,13 +36,19 @@
     }
 
     .table tbody tr:first-child>* {
-        font-size: 14px;
+        font-size: 13px;
     }
     .table.dataTable td, table.dataTable th {
-        font-size: 14px;
+        font-size: 13px;
     }
     .table > :not(:first-child) {
         text-align: center;
+    }
+    .divider{
+        width: 100%;
+        height: 1px;
+        background-color: #BBB;
+        margin: 1rem 0;
     }
     </style>
 <!-- ========== title-wrapper start ========== -->
@@ -66,6 +72,8 @@
             <h4 class="text-center">Filter Database Pekerjaan</h4>
         </div>
         <br><br>
+
+
 
         {{-- <div class="col-md-6">
             <label for="">Perusahaan</label>
@@ -139,6 +147,71 @@
 
                 <div class="table-wrapper table-responsive">
                     <table class="table table-striped" id="table-server">
+                        <div class="row" id="row-server">
+                            <div class="col-md-3">
+                                <label for="klien">Klien</label>
+                                    <select id="filter-klien" class="form-control">
+                                        <option disabled value selected>Pilih Klien</option>
+                                        <option value="1">SWASTA</option>
+                                        <option value="2">PEMERINTAH</option>
+                                    </select>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="jenis">Jenis</label>
+                                    <select id="filter-jenis" class="form-control">
+                                        <option disabled value selected>Pilih Jenis</option>
+                                        <option value="1">IPAL DOMESTIK</option>
+                                        <option value="2">IPAL INDUSTRI</option>
+                                        <option value="3">IPAL KLINIK/RS</option>
+                                        <option value="4">IPAL LABORATORIUM</option>
+                                    </select>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="teknologi">Teknologi</label>
+                                    <select id="filter-teknologi" class="form-control">
+                                        <option disabled value selected>Pilih Teknologi</option>
+                                        <option value="1">ANAEROB</option>
+                                        <option value="2">AEROB</option>
+                                        <option value="3">ANAEROB+AEROB</option>
+                                        <option value="4">WETLAND</option>
+                                    </select>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="status">Status</label>
+                                    <select id="filter-status" class="form-control">
+                                        <option disabled value selected>Pilih Status</option>
+                                        <option value="1">PENAWARAN</option>
+                                        <option value="2">RUNNING</option>
+                                        <option value="3">FINISH</option>
+                                    </select>
+                                </select>
+                            </div>
+
+                            {{-- <div class="col-md-6">
+                                <label for="perusahaan">Perusahaan</label>
+                                <input type="text" class="form-control" id="filter-perusahaan"  name="perusahaan" placeholder="Masukkan Nama Perusahaan">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="tahun">Tahun</label>
+                                <input type="text" class="form-control" id="filter-tahun"  name="tahun" placeholder="Masukkan tahun">
+                            </div> --}}
+
+                            <br><br><br><br>
+                            <center>
+                                <button type="button" name="reset" id="reset" class="btn btn-primary btn-sm">Reset</button>
+                            </center>
+
+
+                        </div>
+
+                        <div class="divider"></div>
                         <thead>
                             <tr style="text-align: center;">
                                 <th>
