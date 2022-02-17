@@ -23,7 +23,7 @@
             <div class="masthead-content text-white">
                 <div class="container-fluid px-4 px-lg-0">
                     <h1 class="fst-italic lh-1 mb-4">Sistem Informasi Pelanggan Mitra Prima Enviro</h1>
-                    <p class="mb-5">We're working hard to finish the development of this site. Sign up below to receive updates and to be notified when we launch!</p>
+                    <p class="mb-5">PT. Mitra Prima Enviro merupakan salah satu layanan dari Achmad & Associates Group. Dengan lingkup layanan Design, atau Design & Build serta Jasa Operasional IPAL, MPE siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik bagi setiap project pengolahan air limbah yang telah dipercayakan kepada kami.</p>
                     <!-- * * * * * * * * * * * * * * *-->
                     <!-- * * SB Forms Contact Form * *-->
                     <!-- * * * * * * * * * * * * * * *-->
