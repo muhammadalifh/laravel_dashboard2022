@@ -34,8 +34,20 @@
                     <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                         <!-- Email address input-->
                         <div class="row input-group-newsletter">
-                            <div class="col-auto"><a href="{{ route('register') }}" class="btn btn-outline-success btn-lg" id="submitButton">REGISTER</a></div>
-                            <div class="col-auto"><a href="{{ route('login') }}" class="btn btn-primary btn-lg btn-lg" id="submitButton">LOGIN</a></div>
+
+                            @if (Route::has('login'))
+                                {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
+                                    @auth
+                                        <div class="col-auto"><a href="{{ route('home') }}" class="btn btn-outline-light btn-lg" id="submitButton">HOME</a></div>
+                                    @else
+                                        <div class="col-auto"><a href="{{ route('login') }}" class="btn btn-primary btn-lg btn-lg" id="submitButton">LOGIN</a></div>
+                                        @if (Route::has('register'))
+                                            <div class="col-auto"><a href="{{ route('register') }}" class="btn btn-outline-success btn-lg" id="submitButton">REGISTER</a></div>
+                                        @endif
+                                    @endauth
+                                {{-- </div> --}}
+                            @endif
+
                         </div>
                     </form>
                 </div>
