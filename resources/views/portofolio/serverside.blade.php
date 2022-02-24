@@ -242,7 +242,7 @@
                             </tr>
                             <!-- end table row-->
                         </thead>
-                        <tbody>
+                        <tbody style="text-align: center;">
 
                             <!-- end table row -->
                         </tbody>

@@ -120,7 +120,7 @@
                         </tr>
                         <!-- end table row-->
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: center;">
 
                         <!-- Modal -->
                         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
