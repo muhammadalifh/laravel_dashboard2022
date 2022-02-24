@@ -20,13 +20,13 @@
             <div class="card-content">
                 <p>
                     @if(auth()->user()->role == "2")
-                    {{ __('Selamat Datang Kembali, Anda Login sebagai Super Admin!') }}
+                    <p>Selamat Datang Kembali {{ Auth::user()->name }}, Anda Login sebagai Super Admin!</p>
                     @endif
                     @if(auth()->user()->role == "1")
-                    {{ __('Selamat Datang Kembali, Anda Login sebagai Admin!') }}
+                    <p>Selamat Datang Kembali {{ Auth::user()->name }}, Anda Login sebagai Admin!</p>
                     @endif
                     @if(auth()->user()->role == "0")
-                    {{ __('Selamat Datang Kembali, Anda Login sebagai Owner!') }}
+                    <p>Selamat Datang Kembali {{ Auth::user()->name }}, Anda Login sebagai Super Owner!</p>
                     @endif
                 </p>
             </div>

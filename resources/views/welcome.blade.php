@@ -7,69 +7,81 @@
         <link rel="icon" href="{{ asset('images/logo/prima2.png') }}">
         <title>Sistem Informasi Pelanggan Mitra Prima Enviro</title>
 
-        <!-- Google fonts-->
-        <script src="https://kit.fontawesome.com/a420508792.js" crossorigin="anonymous"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('css/prima.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/boxicons.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" href="{{ asset('css/primarev.css') }}"/>
     </head>
-    <body>
-        <!-- Background Video-->
-        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="{{ asset('video/bg.mp4') }}" type="video/mp4" /></video>
-        <!-- Masthead-->
-        <div class="masthead">
-            <div class="masthead-content text-white">
-                <div class="container-fluid px-4 px-lg-0">
-                    <h1 class="fst-italic lh-1 mb-4">Sistem Informasi Pelanggan Mitra Prima Enviro</h1>
-                    <p class="mb-5">PT. Mitra Prima Enviro merupakan salah satu layanan dari Achmad & Associates Group. Dengan lingkup layanan Design, atau Design & Build serta Jasa Operasional IPAL, MPE siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik bagi setiap project pengolahan air limbah yang telah dipercayakan kepada kami.</p>
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- * * SB Forms Contact Form * *-->
-                    <!-- * * * * * * * * * * * * * * *-->
-                    <!-- This form is pre-integrated with SB Forms.-->
-                    <!-- To make this form functional, sign up at-->
-                    <!-- https://startbootstrap.com/solution/contact-forms-->
-                    <!-- to get an API token!-->
-                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                        <!-- Email address input-->
-                        <div class="row input-group-newsletter">
+    <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
 
-                            @if (Route::has('login'))
-                                {{-- <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block"> --}}
-                                    @auth
-                                        <div class="col-auto"><a href="{{ route('home') }}" class="btn btn-outline-light btn-lg" id="submitButton">HOME</a></div>
-                                    @else
-                                        <div class="col-auto"><a href="{{ route('login') }}" class="btn btn-primary btn-lg btn-lg" id="submitButton">LOGIN</a></div>
-                                        @if (Route::has('register'))
-                                            <div class="col-auto"><a href="{{ route('register') }}" class="btn btn-outline-success btn-lg" id="submitButton">REGISTER</a></div>
-                                        @endif
-                                    @endauth
-                                {{-- </div> --}}
-                            @endif
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img class="logo" src="{{ asset('images/logo/logo-mpe.png') }}" alt="logo" style="width: 100%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        {{-- <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li> --}}
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ url('/home') }}" class="btn btn-outline-dark btn-sm" style="border-radius: 10px">Home</a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm" style="border-radius: 10px">Log In</a>
+                        @endauth
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav><!-- //NAVBAR -->
 
-                        </div>
-                    </form>
+    <!-- HERO -->
+    <div class="hero vh-100 d-flex align-items-center" id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 mx-auto text-center">
+                    <h1 class="display-4 text-white">Sistem Informasi Pelanggan Mitra Prima Enviro</h1>
+                    <p class="text-white my-3">PT. Mitra Prima Enviro merupakan salah satu layanan dari Achmad & Associates Group.
+                        Dengan lingkup layanan Design, atau Design & Build serta Jasa Operasional IPAL,
+                        MPE siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik bagi setiap
+                        project pengolahan air limbah yang telah dipercayakan kepada kami.</p>
+                    <a href="#" class="btn me-2 btn-primary">Inquiry</a>
+                    <a href="#" class="btn btn-outline-light">Portfolio</a>
                 </div>
             </div>
         </div>
-        <!-- Social Icons-->
-        <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
-        <div class="social-icons">
-            <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-                <a class="btn btn-dark m-3" href="mailto:mitraprimaenviro15@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-                <a class="btn btn-dark m-3" href="https://www.facebook.com/mitraenviro" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-dark m-3" href="https://www.instagram.com/mitraprimaenviro15" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </div><!-- //HERO -->
+
+
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/primarev.js') }}"></script> --}}
     </body>
 </html>
