@@ -55,9 +55,9 @@
                     </li> --}}
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/home') }}" class="btn btn-outline-dark btn-sm" style="border-radius: 10px">Home</a>
+                            <a href="{{ url('/home') }}" class="btn btn-outline-dark btn-sm" style="border-radius: 5px">Home</a>
                         @else
-                            <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm" style="border-radius: 10px">Log In</a>
+                            <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm" style="border-radius: 5px">LOGIN</a>
                         @endauth
                     @endif
                 </ul>
@@ -75,8 +75,8 @@
                         Dengan lingkup layanan Design, atau Design & Build serta Jasa Operasional IPAL,
                         MPE siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik bagi setiap
                         project pengolahan air limbah yang telah dipercayakan kepada kami.</p>
-                    <a href="#portofolio" class="btn btn-outline-light">Portfolio</a>
-                    <a href="#" class="btn me-2 btn-primary">Inquiry</a>
+                    <a href="#portofolio" class="btn btn-outline-light" style="border-radius: 4px;">Portfolio</a>
+                    <a href="#" class="btn me-2 btn-primary" style="border-radius: 4px;">Inquiry</a>
                 </div>
             </div>
         </div>
