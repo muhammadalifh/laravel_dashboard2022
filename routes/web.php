@@ -13,11 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// JIKA PILIH PAKAI 1 PAGE PAKAI YANG INI
+
+Route::get('/json', [\App\Http\Controllers\WelcomeController::class, 'welcome_json'])->name('welcome');
+Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'welcome_index'])->name('welcome');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
+
+
+
+// JIKA BEDA PAGE PAKE YANG INI
+Route::get('/eksternal/json', [\App\Http\Controllers\EksternalController::class, 'eksternal_json'])->name('eksternal.index');
+Route::get('eksternal', [App\Http\Controllers\EksternalController::class, 'index'])->name('eksternal.index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

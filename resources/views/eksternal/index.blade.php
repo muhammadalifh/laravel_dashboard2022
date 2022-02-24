@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <link rel="icon" href="{{ asset('images/logo/prima2.png') }}">
         <title>Sistem Informasi Pelanggan Mitra Prima Enviro</title>
@@ -66,20 +68,6 @@
     </nav><!-- //NAVBAR -->
 
     <!-- HERO -->
-    <div class="hero vh-100 d-flex align-items-center" id="home">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 mx-auto text-center">
-                    <h1 class="display-4 text-white">Sistem Informasi Pelanggan Mitra Prima Enviro</h1>
-                    <p class="text-white my-3">PT. Mitra Prima Enviro merupakan salah satu layanan dari Achmad & Associates Group.
-                        Dengan lingkup layanan Design, atau Design & Build serta Jasa Operasional IPAL,
-                        MPE siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik bagi setiap
-                        project pengolahan air limbah yang telah dipercayakan kepada kami.</p>
-                    <a href="#portofolio" class="btn btn-outline-light">Portfolio</a>
-                    <a href="#" class="btn me-2 btn-primary">Inquiry</a>
-                </div>
-            </div>
-        </div>
         <div id='chat-box'>
             <div id='chat-top'>Butuh Bantuan? <span id='chat-top-right'><svg id='close-box' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><path d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z" fill='#fff'/></svg></span><div class='clear'></div></div>
             <div id='chat-msg'><p>Ada Yang bisa Kami Bantu?</p>
@@ -92,7 +80,6 @@
 
             <svg xmlns="http://www.w3.org/2000/svg" version="1" width="35" height="35" viewBox="0 0 90 90"><path d="M90 44a44 44 0 0 1-66 38L0 90l8-24A44 44 0 0 1 46 0c24 0 44 20 44 44zM46 7C25 7 9 24 9 44c0 8 2 15 7 21l-5 14 14-4a37 37 0 0 0 58-31C83 24 66 7 46 7zm22 47l-2-1-7-4-3 1-3 4h-3c-1 0-4-1-8-5-3-3-6-6-6-8v-2l2-2 1-1v-2l-4-8c0-2-1-2-2-2h-2l-3 1c-1 1-4 4-4 9s4 11 5 11c0 1 7 12 18 16 11 5 11 3 13 3s7-2 7-5l1-5z" fill="#FFF"/></svg>
             </div>
-    </div>
     <!-- //HERO -->
 
     <!-- PRICING -->
@@ -104,11 +91,9 @@
                     <h3>Database PT. Mitra Prima Enviro</h3>
                 </div>
             </div>
-            <div class="row g-4">
                 <div class="table-wrapper table-responsive">
-                    <table class="table table-striped" id="table-welcome">
-                        <div class="row" id="row-welcome">
-                        <div class="divider"></div>
+                    <table class="table table-striped" id="table-eksternal">
+                        <div class="row" id="row-eksternal">
                         <thead>
                             <tr style="text-align: center;">
                                 <th>
@@ -127,11 +112,11 @@
                                     <h6>Kapasitas <br> (m3/hari)</h6>
                                 </th>
                                 <th>
+                                    <h6>Teknologi</h6>
+                                </th>
+                                <th>
                                     <h6>Nilai <br> Kontrak</h6>
                                 </th>
-                                {{-- <th>
-                                    <h6>Gallery Foto (MASIH BELUM ADA)</h6>
-                                </th> --}}
 
                             </tr>
                             <!-- end table row-->
@@ -143,12 +128,11 @@
                     </table>
                     <!-- end table -->
             </div>
-        </div>
     </section><!-- PRICING -->
 
 
 
-    <script src="{{ asset('js/datatables_eksternal.js') }}"></script>
+        <script src="{{ asset('js/datatables_eksternal.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
         <script src="{{ asset('js/primarev.js') }}"></script>
@@ -165,7 +149,7 @@
         } )
 
         function isi() {
-        $('#table-welcome').DataTable({
+        $('#table-eksternal').DataTable({
             scrollX:true,
             processing:true,
             serverSide:true,
@@ -179,7 +163,7 @@
             pageLength: 5,
             lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
             ajax : {
-                url : "/json",
+                url : "eksternal/json",
             },
             columns:[
             {data:'klien', name:'klien'},
@@ -187,6 +171,7 @@
             {data:'tahun', name:'tahun'},
             {data:'jenis', name:'jenis'},
             {data:'kapasitas', name:'kapasitas'},
+            {data:'teknologi', name:'teknologi'},
             {data:'nilai_kontrak', name:'nilai_kontrak'}
         ]
         })
