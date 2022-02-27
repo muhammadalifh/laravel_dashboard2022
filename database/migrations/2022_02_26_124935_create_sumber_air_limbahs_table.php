@@ -13,9 +13,9 @@ class CreateSumberAirLimbahsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sumber_air_limbah', function (Blueprint $table) {
+        Schema::create('sumberairlimbah', function (Blueprint $table) {
             $table->id();
-            $table->string('sumber_air_limbah', 100);
+            $table->string('sumberairlimbah', 100);
             $table->timestamps();
         });
     }

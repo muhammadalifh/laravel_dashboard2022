@@ -14,19 +14,19 @@ class CreateSumberAirLimbahSeeder extends Seeder
      */
     public function run()
     {
-        $sumber_air_limbah = [
+        $sumberairlimbah = [
             [
-                'sumber_air_limbah' => 'Domestik',
+                'sumberairlimbah' => 'Domestik',
             ],
             [
-                'sumber_air_limbah' => 'Medis',
+                'sumberairlimbah' => 'Medis',
             ],
             [
-                'sumber_air_limbah' => 'Industri',
+                'sumberairlimbah' => 'Industri',
             ],
             ];
 
-            foreach ($sumber_air_limbah as $key => $value) {
+            foreach ($sumberairlimbah as $key => $value) {
                 SumberAirLimbah::create($value);
             }
     }

@@ -26,10 +26,12 @@ $(function(){
             {data:'inquiry_debit_air_limbah', name:'inquiry_debit_air_limbah'},
             {data:'inquiry_luas_lahan_rencana', name:'inquiry_luas_lahan_rencana'},
             {data:'inquiry_penggunaan_air_bersih', name:'inquiry_penggunaan_air_bersih'},
-            {data: 'inquiry_jumlah_karyawan', name: 'inquiry_jumlah_karyawan'},
-            {data: 'inquiry_jumlah_tamu', name: 'inquiry_jumlah_tamu'},
-            {data:'inquiry_upload_data', name:'inquiry_upload_data'},
+            {data:'inquiry_jumlah_karyawan', name: 'inquiry_jumlah_karyawan'},
+            {data:'inquiry_jumlah_tamu', name: 'inquiry_jumlah_tamu'},
+            // {data:'inquiry_upload_data', name:'inquiry_upload_data'},
             {data:'inquiry_keterangan_tambahan', name:'inquiry_keterangan_tambahan'},
+            {data: 'created_at', name:'created_at'},
+            {data: 'download', name:'download'}
         ]
     });
 

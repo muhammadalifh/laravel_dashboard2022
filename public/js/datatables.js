@@ -68,6 +68,7 @@ $(function(){
         let id = $(this).attr('id');
         $('#tambah').click();
         $('#simpan').text('Simpan Edit');
+        $('#formportofolio').text('Form Edit Portofolio');
         $.ajax({
             url: 'portofolio/edits',
             type: 'post',

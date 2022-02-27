@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class SumberAirLimbah extends Model
 {
 
-    protected $table = "sumber_air_limbah";
+    protected $table = "sumberairlimbah";
     protected $primaryKey = "id";
-    protected $fillable = ["id","sumber_air_limbah"];
+    protected $fillable = ["id","sumberairlimbah"];
 
     public function inquiry()
     {

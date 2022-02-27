@@ -91,8 +91,10 @@
                             <th><h6>Penggunaan Air Bersih <br> (m3/bulan)</h6></th>
                             <th><h6>Jumlah Karyawan</h6></th>
                             <th><h6>Jumlah Tamu/ <br> Pengunjung/Bed</h6></th>
-                            <th><h6>Upload Data</h6></th>
-                            <th><h6>Ketrangan Tambahan</h6></th>
+                            {{-- <th><h6>Upload Data</h6></th> --}}
+                            <th><h6>Keterangan Tambahan</h6></th>
+                            <th><h6>Tanggal Dibuat</h6></th>
+                            <th><h6>Download File Upload</h6></th>
                         </tr>
                         <!-- end table row-->
                         </thead>

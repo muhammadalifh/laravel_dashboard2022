@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // JIKA PILIH PAKAI 1 PAGE PAKAI YANG INI
 
-Route::get('pesan_diterima',[\App\Http\Controllers\WelcomeController::class, 'pesan_diterima'])->name('pesan_diterima');
+Route::get('pesan-diterima',[\App\Http\Controllers\WelcomeController::class, 'pesan_diterima'])->name('pesan-diterima');
 Route::get('/json', [\App\Http\Controllers\WelcomeController::class, 'welcome_json'])->name('welcome');
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'welcome_index'])->name('welcome');
 Route::post('/store_inquiry', [\App\Http\Controllers\WelcomeController::class, 'welcome_store'])->name('welcome.store');

@@ -28,7 +28,7 @@ class Inquiry extends Model
         'inquiry_keterangan_tambahan',
     ];
 
-    public function sumber_air_limbah()
+    public function sumberairlimbah()
     {
         return $this->belongsTo(SumberAirLimbah::class);
     }

@@ -28,7 +28,7 @@ class WelcomeController extends Controller
 
     public function pesan_diterima()
     {
-        return view('pesan_diterima');
+        return view('pesan-diterima');
     }
 
     public function welcome_store(Request $request)
@@ -63,7 +63,7 @@ class WelcomeController extends Controller
             $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload');
         }
         Inquiry::create($data);
-        return redirect()->route('pesan_diterima')->with('success', 'Pesan anda berhasil dikirim');
+        return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil dikirim');
         // $this->validate($request, [
         //     'dokumen' => 'mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
         // ]);
