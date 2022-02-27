@@ -86,7 +86,7 @@
             <div id='chat-msg'><p>Ada Yang bisa Kami Bantu?</p>
             <div id='chat-form'>
             <div class='chat-in'>
-            <input type='text' id='whats-in' Placeholder='Send Your Message...'/></div><div id='send-btn'><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 48 48"><path d="M4.02 42L46 24 4.02 6 4 20l30 4-30 4z" fill='rgb(18, 140, 126)'/></svg></div></div>
+            <input type='text' id='whats-in' Placeholder='Ketik pesan disini...'/></div><div id='send-btn'><svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 48 48"><path d="M4.02 42L46 24 4.02 6 4 20l30 4-30 4z" fill='rgb(18, 140, 126)'/></svg></div></div>
             </div>
             </div>
             <div id='whats-chat'>
@@ -322,7 +322,8 @@
                                                 <div class="form-group">
                                                     <label for="inquiry_upload_data">Upload Data Lain (Jika Ada):</label>
                                                     <input autocomplete="off" id="inquiry_upload_data" name="inquiry_upload_data" type="file" class="custom-file-input form-control @error ('inquiry_upload_data') is-invalid @enderror">
-                                                    <span> - Ekstensi file pdf,doc,docx,xls,xlsx
+                                                    <span>  Ekstensi file upload: rar/zip <br>
+                                                            Max ukuran file: 5MB
                                                     </span>
                                                     @error('inquiry_upload_data')
                                                         <div class="invalid-feedback">
@@ -334,7 +335,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="inquiry_keterangan_tambahan">Keterangan Tambahan :</label>
+                                                    <label for="inquiry_keterangan_tambahan">Keterangan Tambahan (Jika Ada) :</label>
                                                     <textarea id="inquiry_keterangan_tambahan" name="inquiry_keterangan_tambahan" class="form-control @error ('inquiry_keterangan_tambahan') is-invalid @enderror" placeholder="Keterangan tambahan jika ada ....."  rows="5"></textarea>
                                                         @error('inquiry_keterangan_tambahan')
                                                         <div class="invalid-feedback">

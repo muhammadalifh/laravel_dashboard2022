@@ -55,7 +55,7 @@ class WelcomeController extends Controller
             'inquiry_penggunaan_air_bersih' => 'required|numeric',
             'inquiry_jumlah_karyawan' => 'required|numeric',
             'inquiry_jumlah_tamu' => 'required|numeric',
-            'inquiry_upload_data' => 'file|mimes:pdf,doc,docx,xls,xlsx|max:2048|nullable',
+            'inquiry_upload_data' => 'file|mimes:rar,zip|max:5120|nullable',
             'inquiry_keterangan_tambahan' => 'max:255|nullable',
         ]);
 
