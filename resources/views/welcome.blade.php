@@ -3,11 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <link rel="icon" href="{{ asset('images/logo/prima2.png') }}">
         <title>Sistem Informasi Pelanggan Mitra Prima Enviro</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/a420508792.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/boxicons.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -55,7 +56,7 @@
                     </li> --}}
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/home') }}" class="btn btn-outline-dark btn-sm" style="border-radius: 5px">Home</a>
+                            <a href="{{ url('/home') }}" class="btn btn-outline-dark btn-sm" style="border-radius: 5px">HOME</a>
                         @else
                             <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm" style="border-radius: 5px">LOGIN</a>
                         @endauth
@@ -76,7 +77,7 @@
                         MPE siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik bagi setiap
                         project pengolahan air limbah yang telah dipercayakan kepada kami.</p>
                     <a href="#portofolio" class="btn btn-outline-light" style="border-radius: 4px;">Portfolio</a>
-                    <a href="#" class="btn me-2 btn-primary" style="border-radius: 4px;">Inquiry</a>
+                    <a href="#inquiry" class="btn me-2 btn-primary" style="border-radius: 4px;">Inquiry</a>
                 </div>
             </div>
         </div>
@@ -95,7 +96,7 @@
     </div>
     <!-- //HERO -->
 
-    <!-- PRICING -->
+    <!-- PORTOFOLIO -->
     <section id="portofolio" class="bg-light">
         <div class="container">
             <div class="row mb-5">
@@ -144,11 +145,224 @@
                     <!-- end table -->
             </div>
         </div>
-    </section><!-- PRICING -->
+    </section><!-- PORTOFOLIO -->
+
+    <!-- INQUIRY -->
+    <section id="inquiry" class="bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-8 mx-auto text-center">
+                    <h6 class="text-primary">INQUIRY</h6>
+                    <h3>Submit Form</h3>
+                </div>
+            </div>
+            <center>
+                <button style="border-radius: 5px;" class="btn btn-outline-dark btn-sm" onClick="window.location.reload();">Hapus Input Form <i class="fas fa-sync"></i></button>
+            </center>
+            <br>
+            <div class="row g-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="/store_inquiry" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_perusahaan">Perusahaan/Instansi :</label>
+                                                    <input autocomplete="off" id="inquiry_perusahaan" type="text" name="inquiry_perusahaan" class="form-control @error ('inquiry_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan" >
+                                                    @error('inquiry_perusahaan')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_alamat">Alamat :</label>
+                                                    <input autocomplete="off" id="inquiry_alamat" type="text" name="inquiry_alamat" class="form-control @error ('inquiry_alamat') is-invalid @enderror" placeholder="Masukkan Alamat" >
+                                                    @error('inquiry_alamat')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_nama">Nama :</label>
+                                                    <input autocomplete="off" id="inquiry_nama" type="text" name="inquiry_nama" class="form-control @error ('inquiry_nama') is-invalid @enderror" placeholder="Masukkan nama" >
+                                                    @error('inquiry_nama')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_no_telp">No.Telp/HP :</label>
+                                                    <input autocomplete="off" id="inquiry_no_telp" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                        maxlength = "12" name="inquiry_no_telp" class="form-control @error ('inquiry_no_telp') is-invalid @enderror" placeholder="Masukkan No. Telepon/HP" >
+                                                        @error('inquiry_no_telp')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_email">Email :</label>
+                                                    <input autocomplete="off" id="inquiry_email" type="email" name="inquiry_email" class="form-control @error ('inquiry_email') is-invalid @enderror" placeholder="Masukkan Email" >
+                                                    @error('inquiry_email')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_jenis_kegiatan">Jenis Kegiatan :</label>
+                                                    <input autocomplete="off" id="inquiry_jenis_kegiatan" type="text" name="inquiry_jenis_kegiatan" class="form-control @error ('inquiry_jenis_kegiatan') is-invalid @enderror" placeholder="Masukkan Jenis Kegiatan" >
+                                                    @error('inquiry_jenis_kegiatan')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_lokasi_kegiatan">Lokasi Kegiatan :</label>
+                                                    <input autocomplete="off"  id="inquiry_lokasi_kegiatan" type="text" name="inquiry_lokasi_kegiatan" class="form-control @error ('inquiry_lokasi_kegiatan') is-invalid @enderror" placeholder="Masukkan Lokasi Kegiatan" >
+                                                    @error('inquiry_lokasi_kegiatan')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_sumber_air_limbah_id">Sumber Air Limbah:</label>
+                                                    <select  class="form-control @error ('inquiry_sumber_air_limbah_id') is-invalid @enderror" id="inquiry_sumber_air_limbah_id" name="inquiry_sumber_air_limbah_id">
+                                                        <option disabled value selected>Pilih Sumber Air Limbah</option>
+                                                        <option value="1">Domestik</option>
+                                                        <option value="2">Medis</option>
+                                                        <option value="3">Industri</option>
+                                                    </select>
+                                                    @error('inquiry_sumber_air_limbah_id')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_debit_air_limbah">Debit Air Limbah :</label>
+                                                    <input autocomplete="off" id="inquiry_debit_air_limbah" type="number" name="inquiry_debit_air_limbah" class="form-control @error ('inquiry_debit_air_limbah') is-invalid @enderror" placeholder="Debit (m3/hari)" >
+                                                    @error('inquiry_debit_air_limbah')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_luas_lahan_rencana">Luas Lahan Rencana IPAL :</label>
+                                                    <input autocomplete="off" id="inquiry_luas_lahan_rencana" type="number" name="inquiry_luas_lahan_rencana" class="form-control @error ('inquiry_luas_lahan_rencana') is-invalid @enderror" placeholder="Luas Lahan (m2)" >
+                                                    @error('inquiry_luas_lahan_rencana')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_penggunaan_air_bersih">Penggunaan Air Bersih :</label>
+                                                    <input autocomplete="off" id="inquiry_penggunaan_air_bersih" type="number" name="inquiry_penggunaan_air_bersih" class="form-control @error ('inquiry_penggunaan_air_bersih') is-invalid @enderror" placeholder="Air Bersih (m3/bulan)" >
+                                                    @error('inquiry_penggunaan_air_bersih')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inquiry_jumlah_karyawan">Jumlah Karyawan :</label>
+                                                    <input autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
+                                                    @error('inquiry_jumlah_karyawan')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inquiry_jumlah_tamu">Jumlah Tamu/Pengunjung/Bed :</label>
+                                                    <input autocomplete="off" id="inquiry_jumlah_tamu" type="number" name="inquiry_jumlah_tamu" class="form-control @error ('inquiry_jumlah_tamu') is-invalid @enderror" placeholder="Masukkan Jumlah Tamu/Pengunjung/Bed" >
+                                                        @error('inquiry_jumlah_tamu')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="inquiry_upload_data">Upload Data Lain (Jika Ada):</label>
+                                                    <input autocomplete="off" id="inquiry_upload_data" name="inquiry_upload_data" type="file" class="custom-file-input form-control @error ('inquiry_upload_data') is-invalid @enderror">
+                                                    <span> - Ekstensi file pdf,doc,docx,xls,xlsx
+                                                    </span>
+                                                    @error('inquiry_upload_data')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
+                                                </div>
+                                            </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="inquiry_keterangan_tambahan">Keterangan Tambahan :</label>
+                                                    <textarea id="inquiry_keterangan_tambahan" name="inquiry_keterangan_tambahan" class="form-control @error ('inquiry_keterangan_tambahan') is-invalid @enderror" placeholder="Keterangan tambahan jika ada ....."  rows="5"></textarea>
+                                                        @error('inquiry_keterangan_tambahan')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <br>
+                                                <button style="border-radius: 5px;" type="submit" class="btn btn-outline-success btn-send" name="inquiry_kirim" id="inquiry_kirim">Kirim <i class="far fa-paper-plane"></i></button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section><!-- INQUIRY -->
 
 
 
-    <script src="{{ asset('js/datatables_eksternal.js') }}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{{ asset('js/datatables_eksternal.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
         {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
         <script src="{{ asset('js/primarev.js') }}"></script>
@@ -158,6 +372,12 @@
         <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
         <script>
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         $(document).ready( function () {
         // $('#table-eksternal').DataTable();
@@ -191,8 +411,67 @@
         ]
         })
     }
-
-
         </script>
+
+        {{-- <script>
+            $('#inquiry_kirim').on('click', function(){
+                $.ajax({
+                    url: "/store_inquiry",
+                    type: 'POST',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {
+                        inquiry_perusahaan : $('#inquiry_perusahaan').val(),
+                        inquiry_alamat : $('#inquiry_alamat').val(),
+                        inquiry_nama : $('#inquiry_nama').val(),
+                        inquiry_no_telp : $('#inquiry_no_telp').val(),
+                        inquiry_email : $('#inquiry_email').val(),
+                        inquiry_jenis_kegiatan: $('#inquiry_jenis_kegiatan').val(),
+                        inquiry_lokasi_kegiatan: $('#inquiry_lokasi_kegiatan').val(),
+                        inquiry_sumber_air_limbah_id: $('#inquiry_sumber_air_limbah_id').val(),
+                        inquiry_debit_air_limbah: $('#inquiry_debit_air_limbah').val(),
+                        inquiry_luas_lahan_rencana: $('#inquiry_luas_lahan_rencana').val(),
+                        inquiry_penggunaan_air_bersih: $('#inquiry_penggunaan_air_bersih').val(),
+                        inquiry_jumlah_karyawan: $('#inquiry_jumlah_karyawan').val(),
+                        inquiry_jumlah_tamu: $('#inquiry_jumlah_tamu').val(),
+                        inquiry_upload_data: $('#inquiry_upload_data').val(),
+                        inquiry_keterangan_tambahan: $('#inquiry_keterangan_tambahan').val(),
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (res){
+                        console.log(res.data);
+                        window.location.href = "/pesan_diterima";
+                        $('#inquiry_perusahaan').val('');
+                        $('#inquiry_alamat').val('');
+                        $('#inquiry_nama').val('');
+                        $('#inquiry_no_telp').val('');
+                        $('#inquiry_email').val('');
+                        $('#inquiry_jenis_kegiatan').val('');
+                        $('#inquiry_lokasi_kegiatan').val('');
+                        $('#inquiry_sumber_air_limbah_id').val('');
+                        $('#inquiry_debit_air_limbah').val('');
+                        $('#inquiry_luas_lahan_rencana').val('');
+                        $('#inquiry_penggunaan_air_bersih').val('');
+                        $('#inquiry_jumlah_karyawan').val('');
+                        $('#inquiry_jumlah_tamu').val('');
+                        $('#inquiry_upload_data').val('');
+                        $('#inquiry_keterangan_tambahan').val('');
+                        // swal({
+                        //     title: "Sukses",
+                        //     text: "Pesan anda telah terkirim",
+                        //     icon: "success",
+                        //     button: "OK",
+                        // });
+                    },
+                    error :function (xhr){
+                        swal({
+                            title: "Pesan anda gagal terkirim...",
+                            text: "Pastikan Anda Sudah Mengisi Form Dengan Benar",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    }
+                })
+            })
+        </script> --}}
     </body>
 </html>

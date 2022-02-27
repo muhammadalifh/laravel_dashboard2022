@@ -132,6 +132,7 @@
 <script src="{{ asset('js/sweet.js') }}"></script>
 <script src="{{ asset('js/datatables.js') }}"></script>
 <script src="{{ asset('js/datatables_users.js') }}"></script>
+<script src="{{ asset('js/datatables_inquiry.js') }}"></script>
 <script src="{{ asset('js/server.js') }}"></script>
 <script src="{{ asset('js/rupiah.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -16,12 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 // JIKA PILIH PAKAI 1 PAGE PAKAI YANG INI
 
+Route::get('pesan_diterima',[\App\Http\Controllers\WelcomeController::class, 'pesan_diterima'])->name('pesan_diterima');
 Route::get('/json', [\App\Http\Controllers\WelcomeController::class, 'welcome_json'])->name('welcome');
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'welcome_index'])->name('welcome');
+Route::post('/store_inquiry', [\App\Http\Controllers\WelcomeController::class, 'welcome_store'])->name('welcome.store');
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// INQUIRY
+Route::get('/inquiry', [\App\Http\Controllers\InquiryController::class, 'index'])->name('inquiry.index');
 
 Auth::routes();
 
@@ -83,6 +88,10 @@ Route::middleware('auth','cekrole:1,2')->group(function () { //Auth cekrole midd
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+
+Route::get('/data-klien/json', [\App\Http\Controllers\InquiryController::class, 'data_klien_json'])->name('inquiry.data-klien');
+Route::get('/data-klien', [\App\Http\Controllers\InquiryController::class, 'data_klien'])->name('inquiry.data-klien');
 
     //Data portofolio + CRUD
     // Route::get('/portofolio', [\App\Http\Controllers\PortofolioController::class, 'index'])->name('portofolio.index');

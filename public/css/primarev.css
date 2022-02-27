@@ -178,6 +178,17 @@ section {
     padding-bottom: 120px;
 }
 
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+  }
+
+  .card {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
 .card-effect {
     box-shadow: var(--box-shadow);
     background-color: var(--white);
@@ -320,14 +331,20 @@ section {
 }
 
 
-form input.form-control {
+/* form input.form-control {
     height: 56px;
+} */
+
+label {
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
 }
 
 form .form-control {
     border: transparent;
-    border-radius: 0;
-    background-color: rgba(0,0,0,0.02);
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.05);
 }
 
 

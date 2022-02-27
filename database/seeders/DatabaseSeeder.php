@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateStatusSeeder::class);
         $this->call(CreateTeknologiSeeder::class);
         $this->call(CreateUserSeeder::class);
+        $this->call(CreateSumberAirLimbahSeeder::class);
     }
 }
