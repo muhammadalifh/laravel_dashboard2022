@@ -98,8 +98,8 @@ Route::get('/data-klien', [\App\Http\Controllers\InquiryController::class, 'data
     Route::get('/exportportofolio', [\App\Http\Controllers\PortofolioController::class, 'portofolioexport'])->name('exportportofolio');
     // Route::get('/portofolio/create', [\App\Http\Controllers\PortofolioController::class, 'create'])->name('portofolio.create');
     Route::post('/portofolio/store', [\App\Http\Controllers\PortofolioController::class, 'store'])->name('portofolio.store');
-    Route::post('/portofolio/edits', [\App\Http\Controllers\PortofolioController::class, 'edits'])->name('portofolio.edits');
-    Route::post('/portofolio/updates', [\App\Http\Controllers\PortofolioController::class, 'updates'])->name('portofolio.updates');
+    Route::get('/portofolio/edits/', [\App\Http\Controllers\PortofolioController::class, 'edits'])->name('portofolio.edits');
+    Route::post('/portofolio/update/', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
     Route::post('/portofolio/hapus', [\App\Http\Controllers\PortofolioController::class, 'hapus'])->name('portofolio.hapus');
     // Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
     // Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');

@@ -112,6 +112,9 @@
                             <th>
                                 <h6>Status</h6>
                             </th>
+                            <th>
+                                <h6>Gallery</h6>
+                            </th>
                             @if(auth()->user()->role == "1" || auth()->user()->role == "2")
                                 <th>
                                     <h6>Action</h6>
@@ -122,38 +125,52 @@
                     </thead>
                     <tbody style="text-align: center;">
 
-                        <!-- Modal -->
+                        <!-- Modal Tambah -->
                         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
+                                <form id="formportofoliostore" action="{{ route('portofolio.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="formportofolio">Form Tambah Portofolio</h5>
+                                <h5 class="modal-title" id="formportofoliotambah">Form Tambah Portofolio</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="card-body">
                                 <div class="row">
                                     <div class="modal-body">
-                                    @csrf
-                                    <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-lg">
+                                            <label for="exampleFormControlInput1" class="form-label">Perusahaan</label>
+                                            <input required type="text" class="form-control  @error ('perusahaan') is-invalid @enderror" id="perusahaan"  name="perusahaan" placeholder="Masukkan Nama Perusahaan">
+                                            {{-- <input type="hidden" id="id" name="id"> --}}
+                                            @error('perusahaan')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                @enderror
+                                        </div>
+                                    <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Klien') }}</label>
-                                        <select required name="klien_id" id="klien_id" class="form-control select2">
+                                        <select required name="klien_id" id="klien_id" class="form-control @error ('klien_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Klien</option>
                                             <option value="1">SWASTA</option>
                                             <option value="2">PEMERINTAH</option>
                                         </select>
+                                            @error('klien_id')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
                                     </div>
-                                    <div class="col-md-12">
-                                        <label for="exampleFormControlInput1" class="form-label">Perusahaan</label>
-                                        <input required type="text" class="form-control" id="perusahaan"  name="perusahaan" placeholder="Masukkan Nama Perusahaan">
-                                        <input type="hidden" id="id" name="id">
-                                    </div>
-                                    <div class="col-md-12">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">Tahun</label>
                                         <input required
                                                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                type = "number" maxlength = "4" class="form-control" id="tahun"  name="tahun" placeholder="Masukkan Tahun"
+                                                type = "number" maxlength = "4" class="form-control @error ('tahun') is-invalid @enderror" id="tahun"  name="tahun" placeholder="Masukkan Tahun"
                                                 list="tahun-list" autocomplete="off">
                                         <datalist id="tahun-list">
                                             <option value="1990"></option>
@@ -218,54 +235,346 @@
                                             <option value="2049"></option>
                                             <option value="2050"></option>
                                         </datalist>
+                                        @error('tahun')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
                                     </div>
-                                    <div class="col-md-12">
+
+                                    <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis') }}</label>
-                                        <select required name="jenis_id" id="jenis_id" class="form-control select2">
+                                        <select required name="jenis_id" id="jenis_id" class="form-control @error ('jenis_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Jenis</option>
                                             <option value="1">IPAL DOMESTIK</option>
                                             <option value="2">IPAL INDUSTRI</option>
                                             <option value="3">IPAL KLINIK/RS</option>
                                             <option value="4">IPAL LABORATORIUM</option>
                                         </select>
+                                        @error('jenis_id')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">Kapasitas</label>
-                                        <input required type = "number" class="form-control" id="kapasitas" autocomplete="off" name="kapasitas" placeholder="Jika ada koma gunakan titik misal (1.5)">
+                                        <input required type = "number" step="any" class="form-control @error ('kapasitas') is-invalid @enderror" id="kapasitas" autocomplete="off" name="kapasitas" placeholder="Contoh: (1, 2.5, 0.007)">
+                                        @error('kapasitas')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Teknologi') }}</label>
-                                        <select required name="teknologi_id" id="teknologi_id" class="form-control select2">
+                                        <select required name="teknologi_id" id="teknologi_id" class="form-control @error ('teknologi_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Teknologi</option>
                                             <option value="1">ANAEROB</option>
                                             <option value="2">AEROB</option>
                                             <option value="3">ANAEROB+AEROB</option>
                                             <option value="4">WETLAND</option>
                                         </select>
+                                        @error('teknologi_id')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
-                                        <input required type = "text" class="form-control" id="nilai_kontrak"  name="nilai_kontrak" placeholder="Masukkan Nilai Kontrak">
+                                        <input required type = "text" class="form-control @error ('nilai_kontrak') is-invalid @enderror" id="nilai_kontrak"  name="nilai_kontrak" placeholder="Masukkan Nilai Kontrak">
+                                        @error('nilai_kontrak')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Status') }}</label>
-                                        <select required name="status_id" id="status_id" class="form-control select2">
+                                        <select required name="status_id" id="status_id" class="form-control @error ('status_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Status</option>
                                             <option value="1">PENAWARAN</option>
                                             <option value="2">RUNNING</option>
                                             <option value="3">FINISH</option>
+                                            @error('status_id')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                    @enderror
                                         </select>
                                     </div>
+                                </div>
+                                    <div class="col-md-12">
+                                        <label for="gallery" class="form-label">Gallery Foto (Jika Ada)</label>
+                                        <input id="gallery" name="gallery" type="file" class="form-control @error ('gallery') is-invalid @enderror">
+                                        <span>  Ekstensi file upload: jpg/jpeg/png <br>
+                                            Max ukuran file: 2MB
+                                        </span>
+                                        @error('gallery')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                    @enderror
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                                 <div class="modal-footer">
                                 <button type="button" name="tutup" id="tutup" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                                <button type="button" name="simpan" id="simpan" class="btn btn-primary">Simpan</button>
+                                <button type="submit" name="simpan" id="simpan" class="btn btn-primary">Simpan</button>
                                 </div>
                             </div>
+                        </form>
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- Modal Edit -->
+                        {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+
+                        <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form id="formportofolioupdate" action="{{ route('portofolio.update') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="formportofolioedit">Form Edit Portofolio</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="card-body">
+                                <div class="row">
+                                    <div class="modal-body">
+                                        <input type="hidden" id="id" name="id">
+                                        <div class="row">
+                                            <div class="col-lg">
+                                                <label for="exampleFormControlInput1" class="form-label">Perusahaan</label>
+                                                <input required name="perusahaan" id="edit_perusahaan"  type="text" class="form-control  @error ('edit_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan">
+                                                @error('edit_perusahaan')
+                                                            <div class="invalid-feedback">
+                                                                {{$message}}
+                                                            </div>
+                                                    @enderror
+                                            </div>
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Klien') }}</label>
+                                        <select required name="klien_id" id="edit_klien_id" class="form-control @error ('edit_klien_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Klien</option>
+                                            <option value="1">SWASTA</option>
+                                            <option value="2">PEMERINTAH</option>
+                                        </select>
+                                            @error('edit_klien_id')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+                                        </div>
+                                        <div class="row">
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">Tahun</label>
+                                        <input required
+                                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                type = "number" maxlength = "4"  name="tahun" id="edit_tahun" class="form-control @error ('edit_tahun') is-invalid @enderror" placeholder="Masukkan Tahun"
+                                                list="tahun-list" autocomplete="off">
+                                        <datalist id="tahun-list">
+                                            <option value="1990"></option>
+                                            <option value="1991"></option>
+                                            <option value="1992"></option>
+                                            <option value="1993"></option>
+                                            <option value="1994"></option>
+                                            <option value="1995"></option>
+                                            <option value="1996"></option>
+                                            <option value="1997"></option>
+                                            <option value="1998"></option>
+                                            <option value="1999"></option>
+                                            <option value="2000"></option>
+                                            <option value="2001"></option>
+                                            <option value="2002"></option>
+                                            <option value="2003"></option>
+                                            <option value="2004"></option>
+                                            <option value="2005"></option>
+                                            <option value="2006"></option>
+                                            <option value="2007"></option>
+                                            <option value="2008"></option>
+                                            <option value="2009"></option>
+                                            <option value="2010"></option>
+                                            <option value="2011"></option>
+                                            <option value="2012"></option>
+                                            <option value="2013"></option>
+                                            <option value="2014"></option>
+                                            <option value="2015"></option>
+                                            <option value="2016"></option>
+                                            <option value="2017"></option>
+                                            <option value="2018"></option>
+                                            <option value="2019"></option>
+                                            <option value="2020"></option>
+                                            <option value="2021"></option>
+                                            <option value="2022"></option>
+                                            <option value="2023"></option>
+                                            <option value="2024"></option>
+                                            <option value="2025"></option>
+                                            <option value="2026"></option>
+                                            <option value="2027"></option>
+                                            <option value="2028"></option>
+                                            <option value="2029"></option>
+                                            <option value="2030"></option>
+                                            <option value="2031"></option>
+                                            <option value="2032"></option>
+                                            <option value="2033"></option>
+                                            <option value="2034"></option>
+                                            <option value="2035"></option>
+                                            <option value="2036"></option>
+                                            <option value="2037"></option>
+                                            <option value="2038"></option>
+                                            <option value="2039"></option>
+                                            <option value="2040"></option>
+                                            <option value="2041"></option>
+                                            <option value="2042"></option>
+                                            <option value="2043"></option>
+                                            <option value="2044"></option>
+                                            <option value="2045"></option>
+                                            <option value="2046"></option>
+                                            <option value="2047"></option>
+                                            <option value="2048"></option>
+                                            <option value="2049"></option>
+                                            <option value="2050"></option>
+                                        </datalist>
+                                        @error('edit_tahun')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis') }}</label>
+                                        <select required name="jenis_id" id="edit_jenis_id" class="form-control @error ('edit_jenis_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Jenis</option>
+                                            <option value="1">IPAL DOMESTIK</option>
+                                            <option value="2">IPAL INDUSTRI</option>
+                                            <option value="3">IPAL KLINIK/RS</option>
+                                            <option value="4">IPAL LABORATORIUM</option>
+                                        </select>
+                                        @error('edit_jenis_id')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+                                        </div>
+                                        <div class="row">
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">Kapasitas</label>
+                                        <input name="kapasitas" id="edit_kapasitas" required step="any" type = "number" class="form-control @error ('edit_kapasitas') is-invalid @enderror"  autocomplete="off" placeholder="Contoh: (1, 2.5, 0.007)">
+                                        @error('edit_kapasitas')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Teknologi') }}</label>
+                                        <select required name="teknologi_id" id="edit_teknologi_id" class="form-control @error ('edit_teknologi_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Teknologi</option>
+                                            <option value="1">ANAEROB</option>
+                                            <option value="2">AEROB</option>
+                                            <option value="3">ANAEROB+AEROB</option>
+                                            <option value="4">WETLAND</option>
+                                        </select>
+                                        @error('edit_teknologi_id')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
+                                        <input  name="nilai_kontrak" id="edit_nilai_kontrak"  required type = "text" class="form-control @error ('edit_nilai_kontrak') is-invalid @enderror"placeholder="Masukkan Nilai Kontrak">
+                                        @error('edit_nilai_kontrak')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Status') }}</label>
+                                        <select required name="status_id" id="edit_status_id" class="form-control @error ('edit_status_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Status</option>
+                                            <option value="1">PENAWARAN</option>
+                                            <option value="2">RUNNING</option>
+                                            <option value="3">FINISH</option>
+                                            @error('edit_status_id')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                    @enderror
+                                        </select>
+                                    </div>
+                                </div>
+                                    <div class="col-md-12">
+                                        <label for="gallery" class="form-label">Gallery Foto (Jika Ada)</label>
+                                        <input name="gallery" id="gallery" type="file" class="form-control @error ('gallery') is-invalid @enderror">
+                                        <span>  Ekstensi file upload: jpg/jpeg/png <br>
+                                            Max ukuran file: 2MB
+                                        </span>
+                                        @error('gallery')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                    @enderror
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                                <div class="modal-footer">
+                                <button type="button" name="tutup" id="tutup" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <button type="submit" name="edit_simpan" id="edit_simpan" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                            </div>
+                        </div>
+
+
 
 
 

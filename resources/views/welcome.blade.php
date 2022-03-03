@@ -252,9 +252,9 @@
                                                     <label for="inquiry_sumber_air_limbah_id">Sumber Air Limbah:</label>
                                                     <select  class="form-control @error ('inquiry_sumber_air_limbah_id') is-invalid @enderror" id="inquiry_sumber_air_limbah_id" name="inquiry_sumber_air_limbah_id">
                                                         <option disabled value selected>Pilih Sumber Air Limbah</option>
-                                                        <option value="1">Domestik</option>
-                                                        <option value="2">Medis</option>
-                                                        <option value="3">Industri</option>
+                                                        <option value="Domestik">Domestik</option>
+                                                        <option value="Medis">Medis</option>
+                                                        <option value="Industri">Industri</option>
                                                     </select>
                                                     @error('inquiry_sumber_air_limbah_id')
                                                     <div class="invalid-feedback">

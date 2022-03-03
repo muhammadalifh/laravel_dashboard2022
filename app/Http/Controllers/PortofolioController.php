@@ -10,8 +10,12 @@ use App\Models\Klien;
 use App\Models\Jenis;
 use App\Models\Status;
 use App\Models\Teknologi;
+use GrahamCampbell\ResultType\Success;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\DataTables;
@@ -99,17 +103,88 @@ class PortofolioController extends Controller
      */
     public function store(Request $request)
     {
+
+        // ddd($request->all());
+
         // dd($request->all());
-        $data = new Portofolio();
-        $data->klien_id = $request->klien_id;
-        $data->perusahaan = $request->perusahaan;
-        $data->tahun = $request->tahun;
-        $data->jenis_id = $request->jenis_id;
-        $data->kapasitas = $request->kapasitas;
-        $data->teknologi_id = $request->teknologi_id;
-        $data->nilai_kontrak = $request->nilai_kontrak;
-        $data->status_id = $request->status_id;
-        $data->save();
+
+        // $data  = new Portofolio();
+
+        // return $request->file('gallery')->store('upload');
+
+        $data = Validator::make($request->all(), [
+            'klien_id' => 'required|max:255',
+            'perusahaan' => 'required',
+            'tahun' => 'required',
+            'jenis_id' => 'required',
+            'kapasitas' => 'required',
+            'teknologi_id' => 'required',
+            'nilai_kontrak' => 'required',
+            'status_id' => 'required',
+            'gallery' => 'image|mimes:jpeg,png,jpg|max:2048|nullable',
+        ]);
+
+        // if($request->file('gallery') != null){
+        //     $data['gallery'] = $request->file('gallery')->store('upload');
+        // }
+        // Portofolio::create($data);
+
+        if($data->fails()){
+            Alert::error('Data gagal ditambahkan!', 'Pastikan sudah mengisi form dengan benar');
+            return redirect()->route('portofolio.index');
+            // return response()->json([
+            //     'status' =>400,
+            //     'errors' => $data->errors()
+            // ]);
+        }
+        else
+        {
+            $datas = new Portofolio();
+            $datas->klien_id = $request->input('klien_id');
+            $datas->perusahaan = $request->input('perusahaan');
+            $datas->tahun = $request->input('tahun');
+            $datas->jenis_id = $request->input('jenis_id');
+            $datas->kapasitas = $request->input('kapasitas');
+            $datas->teknologi_id = $request->input('teknologi_id');
+            $datas->nilai_kontrak = $request->input('nilai_kontrak');
+            $datas->status_id = $request->input('status_id');
+            if($request->hasFile('gallery')){
+                $file = $request->file('gallery');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('storage/upload/gallery/', $filename);
+                $datas->gallery = $filename;
+            }
+            if($datas->save()){
+                // $datas->save();
+                Alert::success('Berhasil!', 'Data berhasil ditambahkan!');
+                return redirect()->route('portofolio.index');
+            }
+            else{
+                Alert::error('Gagal!', 'Data gagal ditambahkan!');
+                return redirect()->route('portofolio.index');
+            }
+
+            // return response()->json([
+            //     'status' => 'success',
+            //     'message' => 'Data berhasil disimpan'
+            // ]);
+        }
+
+
+        // $data = new Portofolio();
+        // $data->klien_id = $request->klien_id;
+        // $data->perusahaan = $request->perusahaan;
+        // $data->tahun = $request->tahun;
+        // $data->jenis_id = $request->jenis_id;
+        // $data->kapasitas = $request->kapasitas;
+        // $data->teknologi_id = $request->teknologi_id;
+        // $data->nilai_kontrak = $request->nilai_kontrak;
+        // $data->status_id = $request->status_id;
+        // $data->gallery = $request->gallery;
+        // $data->save();
+
+
         // if ($simpan == 200) {
         //     return response()->json(['data' => $data, 'text' => 'data berhasi disimpan']);
         // } else {
@@ -154,7 +229,18 @@ class PortofolioController extends Controller
 
         $id = $request->id;
         $data = Portofolio::find($id);
-        return response()->json(['data' => $data]);
+        if($data)
+        {
+            return response()->json(['data' => $data]);
+        }
+        else
+        {
+            return response()->json([
+                'status' => '404',
+                'message' => 'Not Found'
+            ]);
+        }
+        // return response()->json(['data' => $data]);
 
         // $klien_create = Klien::all();
         // $jenis_create = Jenis::all();
@@ -177,23 +263,121 @@ class PortofolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updates(Request $request)
+    public function update(Request $request)
     {
+        // ddd($request->all());
+
+        // $filename = '';
+		// $data = Portofolio::find($request->id);
+		// if($request->hasFile('gallery')){
+        //     $file = $request->file('gallery');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extension;
+        //     $file->move('storage/upload/gallery/', $filename);
+        //     $data->gallery = $filename;
+        //     if($data->gallery)
+        //     {
+        //         Storage::delete('storage/upload/gallery/'.$data->gallery);
+        //     }
+        //     else{
+        //         $data->gallery = $filename;
+        //     }
+        // }
 
 
-        $id = $request->id;
-        $datas = [
-            'klien_id' => $request->klien_id,
-            'perusahaan' => $request->perusahaan,
-            'tahun' => $request->tahun,
-            'jenis_id' => $request->jenis_id,
-            'kapasitas' => $request->kapasitas,
-            'teknologi_id' => $request->teknologi_id,
-            'nilai_kontrak' => $request->nilai_kontrak,
-            'status_id' => $request->status_id
-        ];
-        $data = Portofolio::find($id);
-        $data->update($datas);
+		// $Datas = [  'klien_id' => $request->klien_id,
+        //             'perusahaan' => $request->perusahaan,
+        //             'tahun' => $request->tahun,
+        //             'jenis_id' => $request->jenis_id,
+        //             'kapasitas' => $request->kapasitas,
+        //             'teknologi_id' => $request->teknologi_id,
+        //             'nilai_kontrak' => $request->nilai_kontrak,
+        //             'status_id' => $request->status_id,
+        //             'gallery' => $filename
+        //         ];
+
+
+        // if($data->update($Datas))
+        // {
+        //     // $data->update($Datas);
+        //     Alert::success('Berhasil!', 'Data berhasil diperbarui!');
+        //     return redirect()->route('portofolio.index');
+        // }
+        // else
+        // {
+        //     Alert::error('Data gagal diperbarui', 'Pastikan sudah mengubah data dengan benar!');
+        // }
+
+
+
+
+        $datas = Validator::make($request->all(), [
+            'klien_id' => 'required|max:255',
+            'perusahaan' => 'required',
+            'tahun' => 'required',
+            'jenis_id' => 'required',
+            'kapasitas' => 'required',
+            'teknologi_id' => 'required',
+            'nilai_kontrak' => 'required',
+            'status_id' => 'required',
+            'gallery' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if($datas->fails()){
+            Alert::error('Data gagal diperbarui!', 'Pastikan sudah mengedit data dengan benar!');
+            return redirect()->route('portofolio.index');
+            // return response()->json([
+            //     'status' =>400,
+            //     'errors' => $datas->errors()
+            // ]);
+        }
+        else
+        {
+            $datas = Portofolio::find($request->id);
+            if($datas){
+                $datas->klien_id = $request->input('klien_id');
+                $datas->perusahaan = $request->input('perusahaan');
+                $datas->tahun = $request->input('tahun');
+                $datas->jenis_id = $request->input('jenis_id');
+                $datas->kapasitas = $request->input('kapasitas');
+                $datas->teknologi_id = $request->input('teknologi_id');
+                $datas->nilai_kontrak = $request->input('nilai_kontrak');
+                $datas->status_id = $request->input('status_id');
+                if($request->hasFile('gallery')){
+                    $path = 'storage/upload/gallery/'. $datas->gallery;
+                    if(File::exists($path)){
+                        File::delete($path);
+                    }
+                    $file = $request->file('gallery');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time() . '.' . $extension;
+                    $file->move('storage/upload/gallery/', $filename);
+                    $datas->gallery = $filename;
+                }
+                $datas->save();
+                Alert::success('Berhasil!', 'Data berhasil diperbarui!');
+                return redirect()->route('portofolio.index');
+                }
+            else
+            {
+                Alert::error('Data gagal diperbarui!', 'Pastikan sudah mengedit form dengan benar');
+            }
+        }
+
+        // $id = $request->id;
+        // $datas = [
+        //     'klien_id' => $request->klien_id,
+        //     'perusahaan' => $request->perusahaan,
+        //     'tahun' => $request->tahun,
+        //     'jenis_id' => $request->jenis_id,
+        //     'kapasitas' => $request->kapasitas,
+        //     'teknologi_id' => $request->teknologi_id,
+        //     'nilai_kontrak' => $request->nilai_kontrak,
+        //     'status_id' => $request->status_id,
+        //     'gallery' => $request->gallery
+        // ];
+        // $data = Portofolio::find($id);
+        // $data->update($datas);
 
         // $portofolio = Portofolio::find($id);
         // $portofolio->update([
@@ -216,7 +400,17 @@ class PortofolioController extends Controller
     {
         $id = $request->id;
         $data = Portofolio::find($id);
-        $data->delete();
+        if($data)
+        {
+            $path = 'storage/upload/gallery/'. $data->gallery;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $data->delete();
+            Alert::success('Berhasil!', 'Data berhasil dihapus!');
+            return redirect()->route('portofolio.index');
+
+        }
     }
 
     /**

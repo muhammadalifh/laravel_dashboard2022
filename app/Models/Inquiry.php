@@ -28,10 +28,10 @@ class Inquiry extends Model
         'inquiry_keterangan_tambahan',
     ];
 
-    public function sumberairlimbah()
-    {
-        return $this->belongsTo(SumberAirLimbah::class);
-    }
+    // public function sumberairlimbah()
+    // {
+    //     return $this->belongsTo(SumberAirLimbah::class);
+    // }
 
     use HasFactory;
 }

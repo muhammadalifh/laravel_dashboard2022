@@ -12,10 +12,10 @@ class SumberAirLimbah extends Model
     protected $primaryKey = "id";
     protected $fillable = ["id","sumberairlimbah"];
 
-    public function inquiry()
-    {
-        return $this->hasMany(Inquiry::class);
-    }
+    // public function inquiry()
+    // {
+    //     return $this->hasMany(Inquiry::class);
+    // }
 
     use HasFactory;
 }

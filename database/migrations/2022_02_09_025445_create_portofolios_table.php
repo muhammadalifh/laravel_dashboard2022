@@ -23,6 +23,7 @@ class CreatePortofoliosTable extends Migration
             $table->integer('teknologi_id');
             $table->string('nilai_kontrak');
             $table->integer('status_id');
+            $table->string('gallery')->nullable();
             $table->timestamps();
         });
     }

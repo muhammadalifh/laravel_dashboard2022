@@ -46,127 +46,209 @@ $(function(){
             {data:'teknologi', name:'teknologi'},
             {data:'nilai_kontrak', name:'nilai_kontrak'},
             {data:'status', name:'status'},
+            {data:'gallery', name:'gallery', render: function( data, type, full, meta ) {
+                return "<img src='storage/upload/gallery/"+data+"' width='100px' height='100px'>";
+            }
+            },
             {data:'action', name:'action'}
         ]
     });
 
     $('#simpan').on('click',function(){
 
-        if($(this).text() == 'Simpan Edit'){
+        if($(this).text() == 'Update'){
             // console.log('Edit');
             edits();
         }
-        else
-        {
+        // else
+        // {
+        //     tambah();
+        // }
+
+    });
+
+    $('#simpan').on('click',function(){
+
+        if($(this).text() == 'Simpan'){
+            // console.log('Edit');
             tambah();
         }
+        // else
+        // {
+        //     tambah();
+        // }
 
     });
 
 
-    $(document).on('click', '.edit', function(){
+    $(document).on('click', '.edit', function(e){
+        e.preventDefault();
+        // var edit_id = $(this).val();
         let id = $(this).attr('id');
-        $('#tambah').click();
-        $('#simpan').text('Simpan Edit');
-        $('#formportofolio').text('Form Edit Portofolio');
+        $('#EditModal').modal('show');
         $.ajax({
-            url: 'portofolio/edits',
-            type: 'post',
+            url: 'portofolio/edits/',
+            type: 'get',
             data: {
                 id: id,
-                _token: $('meta[name="csrf-token"]').attr('content'),
+                _token: '{{ csrf_token() }}'
             },
-            success: function(res){
-                $('#id').val(res.data.id);
-                $('#klien_id').val(res.data.klien_id);
-                $('#perusahaan').val(res.data.perusahaan);
-                $('#tahun').val(res.data.tahun);
-                $('#jenis_id').val(res.data.jenis_id);
-                $('#kapasitas').val(res.data.kapasitas);
-                $('#teknologi_id').val(res.data.teknologi_id);
-                $('#nilai_kontrak').val(res.data.nilai_kontrak);
-                $('#status_id').val(res.data.status_id);
+            success: function(response){
+                if(response.status == 404)
+                {
+                    alert(response.message);
+                    $('#EditModal').modal('hide');
+                }
+                else
+                {
+                    $('#id').val(id);
+                    $('#edit_klien_id').val(response.data.klien_id);
+                    $('#edit_perusahaan').val(response.data.perusahaan);
+                    $('#edit_tahun').val(response.data.tahun);
+                    $('#edit_jenis_id').val(response.data.jenis_id);
+                    $('#edit_kapasitas').val(response.data.kapasitas);
+                    $('#edit_teknologi_id').val(response.data.teknologi_id);
+                    $('#edit_nilai_kontrak').val(response.data.nilai_kontrak);
+                    $('#edit_status_id').val(response.data.status_id);
+                    $('#edit_gallery').html("<img src='storage/upload/gallery/"+response.data.gallery+"' class='img-fluid img-thumbnail' width='100px' height='100px'>");
+                }
             }
+
+        // let id = $(this).attr('id');
+        // $('#tambah').click();
+        // $('#simpan').text('Simpan Edit');
+        // $('#formportofoliotambah').text('Form Edit Portofolio');
+        // $.ajax({
+        //     url: 'portofolio/edits',
+        //     type: 'post',
+        //     data: {
+        //         id: id,
+        //         _token: $('meta[name="csrf-token"]').attr('content'),
+        //     },
+        //     success: function(res){
+        //         $('#id').val(res.data.id);
+        //         $('#klien_id').val(res.data.klien_id);
+        //         $('#perusahaan').val(res.data.perusahaan);
+        //         $('#tahun').val(res.data.tahun);
+        //         $('#jenis_id').val(res.data.jenis_id);
+        //         $('#kapasitas').val(res.data.kapasitas);
+        //         $('#teknologi_id').val(res.data.teknologi_id);
+        //         $('#nilai_kontrak').val(res.data.nilai_kontrak);
+        //         $('#status_id').val(res.data.status_id);
+        //         $('#gallery').val(res.data.gallery);
+        //     }
+        // });
         });
     });
 
-    function tambah(){
-        $.ajax({
-            url: 'portofolio/store',
-            type: 'post',
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
-                klien_id: $('#klien_id').val(),
-                perusahaan: $('#perusahaan').val(),
-                tahun: $('#tahun').val(),
-                jenis_id: $('#jenis_id').val(),
-                kapasitas: $('#kapasitas').val(),
-                teknologi_id: $('#teknologi_id').val(),
-                nilai_kontrak: $('#nilai_kontrak').val(),
-                status_id: $('#status_id').val(),
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(res){
-                console.log(res.data);
-                swal("Sukses!", "Data berhasil ditambahkan.", "success");
-                // alert(res.data.text)
-                $('#tutup').click()
-                $('#table-index-portofolio').DataTable().ajax.reload();
-                $('#klien_id').val(null);
-                $('#perusahaan').val(null);
-                $('#tahun').val(null);
-                $('#jenis_id').val(null);
-                $('#kapasitas').val(null);
-                $('#teknologi_id').val(null);
-                $('#nilai_kontrak').val(null);
-                $('#status_id').val(null);
-            },
-            error: function(xhr){
-                swal("Error Creating!", "Please try again", "error");
-                // alert(xhr.responseJSON.text);
-            }
-        });
-    }
-
     function edits(){
+        $(document).on('submit','#formportofolioupdate',function(e){
+        e.preventDefault();
+        // let id =$(this).attr('id');
+        const EditformData = new FormData($(this)[0]);
         $.ajax({
-            url: 'portofolio/updates',
-            type: 'post',
+            url: 'portofolio/update/',
+            type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
-                id: $('#id').val(),
-                klien_id: $('#klien_id').val(),
-                perusahaan: $('#perusahaan').val(),
-                tahun: $('#tahun').val(),
-                jenis_id: $('#jenis_id').val(),
-                kapasitas: $('#kapasitas').val(),
-                teknologi_id: $('#teknologi_id').val(),
-                nilai_kontrak: $('#nilai_kontrak').val(),
-                status_id: $('#status_id').val(),
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(res){
-                console.log(res.data);
+            data: EditformData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            // data: {
+            //     id: $('#id').val(),
+            //     klien_id: $('#klien_id').val(),
+            //     perusahaan: $('#perusahaan').val(),
+            //     tahun: $('#tahun').val(),
+            //     jenis_id: $('#jenis_id').val(),
+            //     kapasitas: $('#kapasitas').val(),
+            //     teknologi_id: $('#teknologi_id').val(),
+            //     nilai_kontrak: $('#nilai_kontrak').val(),
+            //     status_id: $('#status_id').val(),
+            //     gallery: $('#gallery').val(),
+            //     _token: $('meta[name="csrf-token"]').attr('content')
+            // },
+            success: function(response){
+                // console.log(response.data);
                 swal("Sukses!", "Data berhasil diperbaharui.", "success");
                 // alert(res.data.text)
-                $('#tutup').click();
-                $('#table-index-portofolio').DataTable().ajax.reload();
-                $('#klien_id').val(null);
-                $('#perusahaan').val(null);
-                $('#tahun').val(null);
-                $('#jenis_id').val(null);
-                $('#kapasitas').val(null);
-                $('#teknologi_id').val(null);
-                $('#nilai_kontrak').val(null);
-                $('#status_id').val(null);
-                $('#simpan').text('Simpan');
+                // $('#tutup').click();
+                // $('#table-index-portofolio').DataTable().ajax.reload();
+                // $('#klien_id').val(null);
+                // $('#perusahaan').val(null);
+                // $('#tahun').val(null);
+                // $('#jenis_id').val(null);
+                // $('#kapasitas').val(null);
+                // $('#teknologi_id').val(null);
+                // $('#nilai_kontrak').val(null);
+                // $('#status_id').val(null);
+                // $('#gallery').val(null);
+                // $('#simpan').text('Simpan');
+                $("#edit_simpan").text('Update');
+                $("#formportofolioupdate")[0].reset();
+                $("#EditModal").modal('hide');
             }
             // error: function(xhr){
             //     swal("Error Editing!", "Please try again", "error");
             //     // alert(xhr.responseJSON.text);
             // }
         });
+
+        });
     }
+
+    function tambah(){
+        // $(document).ready(function(){
+            $(document).on('submit','#formportofoliotambah',function(e){
+                e.preventDefault();
+                let formData = new FormData($(this)[0]);
+                $.ajax({
+                    url: 'portofolio/store',
+                    type: 'post',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+
+                    // data: {
+                    //     klien_id: $('#klien_id').val(),
+                    //     perusahaan: $('#perusahaan').val(),
+                    //     tahun: $('#tahun').val(),
+                    //     jenis_id: $('#jenis_id').val(),
+                    //     kapasitas: $('#kapasitas').val(),
+                    //     teknologi_id: $('#teknologi_id').val(),
+                    //     nilai_kontrak: $('#nilai_kontrak').val(),
+                    //     status_id: $('#status_id').val(),
+                    //     gallery: $('#gallery').val(),
+                    //     _token: $('meta[name="csrf-token"]').attr('content')
+                    // },
+                    success: function(res){
+                        console.log(res.data);
+                        swal("Sukses!", "Data berhasil ditambahkan.", "success");
+                        // alert(res.data.text)
+                        $('#tutup').click()
+                        $('#table-index-portofolio').DataTable().ajax.reload();
+                        $('#klien_id').val(null);
+                        $('#perusahaan').val(null);
+                        $('#tahun').val(null);
+                        $('#jenis_id').val(null);
+                        $('#kapasitas').val(null);
+                        $('#teknologi_id').val(null);
+                        $('#nilai_kontrak').val(null);
+                        $('#status_id').val(null);
+                        $('#gallery').val(null);
+                    },
+                    error: function(xhr){
+                        swal("Error Creating!", "Please try again", "error");
+                        // alert(xhr.responseJSON.text);
+                    }
+                });
+            });
+        // });
+
+    }
+
+
 
 
     $(document).on('click','.hapus', function(event){
@@ -316,9 +398,15 @@ $(function(){
 
     /* Dengan Rupiah */
     var dengan_rupiah = document.getElementById('nilai_kontrak');
+    var edit_dengan_rupiah = document.getElementById('edit_nilai_kontrak');
     dengan_rupiah.addEventListener('keyup', function(e)
     {
         dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
+    });
+
+    edit_dengan_rupiah.addEventListener('keyup', function(e)
+    {
+        edit_dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
     });
 
     /* Fungsi */
@@ -338,6 +426,30 @@ $(function(){
         rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
         return prefix == undefined ? rupiah : (rupiah ? 'Rp.' + rupiah : '');
     }
+
+    // var dengan_rupiah = document.getElementById('edit_nilai_kontrak');
+    // dengan_rupiah.addEventListener('keyup', function(e)
+    // {
+    //     dengan_rupiah.value = formatRupiah(this.value, 'Rp. ');
+    // });
+
+    // /* Fungsi */
+    // function formatRupiah(angka, prefix)
+    // {
+    //     var number_string = angka.replace(/[^,\d]/g, '').toString(),
+    //         split    = number_string.split(','),
+    //         sisa     = split[0].length % 3,
+    //         rupiah     = split[0].substr(0, sisa),
+    //         ribuan     = split[0].substr(sisa).match(/\d{3}/gi);
+
+    //     if (ribuan) {
+    //         separator = sisa ? '.' : '';
+    //         rupiah += separator + ribuan.join('.');
+    //     }
+
+    //     rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+    //     return prefix == undefined ? rupiah : (rupiah ? 'Rp.' + rupiah : '');
+    // }
 
     // $(function(){
     //     $(".filter").on('change', function(){

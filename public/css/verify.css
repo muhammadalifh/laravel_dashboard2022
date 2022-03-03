@@ -314,3 +314,103 @@ body{
 .radio-style.radio-danger .form-check-input:focus {
   box-shadow: none;
 }
+
+
+#whats-chat {
+    position: fixed;
+    right: 3%;
+    bottom: 10%;
+    height: auto;
+    width: auto;
+    background: #25D366;
+    padding: 10px 12px 10px 12px;
+    border-radius: 50px;
+}
+
+#whats-chat:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 15px #ccc;
+    bottom: 11%;
+}
+
+/*===============================*/
+#chat-box {
+    position: fixed;
+    right: -500px;
+    bottom: 18%;
+    width: 250px;
+    height: 200px;
+    transition: all .5s;
+}
+
+#chat-top {
+    width: 92%;
+    line-height: 2;
+    background: rgb(18, 140, 126);
+    color: white;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    padding: 0 10px;
+}
+
+#chat-msg {
+    background: #ece5dd;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 25px -10px #999;
+}
+
+#chat-msg p {
+    font-size: 14px;
+    padding: 5px;
+    background: white;
+    border-radius: 0 50px 50px 50px;
+    margin-bottom: 10px;
+}
+
+#chat-form {
+    display: flex;
+}
+
+.chat-in {
+    width: 80%;
+}
+
+#chat-form input {
+    border-radius: 5px 0 5px 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 5px;
+    line-height: 2;
+}
+
+#send-btn {
+    width: 20%;
+    padding: 0 5px;
+}
+
+#chat-top-right {
+    float: right;
+    padding: 5px 0;
+}
+
+#chat-box:after {
+    content: '';
+    position: absolute;
+    top: 58%;
+    left: 90%;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 25px solid #ece5dd;
+}
+
+.right {
+    float: right
+}
+
+.clear {
+    clear: both
+}

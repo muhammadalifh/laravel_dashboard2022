@@ -18,6 +18,7 @@ class Portofolio extends Model
         'teknologi_id',
         'nilai_kontrak',
         'status_id',
+        'gallery',
     ];
 
     public function klien()
