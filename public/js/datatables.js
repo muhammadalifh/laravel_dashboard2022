@@ -40,6 +40,7 @@ $(function(){
         columns:[
             {data:'klien', name:'klien'},
             {data:'perusahaan', name:'perusahaan'},
+            {data:'details', name:'details'},
             {data:'tahun', name:'tahun'},
             {data:'jenis', name:'jenis'},
             {data:'kapasitas', name:'kapasitas'},
@@ -47,12 +48,16 @@ $(function(){
             {data:'nilai_kontrak', name:'nilai_kontrak'},
             {data:'status', name:'status'},
             {data:'gallery', name:'gallery', render: function( data, type, full, meta ) {
+                // return '<a href="storage/upload/gallery/'+data+'" target="_blank"><i class="fa fa-image"></i></a>';
                 return "<img src='storage/upload/gallery/"+data+"' width='100px' height='100px'>";
+
             }
             },
             {data:'action', name:'action'}
         ]
     });
+
+
 
     $('#simpan').on('click',function(){
 
@@ -249,6 +254,41 @@ $(function(){
     }
 
 
+
+
+    $(document).on('click', '.details', function(e){
+        e.preventDefault();
+        // var edit_id = $(this).val();
+        let detail_id = $(this).attr('id');
+        $('#DetailModal').modal('show');
+        $.ajax({
+            url: 'portofolio/details/',
+            type: 'get',
+            data: {
+                detail_id: detail_id,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response){
+                if(response.status == 404)
+                {
+                    alert(response.message);
+                    $('#DetailModal').modal('hide');
+                }
+                else
+                {
+                    $('#detail_id').val(detail_id);
+                    $('#detail_klien_id').val(response.data.klien_id);
+                    $('#detail_perusahaan').val(response.data.perusahaan);
+                    $('#detail_tahun').val(response.data.tahun);
+                    $('#detail_jenis_id').val(response.data.jenis_id);
+                    $('#detail_kapasitas').val(response.data.kapasitas);
+                    $('#detail_teknologi_id').val(response.data.teknologi_id);
+                    $('#detail_nilai_kontrak').val(response.data.nilai_kontrak);
+                    $('#detail_status_id').val(response.data.status_id);
+                }
+            }
+        });
+    });
 
 
     $(document).on('click','.hapus', function(event){

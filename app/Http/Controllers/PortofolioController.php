@@ -62,7 +62,11 @@ class PortofolioController extends Controller
                         return $edit;
                     }
                 })
-                ->rawColumns(['action'])
+                ->addColumn('details', function ($data){
+                    $details = " <button data-toggle='tooltip' title='Detail' class='details btn btn-info btn-xs btn-flat' id='" . $data->id . "' ><i class='fas fa-info-circle'></i></button>";
+                    return $details;
+                })
+                ->rawColumns(['action', 'details'])
                 ->make(true);
         }
         return Datatables::of($data)->make(true);
@@ -410,6 +414,23 @@ class PortofolioController extends Controller
             Alert::success('Berhasil!', 'Data berhasil dihapus!');
             return redirect()->route('portofolio.index');
 
+        }
+    }
+
+    public function details(Request $request)
+    {
+        $id = $request->detail_id;
+        $data = Portofolio::find($id);
+        if($data)
+        {
+            return response()->json(['data' => $data]);
+        }
+        else
+        {
+            return response()->json([
+                'status' => '404',
+                'message' => 'Not Found'
+            ]);
         }
     }
 

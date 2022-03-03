@@ -45,6 +45,12 @@
     .table > :not(:first-child) {
         text-align: center;
     }
+    .divider{
+        width: 100%;
+        height: 1px;
+        background-color: #BBB;
+        margin: 1rem 0;
+    }
     </style>
 <div class="title-wrapper pt-30">
     {{-- <div class="row align-items-center">
@@ -95,6 +101,9 @@
                                 <h6>Perusahaan</h6>
                             </th>
                             <th>
+                                <h6>Details</h6>
+                            </th>
+                            <th>
                                 <h6>Tahun</h6>
                             </th>
                             <th>
@@ -128,8 +137,8 @@
                         <!-- Modal Tambah -->
                         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
+                        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
                                 <form id="formportofoliostore" action="{{ route('portofolio.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                             <div class="modal-content">
@@ -261,7 +270,7 @@
                                 <div class="row">
                                     <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">Kapasitas</label>
-                                        <input required type = "number" step="any" class="form-control @error ('kapasitas') is-invalid @enderror" id="kapasitas" autocomplete="off" name="kapasitas" placeholder="Contoh: (1, 2.5, 0.007)">
+                                        <input required type = "number" step="any" class="form-control @error ('kapasitas') is-invalid @enderror" id="kapasitas" autocomplete="off" name="kapasitas" placeholder="Jika Ada Koma gunakan titik misal (1.5)">
                                         @error('kapasitas')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -367,8 +376,8 @@
                         <!-- Modal Edit -->
                         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-                        <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
+                        <div class="modal fade bd-example-modal-lg" id="EditModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
                                 <form id="formportofolioupdate" action="{{ route('portofolio.update') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
 
@@ -501,7 +510,7 @@
                                         <div class="row">
                                     <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">Kapasitas</label>
-                                        <input name="kapasitas" id="edit_kapasitas" required step="any" type = "number" class="form-control @error ('edit_kapasitas') is-invalid @enderror"  autocomplete="off" placeholder="Contoh: (1, 2.5, 0.007)">
+                                        <input name="kapasitas" id="edit_kapasitas" required step="any" type = "number" class="form-control @error ('edit_kapasitas') is-invalid @enderror"  autocomplete="off" placeholder="Jika Ada Koma gunakan titik misal (1.5)">
                                         @error('edit_kapasitas')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -574,6 +583,373 @@
                             </div>
                         </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal Detail -->
+{{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+
+<div class="modal fade bd-example-modal-lg" id="DetailModal" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formportofolioedit">Form Detail Portofolio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="modal-body">
+                            {{-- <input type="hidden" id="detail_id" name="detail_id"> --}}
+                            <form>
+                                <center>
+                                    <div class="divider"></div>
+                                    <h6>DATA PELANGGAN</h6>
+                                    <div class="divider"></div>
+                                </center>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">NAMA: </label>
+                                    <div class="col-sm-10">
+                                        {{-- <input disabled required name="perusahaan" id="detail_perusahaan"  type="text" class="form-control  @error ('edit_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan"> --}}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">KODE PELANGGAN: </label>
+                                    <div class="col-sm-10">
+                                        {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">ALAMAT: </label>
+                                    <div class="col-sm-10">
+                                        {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">PIC: </label>
+                                    <div class="col-sm-10">
+                                        {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">NO.TELP/HP: </label>
+                                    <div class="col-sm-10">
+                                        {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">EMAIL: </label>
+                                    <div class="col-sm-10">
+                                        {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
+                                    </div>
+                                </div>
+
+
+
+                                <center>
+                                    <div class="divider"></div>
+                                    <h6>PROGRESS PEKERJAAN</h6>
+                                    <div class="divider"></div>
+                                </center>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">KLIEN: </label>
+                                    <div class="col-sm-10">
+                                        <select disabled required name="klien_id" id="detail_klien_id"
+                                            class="form-control @error ('edit_klien_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Klien</option>
+                                            <option value="1">SWASTA</option>
+                                            <option value="2">PEMERINTAH</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">TAHUN: </label>
+                                    <div class="col-sm-10">
+                                        <input required
+                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                            type="number" maxlength="4" disabled name="tahun" id="detail_tahun"
+                                            class="form-control @error ('edit_tahun') is-invalid @enderror"
+                                            placeholder="Masukkan Tahun" list="tahun-list" autocomplete="off">
+                                        <datalist id="tahun-list">
+                                            <option value="1990"></option>
+                                            <option value="1991"></option>
+                                            <option value="1992"></option>
+                                            <option value="1993"></option>
+                                            <option value="1994"></option>
+                                            <option value="1995"></option>
+                                            <option value="1996"></option>
+                                            <option value="1997"></option>
+                                            <option value="1998"></option>
+                                            <option value="1999"></option>
+                                            <option value="2000"></option>
+                                            <option value="2001"></option>
+                                            <option value="2002"></option>
+                                            <option value="2003"></option>
+                                            <option value="2004"></option>
+                                            <option value="2005"></option>
+                                            <option value="2006"></option>
+                                            <option value="2007"></option>
+                                            <option value="2008"></option>
+                                            <option value="2009"></option>
+                                            <option value="2010"></option>
+                                            <option value="2011"></option>
+                                            <option value="2012"></option>
+                                            <option value="2013"></option>
+                                            <option value="2014"></option>
+                                            <option value="2015"></option>
+                                            <option value="2016"></option>
+                                            <option value="2017"></option>
+                                            <option value="2018"></option>
+                                            <option value="2019"></option>
+                                            <option value="2020"></option>
+                                            <option value="2021"></option>
+                                            <option value="2022"></option>
+                                            <option value="2023"></option>
+                                            <option value="2024"></option>
+                                            <option value="2025"></option>
+                                            <option value="2026"></option>
+                                            <option value="2027"></option>
+                                            <option value="2028"></option>
+                                            <option value="2029"></option>
+                                            <option value="2030"></option>
+                                            <option value="2031"></option>
+                                            <option value="2032"></option>
+                                            <option value="2033"></option>
+                                            <option value="2034"></option>
+                                            <option value="2035"></option>
+                                            <option value="2036"></option>
+                                            <option value="2037"></option>
+                                            <option value="2038"></option>
+                                            <option value="2039"></option>
+                                            <option value="2040"></option>
+                                            <option value="2041"></option>
+                                            <option value="2042"></option>
+                                            <option value="2043"></option>
+                                            <option value="2044"></option>
+                                            <option value="2045"></option>
+                                            <option value="2046"></option>
+                                            <option value="2047"></option>
+                                            <option value="2048"></option>
+                                            <option value="2049"></option>
+                                            <option value="2050"></option>
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">PROJECT: </label>
+                                    <div class="col-sm-10">
+                                        <select disabled name="jenis_id" id="detail_jenis_id"
+                                            class="form-control @error ('edit_jenis_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Jenis</option>
+                                            <option value="1">IPAL DOMESTIK</option>
+                                            <option value="2">IPAL INDUSTRI</option>
+                                            <option value="3">IPAL KLINIK/RS</option>
+                                            <option value="4">IPAL LABORATORIUM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">KAPASITAS: </label>
+                                    <div class="col-sm-10">
+                                        <input disabled name="kapasitas" id="detail_kapasitas" required step="any"
+                                            type="number"
+                                            class="form-control @error ('edit_kapasitas') is-invalid @enderror">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">TEKNOLOGI: </label>
+                                    <div class="col-sm-10">
+                                        <select disabled required name="teknologi_id" id="detail_teknologi_id"
+                                            class="form-control @error ('edit_teknologi_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Teknologi</option>
+                                            <option value="1">ANAEROB</option>
+                                            <option value="2">AEROB</option>
+                                            <option value="3">ANAEROB+AEROB</option>
+                                            <option value="4">WETLAND</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">STATUS: </label>
+                                    <div class="col-sm-10">
+                                        <select style="color: red;" disabled required name="status_id" id="detail_status_id"
+                                            class="form-control @error ('edit_status_id') is-invalid @enderror">
+                                            <option disabled value selected>Pilih Status</option>
+                                            <option value="1">PENAWARAN</option>
+                                            <option value="2">RUNNING</option>
+                                            <option value="3">FINISH</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+
+
+
+
+
+
+                                <center>
+                                    <div class="divider"></div>
+                                    <h6>DATA ADMIN</h6>
+                                    <div class="divider"></div>
+                                </center>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">PENAWARAN: </label>
+                                    <div class="col-sm-10">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">SPK/PO/WO: </label>
+                                    <div class="col-sm-10">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">BERITA ACARA INSTAL: </label>
+                                    <div class="col-sm-5">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">BERITA ACARA COMISIONING: </label>
+                                    <div class="col-sm-5">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">BERITA ACARA SAMPLING: </label>
+                                    <div class="col-sm-5">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">LAPORAN HASIL UJI (LHU): </label>
+                                    <div class="col-sm-5">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label">BERITA ACARA KERJA TAMBAH: </label>
+                                    <div class="col-sm-5">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label">BERITA ACARA SERAH TERIMA (BAST): </label>
+                                    <div class="col-sm-5">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+
+
+
+
+
+
+
+                                <center>
+                                    <div class="divider"></div>
+                                    <h6>DATA TEKNIS</h6>
+                                    <div class="divider"></div>
+                                </center>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">GAMBAR DESAIN: </label>
+                                    <div class="col-sm-2">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">GAMBAR ASBUILT: </label>
+                                    <div class="col-sm-2">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">SOP: </label>
+                                    <div class="col-sm-10">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">DOKUMENTASI: </label>
+                                    <div class="col-sm-10">
+                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
+                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                    </div>
+                                </div>
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
 
 
 

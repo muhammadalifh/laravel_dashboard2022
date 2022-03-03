@@ -101,6 +101,7 @@ Route::get('/data-klien', [\App\Http\Controllers\InquiryController::class, 'data
     Route::get('/portofolio/edits/', [\App\Http\Controllers\PortofolioController::class, 'edits'])->name('portofolio.edits');
     Route::post('/portofolio/update/', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
     Route::post('/portofolio/hapus', [\App\Http\Controllers\PortofolioController::class, 'hapus'])->name('portofolio.hapus');
+    Route::get('/portofolio/details/', [\App\Http\Controllers\PortofolioController::class, 'details'])->name('portofolio.details');
     // Route::put('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'update'])->name('portofolio.update');
     // Route::delete('/portofolio/{id}', [\App\Http\Controllers\PortofolioController::class, 'destroy'])->name('portofolio.destroy');
 });
