@@ -150,6 +150,15 @@
                                 <div class="row">
                                     <div class="modal-body">
                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="exampleFormControlInput1" class="form-label">ID/ Kode Pelanggan</label>
+                                            <input required type="number" class="form-control  @error ('inquiry_id') is-invalid @enderror" id="inquiry_id"  name="inquiry_id" placeholder="Masukkan ID/ Kode Pelanggan">
+                                            @error('inquiry_id')
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                @enderror
+                                        </div>
                                         <div class="col-lg">
                                             <label for="exampleFormControlInput1" class="form-label">Perusahaan</label>
                                             <input required type="text" class="form-control  @error ('perusahaan') is-invalid @enderror" id="perusahaan"  name="perusahaan" placeholder="Masukkan Nama Perusahaan">
@@ -391,6 +400,15 @@
                                     <div class="modal-body">
                                         <input type="hidden" id="id" name="id">
                                         <div class="row">
+                                            <div class="col-md-12">
+                                                <label for="exampleFormControlInput1" class="form-label">ID/ Kode Pelanggan</label>
+                                                <input required type="number" class="form-control  @error ('inquiry_id') is-invalid @enderror" id="edit_inquiry_id"  name="inquiry_id" placeholder="Masukkan ID/ Kode Pelanggan">
+                                                @error('inquiry_id')
+                                                            <div class="invalid-feedback">
+                                                                {{$message}}
+                                                            </div>
+                                                    @enderror
+                                            </div>
                                             <div class="col-lg">
                                                 <label for="exampleFormControlInput1" class="form-label">Perusahaan</label>
                                                 <input required name="perusahaan" id="edit_perusahaan"  type="text" class="form-control  @error ('edit_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan">
@@ -632,13 +650,14 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">NAMA: </label>
                                     <div class="col-sm-10">
-                                        {{-- <input disabled required name="perusahaan" id="detail_perusahaan"  type="text" class="form-control  @error ('edit_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan"> --}}
+                                        <input disabled name="inquiry_perusahaan" id="inquiry_perusahaan"  type="text" class="form-control">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">KODE PELANGGAN: </label>
                                     <div class="col-sm-10">
+                                        <input disabled name="inquiry_id" id="detail_inquiry_id"  type="number" class="form-control">
                                         {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
                                     </div>
                                 </div>
@@ -646,6 +665,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">ALAMAT: </label>
                                     <div class="col-sm-10">
+                                        <input disabled name="inquiry_alamat" id="inquiry_alamat"  type="text" class="form-control">
                                         {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
                                     </div>
                                 </div>
@@ -653,6 +673,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">PIC: </label>
                                     <div class="col-sm-10">
+                                        <input disabled name="inquiry_nama" id="inquiry_nama"  type="text" class="form-control">
                                         {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
                                     </div>
                                 </div>
@@ -660,6 +681,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">NO.TELP/HP: </label>
                                     <div class="col-sm-10">
+                                        <input disabled name="inquiry_no_telp" id="inquiry_no_telp"  type="text" class="form-control">
                                         {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
                                     </div>
                                 </div>
@@ -667,6 +689,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">EMAIL: </label>
                                     <div class="col-sm-10">
+                                        <input disabled name="inquiry_email" id="inquiry_email"  type="text" class="form-control">
                                         {{-- <input  class="form-control  @error ('detail_id') is-invalid @enderror" type="text" disabled id="detail_id" name="detail_id"> --}}
                                     </div>
                                 </div>
@@ -683,7 +706,7 @@
                                     <label class="col-sm-2 col-form-label">KLIEN: </label>
                                     <div class="col-sm-10">
                                         <select disabled required name="klien_id" id="detail_klien_id"
-                                            class="form-control @error ('edit_klien_id') is-invalid @enderror">
+                                            class="form-control">
                                             <option disabled value selected>Pilih Klien</option>
                                             <option value="1">SWASTA</option>
                                             <option value="2">PEMERINTAH</option>

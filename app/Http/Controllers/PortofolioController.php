@@ -10,6 +10,7 @@ use App\Models\Klien;
 use App\Models\Jenis;
 use App\Models\Status;
 use App\Models\Teknologi;
+use Dflydev\DotAccessData\Data;
 use GrahamCampbell\ResultType\Success;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
@@ -117,6 +118,7 @@ class PortofolioController extends Controller
         // return $request->file('gallery')->store('upload');
 
         $data = Validator::make($request->all(), [
+            'inquiry_id' => 'required| unique:portofolio',
             'klien_id' => 'required|max:255',
             'perusahaan' => 'required',
             'tahun' => 'required',
@@ -144,6 +146,7 @@ class PortofolioController extends Controller
         else
         {
             $datas = new Portofolio();
+            $datas->inquiry_id = $request->input('inquiry_id');
             $datas->klien_id = $request->input('klien_id');
             $datas->perusahaan = $request->input('perusahaan');
             $datas->tahun = $request->input('tahun');
@@ -419,9 +422,16 @@ class PortofolioController extends Controller
 
     public function details(Request $request)
     {
+
+        // $data = DB::table('inquiry')
+        // ->leftJoin('portofolio', 'inquiry.id', '=', 'portofolio.inquiry_id')
+        // // ->select('portofolio.*','inquiry.inquiry_perusahaan','inquiry.inquiry_alamat','inquiry.inquiry_no_telp','inquiry.inquiry_email')
+        // ->get();
+        // return response()->json($data);
+
         $id = $request->detail_id;
-        $data = Portofolio::find($id);
-        if($data)
+        $data = Portofolio::with('inquiry')->find($id);
+        if ($data)
         {
             return response()->json(['data' => $data]);
         }
@@ -432,6 +442,20 @@ class PortofolioController extends Controller
                 'message' => 'Not Found'
             ]);
         }
+
+        // $id = $request->detail_id;
+        // $data = Portofolio::find($id);
+        // if($data)
+        // {
+        //     return response()->json(['data' => $data]);
+        // }
+        // else
+        // {
+        //     return response()->json([
+        //         'status' => '404',
+        //         'message' => 'Not Found'
+        //     ]);
+        // }
     }
 
     /**

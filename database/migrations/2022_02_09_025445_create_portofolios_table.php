@@ -24,6 +24,7 @@ class CreatePortofoliosTable extends Migration
             $table->string('nilai_kontrak');
             $table->integer('status_id');
             $table->string('gallery')->nullable();
+            $table->integer('inquiry_id')->nullable();
             $table->timestamps();
         });
     }

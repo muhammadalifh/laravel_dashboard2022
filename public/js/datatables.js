@@ -48,8 +48,15 @@ $(function(){
             {data:'nilai_kontrak', name:'nilai_kontrak'},
             {data:'status', name:'status'},
             {data:'gallery', name:'gallery', render: function( data, type, full, meta ) {
+                if(data == null)
+                {
+                    return "<img src='storage/upload/gallery/default.png' width='100px' height='100px'>";
+                }
+                else
+                {
+                    return "<img src='storage/upload/gallery/"+data+"' width='100px' height='100px'>";
+                }
                 // return '<a href="storage/upload/gallery/'+data+'" target="_blank"><i class="fa fa-image"></i></a>';
-                return "<img src='storage/upload/gallery/"+data+"' width='100px' height='100px'>";
 
             }
             },
@@ -108,6 +115,7 @@ $(function(){
                 {
                     $('#id').val(id);
                     $('#edit_klien_id').val(response.data.klien_id);
+                    $('#edit_inquiry_id').val(response.data.inquiry_id);
                     $('#edit_perusahaan').val(response.data.perusahaan);
                     $('#edit_tahun').val(response.data.tahun);
                     $('#edit_jenis_id').val(response.data.jenis_id);
@@ -207,6 +215,7 @@ $(function(){
             $(document).on('submit','#formportofoliotambah',function(e){
                 e.preventDefault();
                 let formData = new FormData($(this)[0]);
+                $("#simpan").text('Loading...');
                 $.ajax({
                     url: 'portofolio/store',
                     type: 'post',
@@ -232,7 +241,9 @@ $(function(){
                         swal("Sukses!", "Data berhasil ditambahkan.", "success");
                         // alert(res.data.text)
                         $('#tutup').click()
+                        $("#simpan").text('Simpan');
                         $('#table-index-portofolio').DataTable().ajax.reload();
+                        $('#inquiry_id').val(null);
                         $('#klien_id').val(null);
                         $('#perusahaan').val(null);
                         $('#tahun').val(null);
@@ -278,13 +289,22 @@ $(function(){
                 {
                     $('#detail_id').val(detail_id);
                     $('#detail_klien_id').val(response.data.klien_id);
-                    $('#detail_perusahaan').val(response.data.perusahaan);
+                    // $('#detail_perusahaan').val(response.data.perusahaan);
                     $('#detail_tahun').val(response.data.tahun);
                     $('#detail_jenis_id').val(response.data.jenis_id);
                     $('#detail_kapasitas').val(response.data.kapasitas);
                     $('#detail_teknologi_id').val(response.data.teknologi_id);
-                    $('#detail_nilai_kontrak').val(response.data.nilai_kontrak);
+                    // $('#detail_nilai_kontrak').val(response.data.nilai_kontrak);
                     $('#detail_status_id').val(response.data.status_id);
+                    $('#detail_inquiry_id').val(response.data.inquiry_id);
+                    $('#inquiry_perusahaan').val(response.data.inquiry.inquiry_perusahaan);
+                    $('#inquiry_alamat').val(response.data.inquiry.inquiry_alamat);
+                    $('#inquiry_no_telp').val(response.data.inquiry.inquiry_no_telp);
+                    $('#inquiry_email').val(response.data.inquiry.inquiry_email);
+                    $('#inquiry_nama').val(response.data.inquiry.inquiry_nama);
+                    // console.log(response.data.inquiry_id);
+                    // console.log(response.data.inquiry_perusahaan);
+                    // console.log(response.data.inquiry_alamat);
                 }
             }
         });

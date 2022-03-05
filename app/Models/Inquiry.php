@@ -33,5 +33,11 @@ class Inquiry extends Model
     //     return $this->belongsTo(SumberAirLimbah::class);
     // }
 
+    public function portofolio()
+    {
+        return $this->hasMany(Portofolio::class);
+    }
+
+
     use HasFactory;
 }

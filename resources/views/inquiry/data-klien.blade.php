@@ -78,6 +78,7 @@
                     <table class="table table-sm table-striped" id="table-inquiry">
                         <thead>
                         <tr style="text-align: center;">
+                            <th><h6>ID/ Kode Pelanggan</h6></th>
                             <th><h6>Perusahaan/<br> Instansi</h6></th>
                             <th><h6>Alamat</h6></th>
                             <th><h6>Nama</h6></th>

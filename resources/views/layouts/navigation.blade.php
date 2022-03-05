@@ -25,7 +25,9 @@
             <span class="text">{{ __('Users') }}</span>
         </a>
     </li>
+    @endif
 
+    @if(auth()->user()->role == "1" || auth()->user()->role == "2")
     <li class="nav-item @if(request()->routeIs('inquiry.data-klien')) active @endif">
         <a href="{{ route('inquiry.data-klien') }}">
             <span class="icon">
@@ -37,7 +39,6 @@
             <span class="text">{{ __('Data Klien Inquiry') }}</span>
         </a>
     </li>
-
     @endif
 
     <li class="nav-item @if(request()->routeIs('portofolio.index')) active @endif">

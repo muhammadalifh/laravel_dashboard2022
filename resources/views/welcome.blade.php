@@ -130,9 +130,9 @@
                                 <th>
                                     <h6>Nilai <br> Kontrak</h6>
                                 </th>
-                                {{-- <th>
-                                    <h6>Gallery Foto (MASIH BELUM ADA)</h6>
-                                </th> --}}
+                                <th>
+                                    <h6>Gallery</h6>
+                                </th>
 
                             </tr>
                             <!-- end table row-->
@@ -172,7 +172,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_perusahaan">Perusahaan/Instansi :</label>
-                                                    <input autocomplete="off" id="inquiry_perusahaan" type="text" name="inquiry_perusahaan" class="form-control @error ('inquiry_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan" >
+                                                    <input required autocomplete="off" id="inquiry_perusahaan" type="text" name="inquiry_perusahaan" class="form-control @error ('inquiry_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan" >
                                                     @error('inquiry_perusahaan')
                                                         <div class="invalid-feedback">
                                                             {{$message}}
@@ -183,7 +183,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_alamat">Alamat :</label>
-                                                    <input autocomplete="off" id="inquiry_alamat" type="text" name="inquiry_alamat" class="form-control @error ('inquiry_alamat') is-invalid @enderror" placeholder="Masukkan Alamat" >
+                                                    <input required autocomplete="off" id="inquiry_alamat" type="text" name="inquiry_alamat" class="form-control @error ('inquiry_alamat') is-invalid @enderror" placeholder="Masukkan Alamat" >
                                                     @error('inquiry_alamat')
                                                         <div class="invalid-feedback">
                                                             {{$message}}
@@ -194,7 +194,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_nama">Nama :</label>
-                                                    <input autocomplete="off" id="inquiry_nama" type="text" name="inquiry_nama" class="form-control @error ('inquiry_nama') is-invalid @enderror" placeholder="Masukkan nama" >
+                                                    <input required autocomplete="off" id="inquiry_nama" type="text" name="inquiry_nama" class="form-control @error ('inquiry_nama') is-invalid @enderror" placeholder="Masukkan nama" >
                                                     @error('inquiry_nama')
                                                         <div class="invalid-feedback">
                                                             {{$message}}
@@ -205,7 +205,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_no_telp">No.Telp/HP :</label>
-                                                    <input autocomplete="off" id="inquiry_no_telp" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                    <input required autocomplete="off" id="inquiry_no_telp" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                         maxlength = "12" name="inquiry_no_telp" class="form-control @error ('inquiry_no_telp') is-invalid @enderror" placeholder="Masukkan No. Telepon/HP" >
                                                         @error('inquiry_no_telp')
                                                         <div class="invalid-feedback">
@@ -217,7 +217,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_email">Email :</label>
-                                                    <input autocomplete="off" id="inquiry_email" type="email" name="inquiry_email" class="form-control @error ('inquiry_email') is-invalid @enderror" placeholder="Masukkan Email" >
+                                                    <input required autocomplete="off" id="inquiry_email" type="email" name="inquiry_email" class="form-control @error ('inquiry_email') is-invalid @enderror" placeholder="Masukkan Email" >
                                                     @error('inquiry_email')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -228,7 +228,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_jenis_kegiatan">Jenis Kegiatan :</label>
-                                                    <input autocomplete="off" id="inquiry_jenis_kegiatan" type="text" name="inquiry_jenis_kegiatan" class="form-control @error ('inquiry_jenis_kegiatan') is-invalid @enderror" placeholder="Masukkan Jenis Kegiatan" >
+                                                    <input required autocomplete="off" id="inquiry_jenis_kegiatan" type="text" name="inquiry_jenis_kegiatan" class="form-control @error ('inquiry_jenis_kegiatan') is-invalid @enderror" placeholder="Masukkan Jenis Kegiatan" >
                                                     @error('inquiry_jenis_kegiatan')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -239,7 +239,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_lokasi_kegiatan">Lokasi Kegiatan :</label>
-                                                    <input autocomplete="off"  id="inquiry_lokasi_kegiatan" type="text" name="inquiry_lokasi_kegiatan" class="form-control @error ('inquiry_lokasi_kegiatan') is-invalid @enderror" placeholder="Masukkan Lokasi Kegiatan" >
+                                                    <input required autocomplete="off"  id="inquiry_lokasi_kegiatan" type="text" name="inquiry_lokasi_kegiatan" class="form-control @error ('inquiry_lokasi_kegiatan') is-invalid @enderror" placeholder="Masukkan Lokasi Kegiatan" >
                                                     @error('inquiry_lokasi_kegiatan')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -250,7 +250,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_sumber_air_limbah_id">Sumber Air Limbah:</label>
-                                                    <select  class="form-control @error ('inquiry_sumber_air_limbah_id') is-invalid @enderror" id="inquiry_sumber_air_limbah_id" name="inquiry_sumber_air_limbah_id">
+                                                    <select required  class="form-control @error ('inquiry_sumber_air_limbah_id') is-invalid @enderror" id="inquiry_sumber_air_limbah_id" name="inquiry_sumber_air_limbah_id">
                                                         <option disabled value selected>Pilih Sumber Air Limbah</option>
                                                         <option value="Domestik">Domestik</option>
                                                         <option value="Medis">Medis</option>
@@ -266,7 +266,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_debit_air_limbah">Debit Air Limbah :</label>
-                                                    <input autocomplete="off" id="inquiry_debit_air_limbah" type="number" name="inquiry_debit_air_limbah" class="form-control @error ('inquiry_debit_air_limbah') is-invalid @enderror" placeholder="Debit (m3/hari)" >
+                                                    <input required autocomplete="off" id="inquiry_debit_air_limbah" type="number" name="inquiry_debit_air_limbah" class="form-control @error ('inquiry_debit_air_limbah') is-invalid @enderror" placeholder="Debit (m3/hari)" >
                                                     @error('inquiry_debit_air_limbah')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -277,7 +277,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_luas_lahan_rencana">Luas Lahan Rencana IPAL :</label>
-                                                    <input autocomplete="off" id="inquiry_luas_lahan_rencana" type="number" name="inquiry_luas_lahan_rencana" class="form-control @error ('inquiry_luas_lahan_rencana') is-invalid @enderror" placeholder="Luas Lahan (m2)" >
+                                                    <input required autocomplete="off" id="inquiry_luas_lahan_rencana" type="number" name="inquiry_luas_lahan_rencana" class="form-control @error ('inquiry_luas_lahan_rencana') is-invalid @enderror" placeholder="Luas Lahan (m2)" >
                                                     @error('inquiry_luas_lahan_rencana')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -288,7 +288,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_penggunaan_air_bersih">Penggunaan Air Bersih :</label>
-                                                    <input autocomplete="off" id="inquiry_penggunaan_air_bersih" type="number" name="inquiry_penggunaan_air_bersih" class="form-control @error ('inquiry_penggunaan_air_bersih') is-invalid @enderror" placeholder="Air Bersih (m3/bulan)" >
+                                                    <input required autocomplete="off" id="inquiry_penggunaan_air_bersih" type="number" name="inquiry_penggunaan_air_bersih" class="form-control @error ('inquiry_penggunaan_air_bersih') is-invalid @enderror" placeholder="Air Bersih (m3/bulan)" >
                                                     @error('inquiry_penggunaan_air_bersih')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -299,7 +299,7 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="inquiry_jumlah_karyawan">Jumlah Karyawan :</label>
-                                                    <input autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
+                                                    <input required autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
                                                     @error('inquiry_jumlah_karyawan')
                                                     <div class="invalid-feedback">
                                                         {{$message}}
@@ -310,7 +310,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="inquiry_jumlah_tamu">Jumlah Tamu/Pengunjung/Bed :</label>
-                                                    <input autocomplete="off" id="inquiry_jumlah_tamu" type="number" name="inquiry_jumlah_tamu" class="form-control @error ('inquiry_jumlah_tamu') is-invalid @enderror" placeholder="Masukkan Jumlah Tamu/Pengunjung/Bed" >
+                                                    <input required autocomplete="off" id="inquiry_jumlah_tamu" type="number" name="inquiry_jumlah_tamu" class="form-control @error ('inquiry_jumlah_tamu') is-invalid @enderror" placeholder="Masukkan Jumlah Tamu/Pengunjung/Bed" >
                                                         @error('inquiry_jumlah_tamu')
                                                         <div class="invalid-feedback">
                                                             {{$message}}
@@ -360,6 +360,59 @@
             </div>
     </section><!-- INQUIRY -->
 
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-4">
+                        <a href="/">
+                            <img class="logo" src="{{ asset('images/logo/logo-mpe.png') }}" alt="logo" style="width: 100%;">
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-white">Services</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.mitraprimaenviro.com/design_build.html" target="_blank">Design & Build WWTP & WTP</a></li>
+                            <li><a href="https://www.mitraprimaenviro.com/suplay.html" target="_blank">Suplay Equipment</a></li>
+                            <li><a href="https://www.mitraprimaenviro.com/engineering.html" target="_blank">Engineering Design</a></li>
+                            <li><a href="https://www.mitraprimaenviro.com/operasional.html" target="_blank">Operasional & maientenance</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg">
+                        <h5 class="text-white">Contact</h5>
+                        <ul class="list-unstyled">
+                            <li>Email <i class="fas fa-envelope"></i> : admin@mitraprimaenviro.com</li>
+                            <li>Email <i class="far fa-envelope"></i> : mitraprimaenviro15@gmail.com</li>
+                            <li>Phone: +62 31 5924526</li>
+                            <li>Address <i class="fas fa-map-marked-alt"></i> : Jl. Kertajaya Indah Timur VI/2, Kota Surabaya, Jawa Timur</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-0">© <span class="yearJS"></span> copyright all right reserved | PT. MITRA PRIMA ENVIRO
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/mitraenviro" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/enviroprima/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="mailto:mitraprimaenviro15@gmail.com" target="_blank" ><i class="fa fa-envelope-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded',(event) => {
+            document.querySelector('.yearJS').innerHTML = new Date().getFullYear();
+        })
+    </script>
 
 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -408,7 +461,26 @@
             {data:'tahun', name:'tahun'},
             {data:'jenis', name:'jenis'},
             {data:'kapasitas', name:'kapasitas'},
-            {data:'nilai_kontrak', name:'nilai_kontrak'}
+            {data:'nilai_kontrak', name:'nilai_kontrak'},
+            {data:'gallery', name:'gallery', render: function( data, type, full, meta ) {
+
+                if(data == null)
+                {
+                    return '<a href="storage/upload/gallery/default.png" target="_blank"><img id="myImg" src="storage/upload/gallery/default.png" width="100px" height="100px"></a>';
+                }
+                else
+                {
+                    return '<a href="storage/upload/gallery/'+data+'" target="_blank"><img id="myImg" src="storage/upload/gallery/'+data+'" width="100px" height="100px"></a>';
+                }
+                // return "<img id='myImg' src='storage/upload/gallery/"+data+"' width='100px' height='100px'>\
+                // <div id='myModal' class='modals'>\
+                //     <span class='tutup'>&times;</span>\
+                //     <img class='modals-content' id='img01'>\
+                //     <div id='captions'></div>\
+                // </div>";
+
+            }
+            }
         ]
         })
     }

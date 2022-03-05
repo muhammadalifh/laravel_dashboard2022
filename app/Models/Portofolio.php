@@ -19,6 +19,7 @@ class Portofolio extends Model
         'nilai_kontrak',
         'status_id',
         'gallery',
+        'inquiry_id',
     ];
 
     public function klien()
@@ -39,6 +40,11 @@ class Portofolio extends Model
     public function status()
     {
         return $this->belongsTo(Status::class);
+    }
+
+    public function inquiry()
+    {
+        return $this->belongsTo(Inquiry::class);
     }
 
     use HasFactory;

@@ -18,11 +18,11 @@ class CreateInquiriesTable extends Migration
             $table->string('inquiry_perusahaan', 200);
             $table->string('inquiry_alamat');
             $table->string('inquiry_nama');
-            $table->double('inquiry_no_telp', 12);
+            $table->string('inquiry_no_telp', 12);
             $table->string('inquiry_email');
             $table->string('inquiry_jenis_kegiatan');
             $table->string('inquiry_lokasi_kegiatan');
-            $table->integer('inquiry_sumber_air_limbah_id');
+            $table->string('inquiry_sumber_air_limbah_id');
             $table->double('inquiry_debit_air_limbah');
             $table->double('inquiry_luas_lahan_rencana');
             $table->double('inquiry_penggunaan_air_bersih');

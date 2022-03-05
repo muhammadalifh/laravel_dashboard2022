@@ -15,6 +15,7 @@ $(function(){
         lengthMenu: [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
         ajax: 'data-klien/json',
         columns:[
+            {data: 'id', name: 'id'},
             {data:'inquiry_perusahaan', name:'inquiry_perusahaan'},
             {data:'inquiry_alamat', name:'inquiry_alamat'},
             {data:'inquiry_nama', name:'inquiry_nama'},
