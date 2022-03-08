@@ -50,11 +50,121 @@ $(function(){
             {data:'gallery', name:'gallery', render: function( data, type, full, meta ) {
                 if(data == null)
                 {
-                    return "<img src='storage/upload/gallery/default.png' width='100px' height='100px'>";
+                    return "<a target='_blank' href='storage/upload/gallery/default.png'><img src='storage/upload/gallery/default.png' width='100px' height='100px'></a>";
                 }
                 else
                 {
-                    return "<img src='storage/upload/gallery/"+data+"' width='100px' height='100px'>";
+                    var img = data.split(",");
+                    for(var i=0; i<img.length; i++)
+                    {
+                        if(img[i] == "")
+                        {
+                            return "<a target='_blank' href='storage/upload/gallery/default.png'><img src='storage/upload/gallery/default.png' width='100px' height='100px'></a>";
+                        }
+                        else
+                        {
+                            // create looping for image gallery and carousel slider bootstrap 5 and it will add to the coulmn table with bootstrap carousel slider and bootstrap 5 carousel slider
+                            var html = "<div id='carouselExampleIndicators' class='carousel slide' data-bs-ride='carousel'>";
+
+                            // html += "<ol class='carousel-indicators'>";
+                            // for(var j=0; j<img.length; j++)
+                            // {
+                            //     if(j == 0)
+                            //     {
+                            //         html += "<li data-target='#carouselExampleIndicators' data-slide-to='"+j+"' class='active'></li>";
+                            //     }
+                            //     else
+                            //     {
+                            //         html += "<li data-target='#carouselExampleIndicators' data-slide-to='"+j+"'></li>";
+                            //     }
+                            // }
+                            // html += "</ol>";
+                            html += "<div class='carousel-inner'>";
+                            for(var k=0; k<img.length; k++)
+                            {
+                                if(k == 0)
+                                {
+                                    html += "<div class='carousel-item active'>";
+                                    html += "<a target='_blank' href='/"+img[k]+"'><img src='/"+img[k]+"' width='100px' height='100px'></a>";
+                                    html += "</div>";
+                                }
+                                else
+                                {
+                                    html += "<div class='carousel-item'>";
+                                    html += "<a target='_blank' href='/"+img[k]+"'><img src='/"+img[k]+"' width='100px' height='100px'></a>";
+                                    html += "</div>";
+                                }
+                            }
+                            html += "</div>";
+                            // html += "<button class='carousel-control-prev' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='prev'>";
+                            // html += "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
+                            // html += "<span class='sr-only'>Previous</span>";
+                            // html += "</button>";
+                            // html += "<button class='carousel-control-next' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='next'>";
+                            // html += "<span class='carousel-control-next-icon' aria-hidden='true'></span>";
+                            // html += "<span class='sr-only'>Next</span>";
+                            // html += "</button>";
+                            html += "</div>";
+                            $(document).ready(function(){
+                                $('.carousel').carousel({
+                                    interval: 3000
+                                });
+                            });
+
+                            $('[id^=carouselExampleIndicators]').click(function(){
+                                var id_carousel = $(this).attr('id');
+                                var id = id_carousel.substring(id_carousel.length - 1);
+                                id = parseInt(id);
+                                $('#carouselExampleIndicators').carousel(id);
+                                $('[id^=carouselExampleIndicators]').removeClass('active');
+                                $('#carouselExampleIndicators'+id).addClass('active');
+                            });
+
+                            $('#carouselExampleIndicators').on('slide.bs.carousel', function (e) {
+                                var id = $(e.relatedTarget).attr('data-slide-to');
+                                id = parseInt(id);
+                                $('[id^=carouselExampleIndicators]').removeClass('active');
+                                $('#carouselExampleIndicators'+id).addClass('active');
+                            });
+
+                            return html;
+                            // return "<div class='bxslider'><a href='/"+data+"'><img src='/"+data+"' width='100px' height='100px'></a></div>";
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    // var img = data.split(",");
+                    // var html = "";
+                    // $.each(img, function(index, value) {
+                    //     html += "<img src='/"+value+"' width='100px' height='100px'>";
+                    // });
+                    // return html;
+
+                    // for(var i=0; i<img.length; i++)
+                    // {
+                    //     if(img[i] == "")
+                    //     {
+                    //         return "<img src='storage/upload/gallery/default.png' width='100px' height='100px'>";
+                    //     }
+                    //     else
+                    //     {
+                    //         do {
+                    //             return "<img src='/"+img[i]+"' width='100px' height='100px'>";
+                    //         } while (i<img.length);
+                    //     }
+                    // }
+                    // return "<img src='/"+data+"' width='100px' height='100px'>";
                 }
                 // return '<a href="storage/upload/gallery/'+data+'" target="_blank"><i class="fa fa-image"></i></a>';
 

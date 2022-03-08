@@ -10,6 +10,7 @@ use App\Models\Klien;
 use App\Models\Jenis;
 use App\Models\Status;
 use App\Models\Teknologi;
+use Carbon\Carbon;
 use Dflydev\DotAccessData\Data;
 use GrahamCampbell\ResultType\Success;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -127,7 +128,7 @@ class PortofolioController extends Controller
             'teknologi_id' => 'required',
             'nilai_kontrak' => 'required',
             'status_id' => 'required',
-            'gallery' => 'image|mimes:jpeg,png,jpg|max:2048|nullable',
+            'gallery.*' => 'image|mimes:jpeg,png,jpg|max:2048|nullable',
         ]);
 
         // if($request->file('gallery') != null){
@@ -136,7 +137,9 @@ class PortofolioController extends Controller
         // Portofolio::create($data);
 
         if($data->fails()){
-            Alert::error('Data gagal ditambahkan!', 'Pastikan sudah mengisi form dengan benar');
+            Alert::error('Data gagal ditambahkan!', ($data->errors()->all(
+                'ID/ Kode pelanggan sudah di gunakan.'
+            )));
             return redirect()->route('portofolio.index');
             // return response()->json([
             //     'status' =>400,
@@ -146,31 +149,82 @@ class PortofolioController extends Controller
         else
         {
             $datas = new Portofolio();
-            $datas->inquiry_id = $request->input('inquiry_id');
-            $datas->klien_id = $request->input('klien_id');
-            $datas->perusahaan = $request->input('perusahaan');
-            $datas->tahun = $request->input('tahun');
-            $datas->jenis_id = $request->input('jenis_id');
-            $datas->kapasitas = $request->input('kapasitas');
-            $datas->teknologi_id = $request->input('teknologi_id');
-            $datas->nilai_kontrak = $request->input('nilai_kontrak');
-            $datas->status_id = $request->input('status_id');
-            if($request->hasFile('gallery')){
-                $file = $request->file('gallery');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
-                $file->move('storage/upload/gallery/', $filename);
-                $datas->gallery = $filename;
+            // $datas->inquiry_id = $request->input('inquiry_id');
+            // $datas->klien_id = $request->input('klien_id');
+            // $datas->perusahaan = $request->input('perusahaan');
+            // $datas->tahun = $request->input('tahun');
+            // $datas->jenis_id = $request->input('jenis_id');
+            // $datas->kapasitas = $request->input('kapasitas');
+            // $datas->teknologi_id = $request->input('teknologi_id');
+            // $datas->nilai_kontrak = $request->input('nilai_kontrak');
+            // $datas->status_id = $request->input('status_id');
+            $gallery =array();
+            if($request->file('gallery') == null){
+                Portofolio::insert([
+                    'gallery' => $request->null,
+                    'inquiry_id' => $request->input('inquiry_id'),
+                    'klien_id' => $request->input('klien_id'),
+                    'perusahaan' => $request->input('perusahaan'),
+                    'tahun' => $request->input('tahun'),
+                    'jenis_id' => $request->input('jenis_id'),
+                    'kapasitas' => $request->input('kapasitas'),
+                    'teknologi_id' => $request->input('teknologi_id'),
+                    'nilai_kontrak' => $request->input('nilai_kontrak'),
+                    'status_id' => $request->input('status_id'),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
             }
-            if($datas->save()){
-                // $datas->save();
+
+            elseif($request->hasFile('gallery')){
+                foreach($request->file('gallery') as $file){
+                    $image_name = rand(1, 10000);
+                    $ext = strtolower($file->getClientOriginalExtension());
+                    $image_full_name = $image_name.'.'.$ext;
+                    $upload_path = 'storage/upload/gallery/';
+                    $image_url = $upload_path.$image_full_name;
+                    $file->move($upload_path, $image_full_name);
+                    $gallery[] = $image_url;
+                }
+                // $file = $request->file('gallery');
+                // $extension = $file->getClientOriginalExtension();
+                // $filename = time() . '.' . $extension;
+                // $file->move('storage/upload/gallery/', $filename);
+                // $datas->gallery = $filename;
+                Portofolio::insert([
+                    'gallery' => implode(',', $gallery),
+                    'inquiry_id' => $request->input('inquiry_id'),
+                    'klien_id' => $request->input('klien_id'),
+                    'perusahaan' => $request->input('perusahaan'),
+                    'tahun' => $request->input('tahun'),
+                    'jenis_id' => $request->input('jenis_id'),
+                    'kapasitas' => $request->input('kapasitas'),
+                    'teknologi_id' => $request->input('teknologi_id'),
+                    'nilai_kontrak' => $request->input('nilai_kontrak'),
+                    'status_id' => $request->input('status_id'),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
+
+            if($datas == true){
                 Alert::success('Berhasil!', 'Data berhasil ditambahkan!');
                 return redirect()->route('portofolio.index');
             }
             else{
-                Alert::error('Gagal!', 'Data gagal ditambahkan!');
+                Alert::error('Data gagal ditambahkan!', ($datas->errors()->all()));
                 return redirect()->route('portofolio.index');
             }
+
+            // if($datas->save()){
+            //     // $datas->save();
+            //     Alert::success('Berhasil!', 'Data berhasil ditambahkan!');
+            //     return redirect()->route('portofolio.index');
+            // }
+            // else{
+            //     Alert::error('Gagal!', 'Data gagal ditambahkan!');
+            //     return redirect()->route('portofolio.index');
+            // }
 
             // return response()->json([
             //     'status' => 'success',
@@ -242,10 +296,7 @@ class PortofolioController extends Controller
         }
         else
         {
-            return response()->json([
-                'status' => '404',
-                'message' => 'Not Found'
-            ]);
+            return Alert::error('Error!', ($data->errors()->all()));
         }
         // return response()->json(['data' => $data]);
 
@@ -319,6 +370,7 @@ class PortofolioController extends Controller
 
 
         $datas = Validator::make($request->all(), [
+            'inquiry_id' => 'required|numeric|unique:portofolio,inquiry_id,'.$request->id,
             'klien_id' => 'required|max:255',
             'perusahaan' => 'required',
             'tahun' => 'required',
@@ -327,11 +379,11 @@ class PortofolioController extends Controller
             'teknologi_id' => 'required',
             'nilai_kontrak' => 'required',
             'status_id' => 'required',
-            'gallery' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gallery.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         if($datas->fails()){
-            Alert::error('Data gagal diperbarui!', 'Pastikan sudah mengedit data dengan benar!');
+            Alert::error('Data gagal diperbarui!', ($datas->errors()->all()));
             return redirect()->route('portofolio.index');
             // return response()->json([
             //     'status' =>400,
@@ -342,6 +394,7 @@ class PortofolioController extends Controller
         {
             $datas = Portofolio::find($request->id);
             if($datas){
+                $datas->inquiry_id = $request->input('inquiry_id');
                 $datas->klien_id = $request->input('klien_id');
                 $datas->perusahaan = $request->input('perusahaan');
                 $datas->tahun = $request->input('tahun');
@@ -350,16 +403,39 @@ class PortofolioController extends Controller
                 $datas->teknologi_id = $request->input('teknologi_id');
                 $datas->nilai_kontrak = $request->input('nilai_kontrak');
                 $datas->status_id = $request->input('status_id');
+                $gallery =array();
+                if($request->file('gallery') ==  null){
+                    $path = 'storage/upload/gallery/'. $datas->gallery;
+                    if(File::exists($path)){
+                        File::delete($path);
+                        $datas->gallery = null;
+                    }
+                    else{
+                        $datas->gallery = null;
+                    }
+                }
                 if($request->hasFile('gallery')){
                     $path = 'storage/upload/gallery/'. $datas->gallery;
                     if(File::exists($path)){
                         File::delete($path);
                     }
-                    $file = $request->file('gallery');
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = time() . '.' . $extension;
-                    $file->move('storage/upload/gallery/', $filename);
-                    $datas->gallery = $filename;
+                    foreach($request->file('gallery') as $file){
+                        $image_name = rand(1, 10000);
+                        $ext = strtolower($file->getClientOriginalExtension());
+                        $image_full_name = $image_name.'.'.$ext;
+                        $upload_path = 'storage/upload/gallery/';
+                        $image_url = $upload_path.$image_full_name;
+                        $file->move($upload_path, $image_full_name);
+                        $gallery[] = $image_url;
+                        Portofolio::where('id', $datas->id)->update([
+                            'gallery' => implode(',', $gallery),
+                        ]);
+                    }
+                    // $file = $request->file('gallery');
+                    // $extension = $file->getClientOriginalExtension();
+                    // $filename = time() . '.' . $extension;
+                    // $file->move('storage/upload/gallery/', $filename);
+                    // $datas->gallery = $filename;
                 }
                 $datas->save();
                 Alert::success('Berhasil!', 'Data berhasil diperbarui!');
@@ -367,7 +443,7 @@ class PortofolioController extends Controller
                 }
             else
             {
-                Alert::error('Data gagal diperbarui!', 'Pastikan sudah mengedit form dengan benar');
+                Alert::error('Data gagal diperbarui!', ($datas->errors()->all()));
             }
         }
 

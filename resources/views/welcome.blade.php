@@ -9,6 +9,9 @@
         <title>Sistem Informasi Pelanggan Mitra Prima Enviro</title>
 
         <script src="https://kit.fontawesome.com/a420508792.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="{{ asset('css/bx.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/boxicons.min.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -421,6 +424,11 @@
         {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
         <script src="{{ asset('js/primarev.js') }}"></script>
 
+        {{-- bxslider --}}
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+<script src="{{ asset('js/bx.js') }}"></script>
                 {{-- Data Tables --}}
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
@@ -466,11 +474,87 @@
 
                 if(data == null)
                 {
-                    return '<a href="storage/upload/gallery/default.png" target="_blank"><img id="myImg" src="storage/upload/gallery/default.png" width="100px" height="100px"></a>';
+                    return "<a target='_blank' href='storage/upload/gallery/default.png'><img src='storage/upload/gallery/default.png' width='250px' height='150px'></a>";
                 }
                 else
-                {
-                    return '<a href="storage/upload/gallery/'+data+'" target="_blank"><img id="myImg" src="storage/upload/gallery/'+data+'" width="100px" height="100px"></a>';
+                {   var img = data.split(",");
+                    for(var i=0; i<img.length; i++)
+                    {
+                        if(img[i] == "")
+                        {
+                            return "<a target='_blank' href='storage/upload/gallery/default.png'><img src='storage/upload/gallery/default.png' width='250px' height='150px'></a>";
+                        }
+                        else
+                        {
+                            // create looping for image gallery and carousel slider bootstrap 5 and it will add to the coulmn table with bootstrap carousel slider and bootstrap 5 carousel slider
+                            var html = "<div id='carouselExampleIndicators' class='carousel slide' data-bs-ride='carousel'>";
+
+                            // html += "<ol class='carousel-indicators'>";
+                            // for(var j=0; j<img.length; j++)
+                            // {
+                            //     if(j == 0)
+                            //     {
+                            //         html += "<li data-target='#carouselExampleIndicators' data-slide-to='"+j+"' class='active'></li>";
+                            //     }
+                            //     else
+                            //     {
+                            //         html += "<li data-target='#carouselExampleIndicators' data-slide-to='"+j+"'></li>";
+                            //     }
+                            // }
+                            // html += "</ol>";
+                            html += "<div class='carousel-inner'>";
+                            for(var k=0; k<img.length; k++)
+                            {
+                                if(k == 0)
+                                {
+                                    html += "<div class='carousel-item active'>";
+                                    html += "<a target='_blank' href='/"+img[k]+"'><img src='/"+img[k]+"' width='250px' height='150px'></a>";
+                                    html += "</div>";
+                                }
+                                else
+                                {
+                                    html += "<div class='carousel-item'>";
+                                    html += "<a target='_blank' href='/"+img[k]+"'><img src='/"+img[k]+"' width='250px' height='150px'></a>";
+                                    html += "</div>";
+                                }
+                            }
+                            html += "</div>";
+                            // html += "<button class='carousel-control-prev' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='prev'>";
+                            // html += "<span class='carousel-control-prev-icon' aria-hidden='true'></span>";
+                            // html += "<span class='sr-only'>Previous</span>";
+                            // html += "</button>";
+                            // html += "<button class='carousel-control-next' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='next'>";
+                            // html += "<span class='carousel-control-next-icon' aria-hidden='true'></span>";
+                            // html += "<span class='sr-only'>Next</span>";
+                            // html += "</button>";
+                            html += "</div>";
+                            $(document).ready(function(){
+                                $('.carousel').carousel({
+                                    interval: 3000
+                                });
+                            });
+
+                            $('[id^=carouselExampleIndicators]').click(function(){
+                                var id_carousel = $(this).attr('id');
+                                var id = id_carousel.substring(id_carousel.length - 1);
+                                id = parseInt(id);
+                                $('#carouselExampleIndicators').carousel(id);
+                                $('[id^=carouselExampleIndicators]').removeClass('active');
+                                $('#carouselExampleIndicators'+id).addClass('active');
+                            });
+
+                            $('#carouselExampleIndicators').on('slide.bs.carousel', function (e) {
+                                var id = $(e.relatedTarget).attr('data-slide-to');
+                                id = parseInt(id);
+                                $('[id^=carouselExampleIndicators]').removeClass('active');
+                                $('#carouselExampleIndicators'+id).addClass('active');
+                            });
+
+                            return html;
+                            // return "<div class='bxslider'><a href='/"+data+"'><img src='/"+data+"' width='100px' height='100px'></a></div>";
+                        }
+                    }
+                    // return "<img src='/"+data+"' width='100px' height='100px'>";
                 }
                 // return "<img id='myImg' src='storage/upload/gallery/"+data+"' width='100px' height='100px'>\
                 // <div id='myModal' class='modals'>\

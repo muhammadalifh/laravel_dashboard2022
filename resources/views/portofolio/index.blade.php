@@ -134,6 +134,14 @@
                     </thead>
                     <tbody style="text-align: center;">
 
+                        {{-- @php
+                            $gallery = DB::table('portofolio')->where('id', 41)->first();
+                            $gallerys = explode(',', $gallery->gallery);
+                        @endphp
+                        @foreach ($gallerys as $item)
+                            <img src="{{ URL::to($item) }}" style="height: 60px; width: 60px;">
+                        @endforeach --}}
+
                         <!-- Modal Tambah -->
                         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
@@ -329,7 +337,7 @@
                                 </div>
                                     <div class="col-md-12">
                                         <label for="gallery" class="form-label">Gallery Foto (Jika Ada)</label>
-                                        <input id="gallery" name="gallery" type="file" class="form-control @error ('gallery') is-invalid @enderror">
+                                        <input id="gallery" name="gallery[]" multiple="true" type="file" class="form-control @error ('gallery') is-invalid @enderror">
                                         <span>  Ekstensi file upload: jpg/jpeg/png <br>
                                             Max ukuran file: 2MB
                                         </span>
@@ -578,7 +586,7 @@
                                 </div>
                                     <div class="col-md-12">
                                         <label for="gallery" class="form-label">Gallery Foto (Jika Ada)</label>
-                                        <input name="gallery" id="gallery" type="file" class="form-control @error ('gallery') is-invalid @enderror">
+                                        <input name="gallery[]" multiple="true" id="gallery" type="file" class="form-control @error ('gallery') is-invalid @enderror">
                                         <span>  Ekstensi file upload: jpg/jpeg/png <br>
                                             Max ukuran file: 2MB
                                         </span>
