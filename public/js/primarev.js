@@ -20,5 +20,5 @@ document.getElementById('chat-box').style.right='8%'
 function sendmsg(){
 var msg = document.getElementById('whats-in').value;
 var relmsg = msg.replace(/ /g,"%20");
- window.open('https://api.whatsapp.com/send?phone=+6285363965992&text='+relmsg,'_blank');
+ window.open('https://api.whatsapp.com/send?phone=+6281259429377&text='+relmsg,'_blank');
 }
