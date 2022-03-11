@@ -26,7 +26,7 @@
                     <p>Selamat Datang Kembali {{ Auth::user()->name }}, Anda Login sebagai Admin!</p>
                     @endif
                     @if(auth()->user()->role == "0")
-                    <p>Selamat Datang Kembali {{ Auth::user()->name }}, Anda Login sebagai Super Owner!</p>
+                    <p>Selamat Datang Kembali {{ Auth::user()->name }}, Anda Login sebagai Owner!</p>
                     @endif
                 </p>
             </div>

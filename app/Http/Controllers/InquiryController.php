@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Inquiry;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class InquiryController extends Controller
@@ -28,8 +29,12 @@ class InquiryController extends Controller
         if (request()->ajax()) {
             return datatables()->of($data)
                 ->addColumn('download', function ($data) {
-                    if(auth()->user()->role == "2"){
+                    if((auth()->user()->role == "2" || auth()->user()->role == "1") && $data->inquiry_upload_data != null) {
                         $button = "<a href='storage/". $data->inquiry_upload_data ."' data-toggle='tooltip' download title='Download' target='_blank' class='download btn btn-info btn-xs btn-flat' id='' ><i class='fa fa-download'></i></a>  ";
+                        return $button;
+                    }
+                    else {
+                        $button = "<a href='#' download data-toggle='tooltip' title='Download' class='download disabled btn btn-info btn-xs btn-flat' id='' ><i class='fa fa-download'></i></a>  ";
                         return $button;
                     }
                 })

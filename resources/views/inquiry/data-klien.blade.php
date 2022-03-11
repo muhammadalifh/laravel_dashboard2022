@@ -95,7 +95,9 @@
                             {{-- <th><h6>Upload Data</h6></th> --}}
                             <th><h6>Keterangan Tambahan</h6></th>
                             <th><h6>Tanggal Dibuat</h6></th>
-                            <th><h6>Download File Upload</h6></th>
+                            {{-- @if(auth()->user()->role == "2") --}}
+                                <th><h6>Download File Upload</h6></th>
+                            {{-- @endif --}}
                         </tr>
                         <!-- end table row-->
                         </thead>
