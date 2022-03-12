@@ -32,11 +32,45 @@ $(function(){
             // {data:'inquiry_upload_data', name:'inquiry_upload_data'},
             {data:'inquiry_keterangan_tambahan', name:'inquiry_keterangan_tambahan'},
             {data: 'created_at', name:'created_at'},
-            {data: 'download', name:'download'}
+            {data: 'action', name:'action'}
         ]
     });
 
 
+
+});
+
+$(document).on('click','.hapus_inquiry', function(event){
+    let id = $(this).attr('id');
+    event.preventDefault();
+    swal({
+        title: "Apakah Anda yakin?",
+        text: "Data yang dihapus tidak dapat di kembalikan lagi!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((result)=>{
+        if (result) {
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                url: 'data-klien/hapus',
+                type: 'post',
+                data: {
+                    id: id,
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function(res){
+                    console.log(res.data);
+                    swal("Sukses!", "Data berhasil terhapus.", "success");
+                    $('#table-inquiry').DataTable().ajax.reload();
+                },
+                error: function(xhr){
+                    swal("Error Deleting!", "Please try again", "error");
+                    // alert(xhr.responseJSON.text);
+                }
+            });
+        }
+    });
 
 });
 

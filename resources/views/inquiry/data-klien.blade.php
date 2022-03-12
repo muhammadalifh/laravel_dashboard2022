@@ -61,7 +61,7 @@
         <div class="card-styles">
         <div class="card-style-3 mb-30">
             <div class="col-md-12">
-                <h4 class="text-center">Database Klien Inquiry</h4>
+                <h4 class="text-center">Database Inquiry</h4>
             </div>
             <br><br>
             <div class="card-content">
@@ -96,7 +96,7 @@
                             <th><h6>Keterangan Tambahan</h6></th>
                             <th><h6>Tanggal Dibuat</h6></th>
                             {{-- @if(auth()->user()->role == "2") --}}
-                                <th><h6>Download File Upload</h6></th>
+                                <th><h6>Action</h6></th>
                             {{-- @endif --}}
                         </tr>
                         <!-- end table row-->

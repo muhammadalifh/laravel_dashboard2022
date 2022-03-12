@@ -77,7 +77,7 @@
 <div class="card-styles">
     <div class="card-style-3 mb-30">
         <div class="col-md-12">
-            <h4 class="text-center">Portofolio Database Pekerjaan</h4>
+            <h4 class="text-center">Database Pekerjaan</h4>
         </div>
         <br><br>
         <div class="card-content">
