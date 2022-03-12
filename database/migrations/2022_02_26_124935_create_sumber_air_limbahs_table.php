@@ -27,6 +27,6 @@ class CreateSumberAirLimbahsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sumber_air_limbah');
+        Schema::dropIfExists('sumberairlimbah');
     }
 }

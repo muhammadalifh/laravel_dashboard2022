@@ -23,8 +23,8 @@ class InquiryController extends Controller
     public function data_klien_json(Request $request)
     {
         $data = DB::table('inquiry')
-        // ->join('sumberairlimbah', 'sumberairlimbah.id', '=', 'inquiry.inquiry_sumber_air_limbah_id')
-        ->select('inquiry.*')
+        ->join('sumberairlimbah', 'sumberairlimbah.id', '=', 'inquiry.inquiry_sumber_air_limbah_id')
+        ->select('inquiry.*', 'sumberairlimbah.sumberairlimbah')
         ->get();
         if (request()->ajax()) {
             return datatables()->of($data)

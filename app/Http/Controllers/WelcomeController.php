@@ -12,7 +12,8 @@ class WelcomeController extends Controller
 {
     public function welcome_index()
     {
-        return view('welcome');
+        $sumberairlimbah = DB::table('sumberairlimbah')->get();
+        return view('welcome', ['sumberairlimbah' => $sumberairlimbah]);
     }
     public function welcome_json()
     {
@@ -47,14 +48,18 @@ class WelcomeController extends Controller
             'inquiry_nama' => 'required|max:255',
             'inquiry_no_telp' => 'required|numeric',
             'inquiry_email' => 'required|max:255|email',
-            'inquiry_jenis_kegiatan' => 'required|max:255',
-            'inquiry_lokasi_kegiatan' => 'required|max:255',
+            // 'inquiry_jenis_kegiatan' => 'required|max:255',
+            // 'inquiry_lokasi_kegiatan' => 'required|max:255',
             'inquiry_sumber_air_limbah_id' => 'required',
             'inquiry_debit_air_limbah' => 'required|numeric',
-            'inquiry_luas_lahan_rencana' => 'required|numeric',
             'inquiry_penggunaan_air_bersih' => 'required|numeric',
             'inquiry_jumlah_karyawan' => 'required|numeric',
-            'inquiry_jumlah_tamu' => 'required|numeric',
+            'inquiry_jumlah_penghuni' => 'nullable|numeric',
+            'inquiry_jumlah_kamar' => 'nullable|numeric',
+            'inquiry_jumlah_bed' => 'nullable|numeric',
+            'inquiry_kapasitas_produksi' => 'nullable|numeric',
+            // 'inquiry_jumlah_tamu' => 'required|numeric',
+            'inquiry_luas_lahan_rencana' => 'required|numeric',
             'inquiry_upload_data' => 'file|mimes:rar,zip|max:5120|nullable',
             'inquiry_keterangan_tambahan' => 'max:255|nullable',
         ]);

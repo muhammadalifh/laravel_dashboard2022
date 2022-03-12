@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('pesan-diterima',[\App\Http\Controllers\WelcomeController::class, 'pesan_diterima'])->name('pesan-diterima');
 Route::get('/json', [\App\Http\Controllers\WelcomeController::class, 'welcome_json'])->name('welcome');
 Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'welcome_index'])->name('welcome');
+Route::get('getInput/{id}', function ($id) {
+    $input = App\Models\Inquiry::where('inquiry_sumber_air_limbah_id',$id)->get();
+    return response()->json($input);
+});
+
 Route::post('/store_inquiry', [\App\Http\Controllers\WelcomeController::class, 'welcome_store'])->name('welcome.store');
 
 // Route::get('/', function () {
