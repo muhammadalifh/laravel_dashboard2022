@@ -25,6 +25,18 @@ class CreatePortofoliosTable extends Migration
             $table->integer('status_id');
             $table->string('gallery')->nullable();
             $table->integer('inquiry_id')->nullable();
+            $table->string('penawaran')->nullable();
+            $table->string('spk_po_wo')->nullable();
+            $table->string('berita_acara_instal')->nullable();
+            $table->string('berita_acara_comisioning')->nullable();
+            $table->string('berita_acara_sampling')->nullable();
+            $table->string('laporan_hasil_uji')->nullable();
+            $table->string('berita_acara_kerja_tambah')->nullable();
+            $table->string('berita_acara_serah_terima')->nullable();
+            $table->string('gambar_desain')->nullable();
+            $table->string('gambar_asbuilt')->nullable();
+            $table->string('sop')->nullable();
+            $table->string('dokumentasi')->nullable();
             $table->timestamps();
         });
     }

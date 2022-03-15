@@ -158,6 +158,7 @@
                                 <div class="row">
                                     <div class="modal-body">
                                     <div class="row">
+                                        <h4 style="text-align: center;">PROGRES PEKERJAAN</h4> <br>
                                         <div class="col-md-12">
                                             <label for="exampleFormControlInput1" class="form-label">ID/ Kode Pelanggan</label>
                                             <input required type="number" class="form-control  @error ('inquiry_id') is-invalid @enderror" id="inquiry_id"  name="inquiry_id" placeholder="Masukkan ID/ Kode Pelanggan">
@@ -351,6 +352,151 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        {{-- DATA ADMIN --}}
+                        <div class="card-body">
+                                <div class="row">
+                                    <div class="modal-body">
+                                        <h4 style="text-align: center;">DATA ADMIN</h4> <br>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <label for="penawaran" class="form-label">PENAWARAN</label>
+                                        <input id="penawaran" name="penawaran" type="file" class="form-control @error ('penawaran') is-invalid @enderror">
+                                        @error('penawaran')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg">
+                                        <label for="spk_po_wo" class="form-label">SPK/PO/WO</label>
+                                        <input id="spk_po_wo" name="spk_po_wo" type="file" class="form-control @error ('spk_po_wo') is-invalid @enderror">
+                                        @error('spk_po_wo')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <label for="berita_acara_instal" class="form-label">BERITA ACARA INSTAL</label>
+                                        <input id="berita_acara_instal" name="berita_acara_instal" type="file" class="form-control @error ('berita_acara_instal') is-invalid @enderror">
+                                        @error('berita_acara_instal')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg">
+                                        <label for="berita_acara_comisioning" class="form-label">BERITA ACARA COMISIONING</label>
+                                        <input id="berita_acara_comisioning" name="berita_acara_comisioning" type="file" class="form-control @error ('berita_acara_comisioning') is-invalid @enderror">
+                                        @error('berita_acara_comisioning')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <label for="berita_acara_sampling" class="form-label">BERITA ACARA SAMPLING</label>
+                                        <input id="berita_acara_sampling" name="berita_acara_sampling" type="file" class="form-control @error ('berita_acara_sampling') is-invalid @enderror">
+                                        @error('berita_acara_sampling')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg">
+                                        <label for="laporan_hasil_uji" class="form-label">LAPORAN HASIL UJI (LHU)</label>
+                                        <input id="laporan_hasil_uji" name="laporan_hasil_uji" type="file" class="form-control @error ('laporan_hasil_uji') is-invalid @enderror">
+                                        @error('laporan_hasil_uji')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <label for="berita_acara_kerja_tambah" class="form-label">BERITA ACARA KERJA TAMBAH</label>
+                                        <input id="berita_acara_kerja_tambah" name="berita_acara_kerja_tambah" type="file" class="form-control @error ('berita_acara_kerja_tambah') is-invalid @enderror">
+                                        @error('berita_acara_kerja_tambah')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg">
+                                        <label for="berita_acara_serah_terima" class="form-label">BERITA ACARA SERAH TERIMA (BAST)</label>
+                                        <input id="berita_acara_serah_terima" name="berita_acara_serah_terima" type="file" class="form-control @error ('berita_acara_serah_terima') is-invalid @enderror">
+                                        @error('berita_acara_serah_terima')
+                                            <div class="invalid-feedback">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {{-- DATA TEKNIS --}}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="modal-body">
+                                    <h4 style="text-align: center;">DATA TEKNIS</h4> <br>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <label for="gambar_desain" class="form-label">GAMBAR DESAIN</label>
+                                    <input id="gambar_desain" name="gambar_desain" type="file" class="form-control @error ('gambar_desain') is-invalid @enderror">
+                                    @error('gambar_desain')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-lg">
+                                    <label for="gambar_asbuilt" class="form-label">GAMBAR ASBUILT</label>
+                                    <input id="gambar_asbuilt" name="gambar_asbuilt" type="file" class="form-control @error ('gambar_asbuilt') is-invalid @enderror">
+                                    @error('gambar_asbuilt')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <label for="sop" class="form-label">SOP</label>
+                                    <input id="sop" name="sop" type="file" class="form-control @error ('sop') is-invalid @enderror">
+                                    @error('sop')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-lg">
+                                    <label for="dokumentasi" class="form-label">DOKUMENTASI</label>
+                                    <input id="dokumentasi" name="dokumentasi" type="file" class="form-control @error ('dokumentasi') is-invalid @enderror">
+                                    @error('dokumentasi')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
                                 <div class="modal-footer">
                                 <button type="button" name="tutup" id="tutup" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 <button type="submit" name="simpan" id="simpan" class="btn btn-primary">Simpan</button>
@@ -405,6 +551,7 @@
                                 </div>
                                 <div class="card-body">
                                 <div class="row">
+                                    <h4 style="text-align: center;">PROGRES PEKERJAAN</h4> <br>
                                     <div class="modal-body">
                                         <input type="hidden" id="id" name="id">
                                         <div class="row">
@@ -600,6 +747,149 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        {{-- DATA ADMIN --}}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="modal-body">
+                                    <h4 style="text-align: center;">DATA ADMIN</h4> <br>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <label for="penawaran" class="form-label">PENAWARAN</label>
+                                    <input id="edit_penawaran" name="penawaran" type="file" class="form-control @error ('penawaran') is-invalid @enderror">
+                                    @error('penawaran')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-lg">
+                                    <label for="spk_po_wo" class="form-label">SPK/PO/WO</label>
+                                    <input id="edit_spk_po_wo" name="spk_po_wo" type="file" class="form-control @error ('spk_po_wo') is-invalid @enderror">
+                                    @error('spk_po_wo')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <label for="berita_acara_instal" class="form-label">BERITA ACARA INSTAL</label>
+                                    <input id="edit_berita_acara_instal" name="berita_acara_instal" type="file" class="form-control @error ('berita_acara_instal') is-invalid @enderror">
+                                    @error('berita_acara_instal')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-lg">
+                                    <label for="berita_acara_comisioning" class="form-label">BERITA ACARA COMISIONING</label>
+                                    <input id="edit_berita_acara_comisioning" name="berita_acara_comisioning" type="file" class="form-control @error ('berita_acara_comisioning') is-invalid @enderror">
+                                    @error('berita_acara_comisioning')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <label for="berita_acara_sampling" class="form-label">BERITA ACARA SAMPLING</label>
+                                    <input id="edit_berita_acara_sampling" name="berita_acara_sampling" type="file" class="form-control @error ('berita_acara_sampling') is-invalid @enderror">
+                                    @error('berita_acara_sampling')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-lg">
+                                    <label for="laporan_hasil_uji" class="form-label">LAPORAN HASIL UJI (LHU)</label>
+                                    <input id="edit_laporan_hasil_uji" name="laporan_hasil_uji" type="file" class="form-control @error ('laporan_hasil_uji') is-invalid @enderror">
+                                    @error('laporan_hasil_uji')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg">
+                                    <label for="berita_acara_kerja_tambah" class="form-label">BERITA ACARA KERJA TAMBAH</label>
+                                    <input id="edit_berita_acara_kerja_tambah" name="berita_acara_kerja_tambah" type="file" class="form-control @error ('berita_acara_kerja_tambah') is-invalid @enderror">
+                                    @error('berita_acara_kerja_tambah')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-lg">
+                                    <label for="berita_acara_serah_terima" class="form-label">BERITA ACARA SERAH TERIMA (BAST)</label>
+                                    <input id="edit_berita_acara_serah_terima" name="berita_acara_serah_terima" type="file" class="form-control @error ('berita_acara_serah_terima') is-invalid @enderror">
+                                    @error('berita_acara_serah_terima')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- DATA TEKNIS --}}
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="modal-body">
+                                <h4 style="text-align: center;">DATA TEKNIS</h4> <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <label for="gambar_desain" class="form-label">GAMBAR DESAIN</label>
+                                <input id="edit_gambar_desain" name="gambar_desain" type="file" class="form-control @error ('gambar_desain') is-invalid @enderror">
+                                @error('gambar_desain')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg">
+                                <label for="gambar_asbuilt" class="form-label">GAMBAR ASBUILT</label>
+                                <input id="edit_gambar_asbuilt" name="gambar_asbuilt" type="file" class="form-control @error ('gambar_asbuilt') is-invalid @enderror">
+                                @error('gambar_asbuilt')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg">
+                                <label for="sop" class="form-label">SOP</label>
+                                <input id="edit_sop" name="sop" type="file" class="form-control @error ('sop') is-invalid @enderror">
+                                @error('sop')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg">
+                                <label for="dokumentasi" class="form-label">DOKUMENTASI</label>
+                                <input id="edit_dokumentasi" name="dokumentasi" type="file" class="form-control @error ('dokumentasi') is-invalid @enderror">
+                                @error('dokumentasi')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
                                 <div class="modal-footer">
                                 <button type="button" name="tutup" id="tutup" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                 <button type="submit" name="edit_simpan" id="edit_simpan" class="btn btn-primary">Update</button>
@@ -641,14 +931,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="formportofolioedit">Form Detail Portofolio</h5>
+                <h5 class="modal-title" id="formportofoliodetail">Form Detail Portofolio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="modal-body">
                             {{-- <input type="hidden" id="detail_id" name="detail_id"> --}}
-                            <form>
+                            <form id="detailsform" name="detailsform">
                                 <center>
                                     <div class="divider"></div>
                                     <h6>DATA PELANGGAN</h6>
@@ -861,64 +1151,84 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">PENAWARAN: </label>
                                     <div class="col-sm-10">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        {{-- @php
+                                            $download = DB:: table('portofolio')->get();
+                                            $download = $download->first();
+                                            $penawaran = $download->penawaran;
+                                            $spk_po_wo = $download->spk_po_wo;
+                                        @endphp --}}
+
+                                        {{-- @foreach ((array)$download as $item)
+                                        <a href="{{ asset('storage/'.$item) }}" target="_blank">
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fa fa-download"></i>
+                                                Download
+                                            </button>
+                                        </a>
+                                        @endforeach --}}
+{{--
+                                        @foreach ($download as $item)
+                                        <a href="{{asset('storage/'.$item->penawaran)}}" target="_blank"><i class="far fa-eye"></i></a>
+                                        @endforeach --}}
+
+                                        <a href="#" id="detail_penawaran" name="detail_penawaran" class="btn btn-warning"></a>
+                                        <a href="#" id="download_detail_penawaran" name="download_detail_penawaran" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">SPK/PO/WO: </label>
                                     <div class="col-sm-10">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a href="#" id="detail_spk_po_wo" name="detail_spk_po_wo" class="btn btn-warning"></a>
+                                        <a href="#" id="download_detail_spk_po_wo" name="download_detail_spk_po_wo" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">BERITA ACARA INSTAL: </label>
                                     <div class="col-sm-5">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a href="#" id="detail_berita_acara_instal" name="detail_berita_acara_instal" class="btn btn-warning"></a>
+                                        <a href="#" id="download_detail_berita_acara_instal" name="download_detail_berita_acara_instal" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">BERITA ACARA COMISIONING: </label>
                                     <div class="col-sm-5">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a href="#" id="detail_berita_acara_comisioning" name="detail_berita_acara_comisioning" class="btn btn-warning"></a>
+                                        <a href="#" id="download_detail_berita_acara_comisioning" name="download_detail_berita_acara_comisioning" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">BERITA ACARA SAMPLING: </label>
                                     <div class="col-sm-5">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a href="#" id="detail_berita_acara_sampling" name="detail_berita_acara_sampling" class="btn btn-warning"></a>
+                                        <a href="#" id="download_detail_berita_acara_sampling" name="download_detail_berita_acara_sampling" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">LAPORAN HASIL UJI (LHU): </label>
                                     <div class="col-sm-5">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a id="detail_laporan_hasil_uji" name="detail_laporan_hasil_uji" href="#" class="btn btn-warning"></a>
+                                        <a id="download_detail_laporan_hasil_uji" name="download_detail_laporan_hasil_uji" href="#" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-5 col-form-label">BERITA ACARA KERJA TAMBAH: </label>
                                     <div class="col-sm-5">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a id="detail_berita_acara_kerja_tambah" name="detail_berita_acara_kerja_tambah" href="#" class="btn btn-warning"></a>
+                                        <a id="download_detail_berita_acara_kerja_tambah" name="download_detail_berita_acara_kerja_tambah" href="#" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-5 col-form-label">BERITA ACARA SERAH TERIMA (BAST): </label>
                                     <div class="col-sm-5">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a id="detail_berita_acara_serah_terima" name="detail_berita_acara_serah_terima" href="#" class="btn btn-warning"></a>
+                                        <a id="download_detail_berita_acara_serah_terima" name="download_detail_berita_acara_serah_terima" href="#" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
@@ -938,32 +1248,32 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">GAMBAR DESAIN: </label>
                                     <div class="col-sm-2">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a id="detail_gambar_desain" name="detail_gambar_desain" href="#" class="btn btn-warning"></a>
+                                        <a id="download_detail_gambar_desain" name="download_detail_gambar_desain" href="#" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">GAMBAR ASBUILT: </label>
                                     <div class="col-sm-2">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a id="detail_gambar_asbuilt" name="detail_gambar_asbuilt" href="#" class="btn btn-warning"></a>
+                                        <a id="download_detail_gambar_asbuilt" name="download_detail_gambar_asbuilt" href="#" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">SOP: </label>
                                     <div class="col-sm-10">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a id="detail_sop" name="detail_sop" href="#" class="btn btn-warning"></a>
+                                        <a id="download_detail_sop" name="download_detail_sop" href="#" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">DOKUMENTASI: </label>
                                     <div class="col-sm-10">
-                                        <a href="" class="btn btn-warning"><i class="far fa-eye"></i></a>
-                                        <a href="" class="btn btn-info"><i class="fas fa-download"></i></a>
+                                        <a id="detail_dokumentasi" name="detail_dokumentasi" href="#" class="btn btn-warning"></a>
+                                        <a id="download_detail_dokumentasi" name="download_detail_dokumentasi" href="#" class="btn btn-info"></a>
                                     </div>
                                 </div>
                                 <br>

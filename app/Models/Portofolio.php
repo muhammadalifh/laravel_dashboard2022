@@ -20,6 +20,19 @@ class Portofolio extends Model
         'status_id',
         'gallery',
         'inquiry_id',
+        'penawaran',
+        'spk_po_wo',
+        'berita_acara_instal',
+        'berita_acara_comisioning',
+        'berita_acara_sampling',
+        'laporan_hasil_uji',
+        'berita_acara_kerja_tambah',
+        'berita_acara_serah_terima',
+        'gambar_desain',
+        'gambar_asbuilt',
+        'sop',
+        'dokumentasi',
+
     ];
 
     public function klien()

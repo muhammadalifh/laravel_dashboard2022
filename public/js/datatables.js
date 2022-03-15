@@ -234,6 +234,18 @@ $(function(){
                     $('#edit_nilai_kontrak').val(response.data.nilai_kontrak);
                     $('#edit_status_id').val(response.data.status_id);
                     $('#edit_gallery').html("<img src='storage/upload/gallery/"+response.data.gallery+"' class='img-fluid img-thumbnail' width='100px' height='100px'>");
+                    $('#edit_penawaran').val(response.data.penawaran);
+                    $('#edit_spk_po_wo').val(response.data.spk_po_wo);
+                    $('#edit_berita_acara_instal').val(response.data.berita_acara_instal);
+                    $('#edit_berita_acara_comisioning').val(response.data.berita_acara_comisioning);
+                    $('#edit_berita_acara_sampling').val(response.data.berita_acara_sampling);
+                    $('#edit_laporan_hasil_uji').val(response.data.laporan_hasil_uji);
+                    $('#edit_berita_acara_kerja_tambah').val(response.data.berita_acara_kerja_tambah);
+                    $('#edit_berita_acara_serah_terima').val(response.data.berita_acara_serah_terima);
+                    $('#edit_gambar_desain').val(response.data.gambar_desain);
+                    $('#edit_gambar_asbuilt').val(response.data.gambar_asbuilt);
+                    $('#edit_sop').val(response.data.sop);
+                    $('#edit_dokumentasi').val(response.data.dokumentasi);
                 }
             }
 
@@ -293,7 +305,7 @@ $(function(){
             // },
             success: function(response){
                 // console.log(response.data);
-                swal("Sukses!", "Data berhasil diperbaharui.", "success");
+                swal("Sukses!", "Data berhasil diperbatui.", "success");
                 // alert(res.data.text)
                 // $('#tutup').click();
                 // $('#table-index-portofolio').DataTable().ajax.reload();
@@ -363,6 +375,18 @@ $(function(){
                         $('#nilai_kontrak').val(null);
                         $('#status_id').val(null);
                         $('#gallery').val(null);
+                        $('#penawaran').val(null);
+                        $('#spk_po_wo').val(null);
+                        $('#berita_acara_instal').val(null);
+                        $('#berita_acara_comisioning').val(null);
+                        $('#berita_acara_sampling').val(null);
+                        $('#laporan_hasil_uji').val(null);
+                        $('#berita_acara_kerja_tambah').val(null);
+                        $('#berita_acara_serah_terima').val(null);
+                        $('#gambar_desain').val(null);
+                        $('#gambar_asbuilt').val(null);
+                        $('#sop').val(null);
+                        $('#dokumentasi').val(null);
                     },
                     error: function(xhr){
                         swal("Error Creating!", "Please try again", "error");
@@ -397,6 +421,321 @@ $(function(){
                 }
                 else
                 {
+                    $('#DetailModal').on('hidden.bs.modal', function (e) {
+                        this.click(window.location.reload());
+                    });
+
+                    const data = response.data;
+                    // const link = document.createElement('a');
+
+                    // DATA ADMIN
+                    const penawaran_link = document.createElement('a');
+                    const download_penawaran_link = document.createElement('a');
+                    const spk_po_wo_link = document.createElement('a');
+                    const download_spk_po_wo_link = document.createElement('a');
+                    const berita_acara_instal_link = document.createElement('a');
+                    const download_berita_acara_instal_link = document.createElement('a');
+                    const berita_acara_comisioning_link = document.createElement('a');
+                    const download_berita_acara_comisioning_link = document.createElement('a');
+                    const berita_acara_sampling_link = document.createElement('a');
+                    const download_berita_acara_sampling_link = document.createElement('a');
+                    const laporan_hasil_uji_link = document.createElement('a');
+                    const download_laporan_hasil_uji_link = document.createElement('a');
+                    const berita_acara_kerja_tambah_link = document.createElement('a');
+                    const download_berita_acara_kerja_tambah_link = document.createElement('a');
+                    const berita_acara_serah_terima_link = document.createElement('a');
+                    const download_berita_acara_serah_terima_link = document.createElement('a');
+
+
+                    // PENAWARAN
+                    penawaran_link.href = ('storage'+'/'+data.penawaran);
+                    penawaran_link.setAttribute('target', '_blank');
+                    penawaran_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.penawaran == null){
+                        penawaran_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_penawaran').html(penawaran_link);
+                    }
+
+                    download_penawaran_link.href = ('storage'+'/'+data.penawaran);
+                    download_penawaran_link.setAttribute('download','PENAWARAN', '_blank');
+                    download_penawaran_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.penawaran == null){
+                        download_penawaran_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_penawaran').html(download_penawaran_link);
+                    }
+
+                    // SPK/PO/WO
+                    spk_po_wo_link.href = ('storage'+'/'+data.spk_po_wo);
+                    spk_po_wo_link.setAttribute('target', '_blank');
+                    spk_po_wo_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.spk_po_wo == null){
+                        spk_po_wo_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_spk_po_wo').html(spk_po_wo_link);
+                    }
+
+                    download_spk_po_wo_link.href = ('storage'+'/'+data.spk_po_wo);
+                    download_spk_po_wo_link.setAttribute('download','SPK/PO/WO', '_blank');
+                    download_spk_po_wo_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.spk_po_wo == null){
+                        download_spk_po_wo_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_spk_po_wo').html(download_spk_po_wo_link);
+                    }
+
+                    // BERITA ACARA INSTAL
+                    berita_acara_instal_link.href = ('storage'+'/'+data.berita_acara_instal);
+                    berita_acara_instal_link.setAttribute('target', '_blank');
+                    berita_acara_instal_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.berita_acara_instal == null){
+                        berita_acara_instal_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_berita_acara_instal').html(berita_acara_instal_link);
+                    }
+
+                    download_berita_acara_instal_link.href = ('storage'+'/'+data.berita_acara_instal);
+                    download_berita_acara_instal_link.setAttribute('download','BERITA ACARA INSTAL', '_blank');
+                    download_berita_acara_instal_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.berita_acara_instal == null){
+                        download_berita_acara_instal_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_berita_acara_instal').html(download_berita_acara_instal_link);
+                    }
+
+                    // BERITA ACARA COMISIONING
+                    berita_acara_comisioning_link.href = ('storage'+'/'+data.berita_acara_comisioning);
+                    berita_acara_comisioning_link.setAttribute('target', '_blank');
+                    berita_acara_comisioning_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.berita_acara_comisioning == null){
+                        berita_acara_comisioning_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_berita_acara_comisioning').html(berita_acara_comisioning_link);
+                    }
+
+                    download_berita_acara_comisioning_link.href = ('storage'+'/'+data.berita_acara_comisioning);
+                    download_berita_acara_comisioning_link.setAttribute('download','BERITA ACARA COMISIOING', '_blank');
+                    download_berita_acara_comisioning_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.berita_acara_comisioning == null){
+                        download_berita_acara_comisioning_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_berita_acara_comisioning').html(download_berita_acara_comisioning_link);
+                    }
+
+                    // BERITA ACARA SAMPLING
+                    berita_acara_sampling_link.href = ('storage'+'/'+data.berita_acara_sampling);
+                    berita_acara_sampling_link.setAttribute('target', '_blank');
+                    berita_acara_sampling_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.berita_acara_sampling == null){
+                        berita_acara_sampling_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_berita_acara_sampling').html(berita_acara_sampling_link);
+                    }
+
+                    download_berita_acara_sampling_link.href = ('storage'+'/'+data.berita_acara_sampling);
+                    download_berita_acara_sampling_link.setAttribute('download','BERITA ACARA SAMPLING', '_blank');
+                    download_berita_acara_sampling_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.berita_acara_sampling == null){
+                        download_berita_acara_sampling_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_berita_acara_sampling').html(download_berita_acara_sampling_link);
+                    }
+
+                    // LAPORAN HASIL UJI
+                    laporan_hasil_uji_link.href = ('storage'+'/'+data.laporan_hasil_uji);
+                    laporan_hasil_uji_link.setAttribute('target', '_blank');
+                    laporan_hasil_uji_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.laporan_hasil_uji == null){
+                        laporan_hasil_uji_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_laporan_hasil_uji').html(laporan_hasil_uji_link);
+                    }
+
+                    download_laporan_hasil_uji_link.href = ('storage'+'/'+data.laporan_hasil_uji);
+                    download_laporan_hasil_uji_link.setAttribute('download','LAPORAN HASIL UJI', '_blank');
+                    download_laporan_hasil_uji_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.laporan_hasil_uji == null){
+                        download_laporan_hasil_uji_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_laporan_hasil_uji').html(download_laporan_hasil_uji_link);
+                    }
+
+                    // BERITA ACARA KERJA TAMBAH
+                    berita_acara_kerja_tambah_link.href = ('storage'+'/'+data.berita_acara_kerja_tambah);
+                    berita_acara_kerja_tambah_link.setAttribute('target', '_blank');
+                    berita_acara_kerja_tambah_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.berita_acara_kerja_tambah == null){
+                        berita_acara_kerja_tambah_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_berita_acara_kerja_tambah').html(berita_acara_kerja_tambah_link);
+                    }
+
+                    download_berita_acara_kerja_tambah_link.href = ('storage'+'/'+data.berita_acara_kerja_tambah);
+                    download_berita_acara_kerja_tambah_link.setAttribute('download','BERITA ACARA KERJA TAMBAH', '_blank');
+                    download_berita_acara_kerja_tambah_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.berita_acara_kerja_tambah == null){
+                        download_berita_acara_kerja_tambah_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_berita_acara_kerja_tambah').html(download_berita_acara_kerja_tambah_link);
+                    }
+
+                    // BERITA ACARA SERAH TERIMA
+                    berita_acara_serah_terima_link.href = ('storage'+'/'+data.berita_acara_serah_terima);
+                    berita_acara_serah_terima_link.setAttribute('target', '_blank');
+                    berita_acara_serah_terima_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.berita_acara_serah_terima == null){
+                        berita_acara_serah_terima_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_berita_acara_serah_terima').html(berita_acara_serah_terima_link);
+                    }
+
+                    download_berita_acara_serah_terima_link.href = ('storage'+'/'+data.berita_acara_serah_terima);
+                    download_berita_acara_serah_terima_link.setAttribute('download','BERITA ACARA SERAH TERIMA', '_blank');
+                    download_berita_acara_serah_terima_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.berita_acara_serah_terima == null){
+                        download_berita_acara_serah_terima_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_berita_acara_serah_terima').html(download_berita_acara_serah_terima_link);
+                    }
+
+
+
+                    //DATA TEKNIS
+                    const gambar_desain_link = document.createElement('a');
+                    const download_gambar_desain_link = document.createElement('a');
+                    const gambar_asbuilt_link = document.createElement('a');
+                    const download_gambar_asbuilt_link = document.createElement('a');
+                    const sop_link = document.createElement('a');
+                    const download_sop_link = document.createElement('a');
+                    const dokumentasi_link = document.createElement('a');
+                    const download_dokumentasi_link = document.createElement('a');
+
+                    // GAMBAR DESAIN
+                    gambar_desain_link.href = ('storage'+'/'+data.gambar_desain);
+                    gambar_desain_link.setAttribute('target', '_blank');
+                    gambar_desain_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.gambar_desain == null){
+                        gambar_desain_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_gambar_desain').html(gambar_desain_link);
+                    }
+
+                    download_gambar_desain_link.href = ('storage'+'/'+data.gambar_desain);
+                    download_gambar_desain_link.setAttribute('download','GAMBAR DESAIN', '_blank');
+                    download_gambar_desain_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.gambar_desain == null){
+                        download_gambar_desain_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_gambar_desain').html(download_gambar_desain_link);
+                    }
+
+                    // GAMBAR DESAIN
+                    gambar_asbuilt_link.href = ('storage'+'/'+data.gambar_asbuilt);
+                    gambar_asbuilt_link.setAttribute('target', '_blank');
+                    gambar_asbuilt_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.gambar_asbuilt == null){
+                        gambar_asbuilt_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_gambar_asbuilt').html(gambar_asbuilt_link);
+                    }
+
+                    download_gambar_asbuilt_link.href = ('storage'+'/'+data.gambar_asbuilt);
+                    download_gambar_asbuilt_link.setAttribute('download','GAMBAR ASBUILT', '_blank');
+                    download_gambar_asbuilt_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.gambar_asbuilt == null){
+                        download_gambar_asbuilt_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_gambar_asbuilt').html(download_gambar_asbuilt_link);
+                    }
+
+                    // SOP
+                    sop_link.href = ('storage'+'/'+data.sop);
+                    sop_link.setAttribute('target', '_blank');
+                    sop_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.sop == null){
+                        sop_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_sop').html(sop_link);
+                    }
+
+                    download_sop_link.href = ('storage'+'/'+data.sop);
+                    download_sop_link.setAttribute('download','SOP', '_blank');
+                    download_sop_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.sop == null){
+                        download_sop_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_sop').html(download_sop_link);
+                    }
+
+                    // DOKUMENTASI
+                    dokumentasi_link.href = ('storage'+'/'+data.dokumentasi);
+                    dokumentasi_link.setAttribute('target', '_blank');
+                    dokumentasi_link.innerHTML = '<i class="far fa-eye"></i>';
+                    if(data.dokumentasi == null){
+                        dokumentasi_link.innerHTML = '<i disabled class="far fa-eye-slash"></i>';
+                    }
+                    else
+                    {
+                        $('#detail_dokumentasi').html(dokumentasi_link);
+                    }
+
+                    download_dokumentasi_link.href = ('storage'+'/'+data.dokumentasi);
+                    download_dokumentasi_link.setAttribute('download','DOKUMENTASI', '_blank');
+                    download_dokumentasi_link.innerHTML = '<i class="fas fa-download"></i>';
+                    if(data.dokumentasi == null){
+                        download_dokumentasi_link.innerHTML = '<i disabled class="fas fa-download"></i>';
+                    }
+                    else
+                    {
+                        $('#download_detail_dokumentasi').html(download_dokumentasi_link);
+                    }
+
+
                     $('#detail_id').val(detail_id);
                     $('#detail_klien_id').val(response.data.klien_id);
                     // $('#detail_perusahaan').val(response.data.perusahaan);
@@ -412,9 +751,29 @@ $(function(){
                     $('#inquiry_no_telp').val(response.data.inquiry.inquiry_no_telp);
                     $('#inquiry_email').val(response.data.inquiry.inquiry_email);
                     $('#inquiry_nama').val(response.data.inquiry.inquiry_nama);
+
+                    //DATA ADMIN
+                    // $('#detail_penawaran').val(response.data.penawaran);
+                    // $('#detail_spk_po_wo').val(response.data.spk_po_wo);
+                    // $('#detail_berita_acara_instal').val(response.data.berita_acara_instal);
+                    // $('#detail_berita_acara_comisioning').val(response.data.berita_acara_comisioning);
+                    // $('#detail_berita_acara_sampling').val(response.data.berita_acara_sampling);
+                    // $('#detail_laporan_hasil_uji').val(response.data.laporan_hasil_uji);
+                    // $('#detail_berita_acara_kerja_tambah').val(response.data.berita_acara_kerja_tambah);
+                    // $('#detail_berita_acara_serah_terima').val(response.data.berita_acara_serah_terima);
+
+
+                    // // DATA TEKNIS
+                    // $('#detail_gambar_desain').val(response.data.gambar_desain);
+                    // $('#detail_gambar_asbuilt').val(response.data.gambar_asbuilt);
+                    // $('#detail_sop').val(response.data.sop);
+                    // $('#detail_dokumentasi').val(response.data.dokumentasi);
+
+
+
                     // console.log(response.data.inquiry_id);
                     // console.log(response.data.inquiry_perusahaan);
-                    // console.log(response.data.inquiry_alamat);
+                    // console.log(response.data.penawaran);
                 }
             }
         });
