@@ -513,7 +513,7 @@ form .form-control {
 .footer-top {
     padding-top: 90px;
     padding-bottom: 90px;
-    background-color: var(--dark);
+    background-color: white;
 }
 
 .footer-top a {
@@ -521,9 +521,9 @@ form .form-control {
 }
 
 .footer-top a:hover {
-    color: var(--white);
+    color: blue;
 }
 
 .footer-bottom {
-    background-color: #242933;
+    background-color: #faf8f8;
 }

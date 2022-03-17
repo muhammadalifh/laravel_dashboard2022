@@ -36,7 +36,7 @@
     <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img class="logo" src="{{ asset('images/logo/logo-mpe.png') }}" alt="logo" style="width: 100%;">
+                <img class="logo" src="{{ asset('images/logo/LogoMPE.png') }}" alt="logo" style="width: 40%;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,7 +128,7 @@
             <ul class="fab-options">
                 <li>
                     <span class="fab-label-WhatsApp fab-label">WhatsApp</span>
-                    <a style="text-decoration:none" target="_blank" href="https://api.whatsapp.com/send/?phone=6281259429377&text=%20Halo%20Admin%20MPE,%20Saya%20dari%20Perusahaan/PT%20...%20Saya%20membutuhkan%20bantuan.%20Saya%20mengalami%20kesulitan%20pada%20...">
+                    <a style="text-decoration:none" target="_blank" href="https://api.whatsapp.com/send/?phone=6281259429377&text=Halo,%20Salam%20Kenal.%20Saya%20ingin%20bertanya%20tentang%20jasa,%20layanan,%20dan%20produk%20PT%20MITRA%20PRIMA%20ENVIRO">
                         <div class="fab-WhatsApp fab-icon-holder">
                             <i class="material-icons">whatsapp</i>
                         </div>
@@ -680,10 +680,10 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="inquiry_upload_data"> Upload Data (Gambar Denah/Layout ; Hasil Uji Lab ; dll)</label>
-                                                    <input autocomplete="off" id="inquiry_upload_data" name="inquiry_upload_data" type="file" class="custom-file-input form-control @error ('inquiry_upload_data') is-invalid @enderror">
+                                                    <label for="inquiry_upload_data"> Upload Data (Gambar Denah/Layout ; Hasil Uji Lab ; dll) <span style="color:#ff0000">*</span></label>
+                                                    <input required autocomplete="off" id="inquiry_upload_data" name="inquiry_upload_data" type="file" class="custom-file-input form-control @error ('inquiry_upload_data') is-invalid @enderror">
                                                     <span>  Ekstensi file upload: rar/zip <br>
-                                                            Max ukuran file: 5MB
+                                                            Max ukuran file: 100MB
                                                     </span>
                                                     @error('inquiry_upload_data')
                                                         <div class="invalid-feedback">
@@ -726,7 +726,22 @@
                                                     cancelButtonText: "Batal Kirim",
                                                 }).then((isOkay) => {
                                                     if (isOkay.isConfirmed) {
-                                                        form.submit();
+                                                        var showLoading = function() {
+                                                            Swal.fire({
+                                                                title: "Mohon Tunggu Sebetar...",
+                                                                html: "Kami sedang mengirimkan data Anda. Pastikan Internet Anda stabil dan tidak menutup halaman ini",
+                                                                allowOutsideClick: false,
+                                                                allowEscapeKey: false,
+                                                                showConfirmButton: false,
+                                                                willOpen: () => {
+                                                                    Swal.showLoading()
+                                                                },
+                                                            });
+                                                        }
+                                                        showLoading();
+                                                        setTimeout(function() {
+                                                            form.submit();
+                                                        }, 10000);
                                                     }
                                                 });
                                                 return false;
@@ -748,11 +763,14 @@
                 <div class="row gy-4">
                     <div class="col-lg-4">
                         <a href="/">
-                            <img class="logo" src="{{ asset('images/logo/logo-mpe.png') }}" alt="logo" style="width: 100%;">
+                            <img class="logo" src="{{ asset('images/logo/LogoMPE.png') }}" alt="logo MPE" style="width: 100%;">
+                        </a>
+                        <a href="https://www.mitraprimaenviro.com/ecokenn.html" target="_blank">
+                            <img class="logo" src="{{ asset('images/logo/LogoEcoKenn.png') }}" alt="logo EcoKenn" style="width: 100%;">
                         </a>
                     </div>
                     <div class="col-lg-4">
-                        <h5 class="text-white">Services</h5>
+                        <h5 class="text-black">Services</h5>
                         <ul class="list-unstyled">
                             <li><a href="https://www.mitraprimaenviro.com/design_build.html" target="_blank">Design & Build WWTP & WTP</a></li>
                             <li><a href="https://www.mitraprimaenviro.com/suplay.html" target="_blank">Supply Equipment </a></li>
@@ -761,7 +779,7 @@
                         </ul>
                     </div>
                     <div class="col-lg">
-                        <h5 class="text-white">Contact</h5>
+                        <h5 class="text-black">Contact</h5>
                         <ul class="list-unstyled">
                             <li>Email <i class="fas fa-envelope"></i> : marketingmpesby@gmail.com</li>
                             <li>Email <i class="far fa-envelope"></i> : mitraprimaenviro15@gmail.com</li>

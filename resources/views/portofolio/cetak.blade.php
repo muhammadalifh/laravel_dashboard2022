@@ -18,9 +18,9 @@
                     <th style="text-align: center">Klien</th>
                                     <th style="text-align: center">Perusahaan</th>
                                     <th style="text-align: center">Tahun</th>
-                                    <th  style="text-align: center">Jenis <br>(Project)</th>
+                                    <th  style="text-align: center">Jenis IPAL</th>
                                     <th  style="text-align: center">Kapasitas <br> (m3/hari)</th>
-                                    <th  style="text-align: center">Teknologi</th>
+                                    {{-- <th  style="text-align: center">Teknologi</th> --}}
                                     <th  style="text-align: center">Nilai Kontrak</th>
                                     <th  style="text-align: center">Status</th>
                 </tr>
@@ -34,7 +34,7 @@
                         <td style="text-align: center">{{ $item->tahun }}</td>
                         <td style="text-align: center">{{ $item->jenis->jenis }}</td>
                         <td style="text-align: center">{{ $item->kapasitas }}</td>
-                        <td style="text-align: center">{{ $item->teknologi->teknologi }}</td>
+                        {{-- <td style="text-align: center">{{ $item->teknologi->teknologi }}</td> --}}
                         <td style="text-align: center">{{ $item->nilai_kontrak }}</td>
                         <td style="text-align: center">{{ $item->status->status }}</td>
                     </tr>

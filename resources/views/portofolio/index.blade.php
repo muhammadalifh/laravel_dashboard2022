@@ -287,7 +287,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg">
-                                        <label for="exampleFormControlInput1" class="form-label">Kapasitas</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Kapasitas (m3/hari)</label>
                                         <input required type = "number" step="any" class="form-control @error ('kapasitas') is-invalid @enderror" id="kapasitas" autocomplete="off" name="kapasitas" placeholder="Jika Ada Koma gunakan titik misal (1.5)">
                                         @error('kapasitas')
                                                     <div class="invalid-feedback">
@@ -362,7 +362,7 @@
                                 <div class="row">
                                     <div class="col-lg">
                                         <label for="penawaran" class="form-label">PENAWARAN</label>
-                                        <input id="penawaran" name="penawaran" type="file" class="form-control @error ('penawaran') is-invalid @enderror">
+                                        <input required id="penawaran" name="penawaran" type="file" class="form-control @error ('penawaran') is-invalid @enderror">
                                         @error('penawaran')
                                             <div class="invalid-feedback">
                                                 {{$message}}

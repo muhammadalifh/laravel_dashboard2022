@@ -28,34 +28,35 @@ class CreateUserSeeder extends Seeder
                 'password' => bcrypt('12345678'),
             ],
 
+            // [
+            //     'name' => 'Marketing',
+            //     'email' => 'marketingmpesbya@gmail.com',
+            //     'role' => '2',
+            //     'password' => bcrypt('12345678'),
+            // ],
+            // [
+            //     'name' => 'Agus Priyo',
+            //     'email' => 'aguspriyo@gmail.com',
+            //     'role' => '2',
+            //     'password' => bcrypt('12345678'),
+            // ],
+            // [
+            //     'name' => 'Cansa',
+            //     'email' => 'cansa_2003@yahoo.com',
+            //     'role' => '2',
+            //     'password' => bcrypt('12345678'),
+            // ],
+
             [
-                'name' => 'Owner1',
-                'email' => 'owner1@user.com',
-                'role' => '0',
+                'name' => 'M Alif',
+                'email' => 'muhammadalifhidayatullah123@gmail.com',
+                'role' => '1',
                 'password' => bcrypt('12345678'),
             ],
             [
-                'name' => 'Owner2',
-                'email' => 'owner2@user.com',
-                'role' => '0',
-                'password' => bcrypt('12345678'),
-            ],
-            [
-                'name' => 'Owner3',
-                'email' => 'owner3@user.com',
-                'role' => '0',
-                'password' => bcrypt('12345678'),
-            ],
-            [
-                'name' => 'Owner4',
-                'email' => 'owner4@user.com',
-                'role' => '0',
-                'password' => bcrypt('12345678'),
-            ],
-            [
-                'name' => 'Owner5',
-                'email' => 'owner5@user.com',
-                'role' => '0',
+                'name' => 'Alif',
+                'email' => 'muhammad.19065@mhs.unesa.ac.id',
+                'role' => '2',
                 'password' => bcrypt('12345678'),
             ],
             ];

@@ -6,16 +6,19 @@ use App\Models\Portofolio;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PortofolioExport;
+use App\Mail\PenawaranMail;
 use App\Models\Klien;
 use App\Models\Jenis;
 use App\Models\Status;
 use App\Models\Teknologi;
+use App\Models\User;
 use Carbon\Carbon;
 use Dflydev\DotAccessData\Data;
 use GrahamCampbell\ResultType\Success;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
@@ -373,7 +376,18 @@ class PortofolioController extends Controller
                 $datas->save();
             }
 
+
+            $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+
             if($datas == true){
+
+                $portofolio_detail = [
+                    'perusahaan' => $request->input('perusahaan'),
+                    'penawaran' => $request->penawaran,
+                ];
+
+                Mail::to($user)->send(new PenawaranMail($portofolio_detail));
+
                 Alert::success('Berhasil!', 'Data berhasil ditambahkan!');
                 return redirect()->route('portofolio.index');
             }
