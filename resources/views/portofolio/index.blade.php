@@ -371,7 +371,7 @@
                                     </div>
                                     <div class="col-lg">
                                         <label for="spk_po_wo" class="form-label">SPK/PO/WO</label>
-                                        <input id="spk_po_wo" name="spk_po_wo" type="file" class="form-control @error ('spk_po_wo') is-invalid @enderror">
+                                        <input required id="spk_po_wo" name="spk_po_wo" type="file" class="form-control @error ('spk_po_wo') is-invalid @enderror">
                                         @error('spk_po_wo')
                                             <div class="invalid-feedback">
                                                 {{$message}}

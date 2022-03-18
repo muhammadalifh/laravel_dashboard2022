@@ -806,7 +806,8 @@ $(function(){
                     },
                     error: function(xhr){
                         swal("Error Deleting!", "Please try again", "error");
-                        // alert(xhr.responseJSON.text);
+                        alert(xhr.responseJSON.text);
+                        console.log(xhr.responseJSON.text);
                     }
                 });
             }

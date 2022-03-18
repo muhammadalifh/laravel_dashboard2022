@@ -72,7 +72,7 @@ class WelcomeController extends Controller
         ]);
 
         if($request->file('inquiry_upload_data') != null){
-            $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload');
+            $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload/inquiry/'.$request->input('inquiry_perusahaan'));
         }
 
         // Email Notification

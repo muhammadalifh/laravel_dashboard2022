@@ -255,6 +255,9 @@
                                                     <label for="inquiry_perusahaan">Perusahaan/Instansi <span style="color:#ff0000">*</span></label>
                                                     <input required autocomplete="off" id="inquiry_perusahaan" type="text" name="inquiry_perusahaan" class="form-control @error ('inquiry_perusahaan') is-invalid @enderror" placeholder="Masukkan Nama Perusahaan" >
                                                     @error('inquiry_perusahaan')
+                                                    <script>
+                                                        alert('Gagal mengirim data, Silakan cek error pada bagian inquiry perusahaan/instansi');
+                                                    </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -266,6 +269,9 @@
                                                     <label for="inquiry_alamat">Alamat Perusahaan  <span style="color:#ff0000">*</span></label>
                                                     <input required autocomplete="off" id="inquiry_alamat" type="text" name="inquiry_alamat" class="form-control @error ('inquiry_alamat') is-invalid @enderror" placeholder="Masukkan Alamat Perusahaan" >
                                                     @error('inquiry_alamat')
+                                                    <script>
+                                                        alert('Gagal mengirim data, Silakan cek error pada bagian inquiry alamat perusahaan');
+                                                    </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -277,6 +283,9 @@
                                                     <label for="inquiry_nama">Nama Pelanggan <span style="color:#ff0000">*</span></label>
                                                     <input required autocomplete="off" id="inquiry_nama" type="text" name="inquiry_nama" class="form-control @error ('inquiry_nama') is-invalid @enderror" placeholder="Masukkan nama" >
                                                     @error('inquiry_nama')
+                                                    <script>
+                                                        alert('Gagal mengirim data, Silakan cek error pada bagian inquiry nama pelanggan');
+                                                    </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -289,6 +298,9 @@
                                                     <input required autocomplete="off" id="inquiry_no_telp" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                         maxlength = "12" name="inquiry_no_telp" class="form-control @error ('inquiry_no_telp') is-invalid @enderror" placeholder="Masukkan No.Kontak (Telepon/HP)" >
                                                         @error('inquiry_no_telp')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry no kontak');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -300,6 +312,9 @@
                                                     <label for="inquiry_email">Email <span style="color:#ff0000">*</span></label>
                                                     <input required autocomplete="off" id="inquiry_email" type="email" name="inquiry_email" class="form-control @error ('inquiry_email') is-invalid @enderror" placeholder="Masukkan Email" >
                                                     @error('inquiry_email')
+                                                    <script>
+                                                        alert('Gagal mengirim data, Silakan cek error pada bagian inquiry email');
+                                                    </script>
                                                     <div class="invalid-feedback">
                                                         {{$message}}
                                                     </div>
@@ -324,6 +339,9 @@
                                                             <option value="3">Industri</option>
                                                         </select>
                                                         @error('inquiry_sumber_air_limbah_id')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry sumber air limbah');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -353,6 +371,9 @@
                                                         <label for="inquiry_debit_air_limbah">Debit Air Limbah <span style="color:#ff0000">*</span></label>
                                                         <input required autocomplete="off" id="inquiry_debit_air_limbah" type="number" name="inquiry_debit_air_limbah" class="form-control @error ('inquiry_debit_air_limbah') is-invalid @enderror" placeholder="Debit Air Limbah (m3/hari)" >
                                                         @error('inquiry_debit_air_limbah')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry debit air limbah');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -365,6 +386,9 @@
                                                         <label for="inquiry_penggunaan_air_bersih">Penggunaan Air Bersih <span style="color:#ff0000">*</span></label>
                                                         <input required autocomplete="off" id="inquiry_penggunaan_air_bersih" type="number" name="inquiry_penggunaan_air_bersih" class="form-control @error ('inquiry_penggunaan_air_bersih') is-invalid @enderror" placeholder="Penggunaan Air Bersih (m3/bulan)" >
                                                         @error('inquiry_penggunaan_air_bersih')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry penggunaan air bersih');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -377,6 +401,9 @@
                                                         <label for="inquiry_jumlah_karyawan">Jumlah Karyawan <span style="color:#ff0000">*</span></label>
                                                         <input required autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
                                                         @error('inquiry_jumlah_karyawan')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah karayawan');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -394,6 +421,9 @@
                                                         <label for="inquiry_jumlah_penghuni">Jumlah Penghuni <span style="color:#ff0000">*</span></label>
                                                         <input  autocomplete="off" id="inquiry_jumlah_penghuni" type="number" name="inquiry_jumlah_penghuni" class="form-control @error ('inquiry_jumlah_penghuni') is-invalid @enderror" placeholder="Masukkan Jumlah Penghuni" >
                                                         @error('inquiry_jumlah_penghuni')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah penghuni');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -406,6 +436,9 @@
                                                         <label for="inquiry_jumlah_kamar">Jumlah Kamar <span style="color:#ff0000">*</span></label>
                                                         <input  autocomplete="off" id="inquiry_jumlah_kamar" type="number" name="inquiry_jumlah_kamar" class="form-control @error ('inquiry_jumlah_kamar') is-invalid @enderror" placeholder="Masukkan Jumlah Kamar" >
                                                         @error('inquiry_jumlah_kamar')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah kamar');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -462,6 +495,9 @@
                                                             <label for="inquiry_jumlah_bed">Jumlah Bed <span style="color:#ff0000">*</span></label>
                                                             <input  autocomplete="off" id="inquiry_jumlah_bed" type="number" name="inquiry_jumlah_bed" class="form-control @error ('inquiry_jumlah_bed') is-invalid @enderror" placeholder="Masukkan Jumlah Bed" >
                                                             @error('inquiry_jumlah_bed')
+                                                            <script>
+                                                                alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah bed');
+                                                            </script>
                                                             <div class="invalid-feedback">
                                                                 {{$message}}
                                                             </div>
@@ -480,6 +516,9 @@
                                                             <label for="inquiry_kapasitas_produksi">Kapasitas Produksi (ton/tahun) <span style="color:#ff0000">*</span></label>
                                                             <input  autocomplete="off" id="inquiry_kapasitas_produksi" type="number" name="inquiry_kapasitas_produksi" class="form-control @error ('inquiry_kapasitas_produksi') is-invalid @enderror" placeholder="Kapasitas Produksi (ton/tahun)" >
                                                             @error('inquiry_kapasitas_produksi')
+                                                            <script>
+                                                                alert('Gagal mengirim data, Silakan cek error pada bagian inquiry kapasitas produksi');
+                                                            </script>
                                                             <div class="invalid-feedback">
                                                                 {{$message}}
                                                             </div>
@@ -671,6 +710,9 @@
                                                     <label for="inquiry_luas_lahan_rencana">Luas Lahan Rencana IPAL <span style="color:#ff0000">*</span></label>
                                                     <input required autocomplete="off" id="inquiry_luas_lahan_rencana" type="number" name="inquiry_luas_lahan_rencana" class="form-control @error ('inquiry_luas_lahan_rencana') is-invalid @enderror" placeholder="Luas Lahan (m2)" >
                                                     @error('inquiry_luas_lahan_rencana')
+                                                    <script>
+                                                        alert('Gagal mengirim data, Silakan cek error pada bagian inquiry luas lahan rencana');
+                                                    </script>
                                                     <div class="invalid-feedback">
                                                         {{$message}}
                                                     </div>
@@ -686,6 +728,9 @@
                                                             Max ukuran file: 100MB
                                                     </span>
                                                     @error('inquiry_upload_data')
+                                                    <script>
+                                                        alert('Gagal Upload File, Silakan cek error pada bagian inquiry upload data');
+                                                    </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -698,6 +743,9 @@
                                                     <label for="inquiry_keterangan_tambahan">Keterangan Tambahan (Jika Ada)</label>
                                                     <textarea id="inquiry_keterangan_tambahan" name="inquiry_keterangan_tambahan" class="form-control @error ('inquiry_keterangan_tambahan') is-invalid @enderror" placeholder="Keterangan tambahan jika ada ....."  rows="5"></textarea>
                                                         @error('inquiry_keterangan_tambahan')
+                                                        <script>
+                                                            alert('Gagal Upload File, Silakan cek error pada bagian inquiry keterangan tambahan');
+                                                        </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
                                                         </div>
@@ -728,7 +776,7 @@
                                                     if (isOkay.isConfirmed) {
                                                         var showLoading = function() {
                                                             Swal.fire({
-                                                                title: "Mohon Tunggu Sebetar...",
+                                                                title: "Mohon Tunggu Sebentar...",
                                                                 html: "Kami sedang mengirimkan data Anda. Pastikan Internet Anda stabil dan tidak menutup halaman ini",
                                                                 allowOutsideClick: false,
                                                                 allowEscapeKey: false,
@@ -741,7 +789,7 @@
                                                         showLoading();
                                                         setTimeout(function() {
                                                             form.submit();
-                                                        }, 10000);
+                                                        }, 5000);
                                                     }
                                                 });
                                                 return false;

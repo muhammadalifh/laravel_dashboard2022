@@ -6,6 +6,7 @@ use App\Models\Portofolio;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PortofolioExport;
+use App\Mail\KontrakMail;
 use App\Mail\PenawaranMail;
 use App\Models\Klien;
 use App\Models\Jenis;
@@ -243,25 +244,25 @@ class PortofolioController extends Controller
                     $datas->gambar_desain = null;
                 }
                 else{
-                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('gambar_asbuilt') == null){
                     $datas->gambar_asbuilt = null;
                 }
                 else{
-                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('sop') == null){
                     $datas->sop = null;
                 }
                 else{
-                    $datas->sop = $request->file('sop')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->sop = $request->file('sop')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('dokumentasi') == null){
                     $datas->dokumentasi = null;
                 }
                 else{
-                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
 
 
@@ -351,25 +352,25 @@ class PortofolioController extends Controller
                     $datas->gambar_desain = null;
                 }
                 else{
-                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('gambar_asbuilt') == null){
                     $datas->gambar_asbuilt = null;
                 }
                 else{
-                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('sop') == null){
                     $datas->sop = null;
                 }
                 else{
-                    $datas->sop = $request->file('sop')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->sop = $request->file('sop')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('dokumentasi') == null){
                     $datas->dokumentasi = null;
                 }
                 else{
-                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 $datas->created_at = Carbon::now();
                 $datas->updated_at = Carbon::now();
@@ -384,9 +385,11 @@ class PortofolioController extends Controller
                 $portofolio_detail = [
                     'perusahaan' => $request->input('perusahaan'),
                     'penawaran' => $request->penawaran,
+                    'spk_po_wo' => $request->spk_po_wo,
                 ];
 
                 Mail::to($user)->send(new PenawaranMail($portofolio_detail));
+                Mail::to($user)->send(new KontrakMail($portofolio_detail));
 
                 Alert::success('Berhasil!', 'Data berhasil ditambahkan!');
                 return redirect()->route('portofolio.index');
@@ -625,34 +628,44 @@ class PortofolioController extends Controller
 
                 // DATA TEKNIS
                 if($request->file('gambar_desain') != null){
-                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('gambar_asbuilt') != null){
-                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('sop') != null){
-                    $datas->sop = $request->file('sop')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->sop = $request->file('sop')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('dokumentasi') != null){
-                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
 
 
                 $gallery =array();
                 if($request->file('gallery') ==  null){
-                    $path = 'storage/upload/gallery/'. $datas->gallery;
-                    if(File::exists($path)){
-                        File::delete($path);
-                        $datas->gallery = null;
+                    $path = explode(',',$datas->gallery);
+                    foreach($path as $p){
+                        $images_path = public_path($p);
+                        if(File::exists($images_path)) {
+                            File::delete($images_path);
+                        }
                     }
-                    else{
-                        $datas->gallery = null;
-                    }
+                    $datas->gallery = null;
+                    // if(Storage::exists($path)){
+                    //     Storage::delete($path);
+                    //     $datas->gallery = null;
+                    // }
+                    // else{
+                    //     $datas->gallery = null;
+                    // }
                 }
                 if($request->hasFile('gallery')){
-                    $path = 'storage/upload/gallery/'. $datas->gallery;
-                    if(File::exists($path)){
-                        File::delete($path);
+                    $path = explode(',',$datas->gallery);
+                    foreach($path as $p){
+                        $images_path = public_path($p);
+                        if(File::exists($images_path)) {
+                            File::delete($images_path);
+                        }
                     }
                     foreach($request->file('gallery') as $file){
                         $image_name = rand(1, 10000);
@@ -695,16 +708,16 @@ class PortofolioController extends Controller
 
                 // DATA TEKNIS
                 if($request->file('gambar_desain') != null){
-                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_desain = $request->file('gambar_desain')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('gambar_asbuilt') != null){
-                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->gambar_asbuilt = $request->file('gambar_asbuilt')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('sop') != null){
-                    $datas->sop = $request->file('sop')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->sop = $request->file('sop')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
                 if($request->file('dokumentasi') != null){
-                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_admin/'.$request->input('perusahaan'));
+                    $datas->dokumentasi = $request->file('dokumentasi')->store('upload/data_teknis/'.$request->input('perusahaan'));
                 }
 
                     // $file = $request->file('gallery');
@@ -758,17 +771,69 @@ class PortofolioController extends Controller
     public function hapus(Request $request)
     {
         $id = $request->id;
-        $data = Portofolio::find($id);
-        if($data)
+        if($request->ajax())
         {
-            $path = 'storage/upload/gallery/'. $data->gallery;
-            if(File::exists($path)){
-                File::delete($path);
+            $data = Portofolio::find($id);
+            if($data->gallery != null)
+            {
+                $path = explode(',',$data->gallery);
+                    foreach($path as $p){
+                        $images_path = public_path($p);
+                        if(File::exists($images_path)) {
+                            File::delete($images_path);
+                        }
+                    }
+            }
+            if($data->penawaran != null)
+            {
+                Storage::delete($data->penawaran);
+            }
+            if($data->spk_po_wo != null)
+            {
+                Storage::delete($data->spk_po_wo);
+            }
+            if($data->berita_acara_instal != null)
+            {
+                Storage::delete($data->berita_acara_instal);
+            }
+            if($data->berita_acara_comisioning != null)
+            {
+                Storage::delete($data->berita_acara_comisioning);
+            }
+            if($data->berita_acara_sampling != null)
+            {
+                Storage::delete($data->berita_acara_sampling);
+            }
+            if($data->laporan_hasil_uji != null)
+            {
+                Storage::delete($data->laporan_hasil_uji);
+            }
+            if($data->berita_acara_kerja_tambah != null)
+            {
+                Storage::delete($data->berita_acara_kerja_tambah);
+            }
+            if($data->berita_acara_serah_terima != null)
+            {
+                Storage::delete($data->berita_acara_serah_terima);
+            }
+            if($data->gambar_desain != null)
+            {
+                Storage::delete($data->gambar_desain);
+            }
+            if($data->gambar_asbuilt != null)
+            {
+                Storage::delete($data->gambar_asbuilt);
+            }
+            if($data->sop != null)
+            {
+                Storage::delete($data->sop);
+            }
+            if($data->dokumentasi != null)
+            {
+                Storage::delete($data->dokumentasi);
             }
             $data->delete();
-            Alert::success('Berhasil!', 'Data berhasil dihapus!');
-            return redirect()->route('portofolio.index');
-
+            return response()->json(['id' => $id]);
         }
     }
 
