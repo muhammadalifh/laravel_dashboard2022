@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::fallback(function() {
+    return view('404');
+});
+
+
 // JIKA PILIH PAKAI 1 PAGE PAKAI YANG INI
 
 Route::get('pesan-diterima',[\App\Http\Controllers\WelcomeController::class, 'pesan_diterima'])->name('pesan-diterima');
