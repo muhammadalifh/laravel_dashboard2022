@@ -26,7 +26,7 @@ class Portofolio extends Model
         'berita_acara_comisioning',
         'berita_acara_sampling',
         'laporan_hasil_uji',
-        'berita_acara_kerja_tambah',
+        // 'berita_acara_kerja_tambah',
         'berita_acara_serah_terima',
         'gambar_desain',
         'gambar_asbuilt',

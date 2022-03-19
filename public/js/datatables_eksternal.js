@@ -20,7 +20,7 @@ $(function(){
             {data:'tahun', name:'tahun'},
             {data:'jenis', name:'jenis'},
             {data:'kapasitas', name:'kapasitas'},
-            {data:'teknologi', name:'teknologi'},
+            // {data:'teknologi', name:'teknologi'},
             {data:'nilai_kontrak', name:'nilai_kontrak'},
             {data:'status', name:'status'}
         ]

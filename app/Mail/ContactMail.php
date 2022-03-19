@@ -33,11 +33,18 @@ class ContactMail extends Mailable
     {
         $file = $this->detail['inquiry_upload_data'];
 
-        return $this->subject('Ada Klien Baru')
-        ->attach($file->getRealPath(), [
-            'as' => $file->getClientOriginalName(),
-            'mime' => $file->getMimeType(),
-        ])
+        $mail =  $this->subject('Ada Klien Baru')
         ->view('emails.contact');
+
+        if(isset($file) && $file != null){
+            $mail->attach($file->getRealPath(), [
+                'as' => $file->getClientOriginalName(),
+                'mime' => $file->getMimeType(),
+            ]);
+        }
+        // else{
+        //     $mail->text('Kontrak belum diupload');
+        // }
+        return $mail;
     }
 }

@@ -44,7 +44,7 @@ $(function(){
             {data:'tahun', name:'tahun'},
             {data:'jenis', name:'jenis'},
             {data:'kapasitas', name:'kapasitas'},
-            {data:'teknologi', name:'teknologi'},
+            // {data:'teknologi', name:'teknologi'},
             {data:'nilai_kontrak', name:'nilai_kontrak'},
             {data:'status', name:'status'},
             {data:'gallery', name:'gallery', render: function( data, type, full, meta ) {
@@ -230,7 +230,7 @@ $(function(){
                     $('#edit_tahun').val(response.data.tahun);
                     $('#edit_jenis_id').val(response.data.jenis_id);
                     $('#edit_kapasitas').val(response.data.kapasitas);
-                    $('#edit_teknologi_id').val(response.data.teknologi_id);
+                    // $('#edit_teknologi_id').val(response.data.teknologi_id);
                     $('#edit_nilai_kontrak').val(response.data.nilai_kontrak);
                     $('#edit_status_id').val(response.data.status_id);
                     $('#edit_gallery').html("<img src='storage/upload/gallery/"+response.data.gallery+"' class='img-fluid img-thumbnail' width='100px' height='100px'>");
@@ -371,7 +371,7 @@ $(function(){
                         $('#tahun').val(null);
                         $('#jenis_id').val(null);
                         $('#kapasitas').val(null);
-                        $('#teknologi_id').val(null);
+                        // $('#teknologi_id').val(null);
                         $('#nilai_kontrak').val(null);
                         $('#status_id').val(null);
                         $('#gallery').val(null);
@@ -742,7 +742,7 @@ $(function(){
                     $('#detail_tahun').val(response.data.tahun);
                     $('#detail_jenis_id').val(response.data.jenis_id);
                     $('#detail_kapasitas').val(response.data.kapasitas);
-                    $('#detail_teknologi_id').val(response.data.teknologi_id);
+                    // $('#detail_teknologi_id').val(response.data.teknologi_id);
                     // $('#detail_nilai_kontrak').val(response.data.nilai_kontrak);
                     $('#detail_status_id').val(response.data.status_id);
                     $('#detail_inquiry_id').val(response.data.inquiry_id);

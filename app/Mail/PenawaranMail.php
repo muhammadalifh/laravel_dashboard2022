@@ -30,13 +30,30 @@ class PenawaranMail extends Mailable
      */
     public function build()
     {
+        // $portofolio_file = $this->portofolio_detail['penawaran'];
+
+        // return $this->subject('Notifikasi Penawaran')
+        // ->attach($portofolio_file->getRealPath(), [
+        //     'as' => $portofolio_file->getClientOriginalName(),
+        //     'mime' => $portofolio_file->getMimeType(),
+        // ])
+        // ->view('emails.penawaran');
+
         $portofolio_file = $this->portofolio_detail['penawaran'];
 
-        return $this->subject('Notifikasi Penawaran')
-        ->attach($portofolio_file->getRealPath(), [
-            'as' => $portofolio_file->getClientOriginalName(),
-            'mime' => $portofolio_file->getMimeType(),
-        ])
+        $mail =  $this->subject('Notifikasi Penawaran')
         ->view('emails.penawaran');
+
+        if(isset($portofolio_file) && $portofolio_file != null){
+            $mail->attach($portofolio_file->getRealPath(), [
+                'as' => $portofolio_file->getClientOriginalName(),
+                'mime' => $portofolio_file->getMimeType(),
+            ]);
+        }
+        // else{
+        //     $mail->text('Kontrak belum diupload');
+        // }
+        return $mail;
+
     }
 }

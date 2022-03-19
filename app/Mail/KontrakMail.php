@@ -32,11 +32,19 @@ class KontrakMail extends Mailable
     {
         $portofolio_file = $this->portofolio_detail['spk_po_wo'];
 
-        return $this->subject('Notifikasi Kontrak')
-        ->attach($portofolio_file->getRealPath(), [
-            'as' => $portofolio_file->getClientOriginalName(),
-            'mime' => $portofolio_file->getMimeType(),
-        ])
+        $mail =  $this->subject('Notifikasi Kontrak')
         ->view('emails.kontrak');
+
+        if(isset($portofolio_file) && $portofolio_file != null){
+            $mail->attach($portofolio_file->getRealPath(), [
+                'as' => $portofolio_file->getClientOriginalName(),
+                'mime' => $portofolio_file->getMimeType(),
+            ]);
+        }
+        // else{
+        //     $mail->text('Kontrak belum diupload');
+        // }
+        return $mail;
+
     }
 }

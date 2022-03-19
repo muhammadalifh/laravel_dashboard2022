@@ -107,7 +107,7 @@
                 <h1 class="display-4 text-white" style="font-weight: 600;">"SIMPEL"</h1>
                 <h1 class="display-7 text-white">(Sistem Informasi Pelanggan) <br> Mitra Prima Enviro</h1> <br>
                 <p class="text-white"><b style="font-weight: 600;">PT Mitra Prima Enviro</b> merupakan salah satu layanan <b style="font-weight: 600;"> Achmad & Assosiates Group </b> yang bergerak dibidang Enviromental Service meliputi Layanan WWTP Desain and Build, WWTP Equipment Supply, dan WWTP Operational and Maintenance Service.
-                    <b style="font-weight: 600;">PT Mitra Prima Enviro</b> telah berpengalaman mengerjakan berbagai jenis Instalasi Pengolahan Air Limbah (IPAL) baik Domestik maupun Non-Domestik seperti Industri dan Medis dengan jangkuan pekerjaan seluruh Indonesia. Kami siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik untuk setiap pekerjaan yang telah dipercayakan kepada kami.
+                    <b style="font-weight: 600;">PT Mitra Prima Enviro</b> telah berpengalaman mengerjakan berbagai jenis Instalasi Pengolahan Air Limbah (IPAL) baik Domestik maupun Non-Domestik seperti Industri dan Medis dengan jangkauan pekerjaan seluruh Indonesia. Kami siap menjadi mitra kerja yang senantiasa memberikan hasil terbaik untuk setiap pekerjaan yang telah dipercayakan kepada kami.
                     </p>
                     <br>
                 <a href="#portofolio" class="btn btn-outline-light" style="border-radius: 4px;">Portofolio</a>
@@ -722,8 +722,8 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="inquiry_upload_data"> Upload Data (Gambar Denah/Layout ; Hasil Uji Lab ; dll) <span style="color:#ff0000">*</span></label>
-                                                    <input required autocomplete="off" id="inquiry_upload_data" name="inquiry_upload_data" type="file" class="custom-file-input form-control @error ('inquiry_upload_data') is-invalid @enderror">
+                                                    <label for="inquiry_upload_data"> Upload Data (Gambar Denah/Layout ; Hasil Uji Lab ; dll) </label>
+                                                    <input autocomplete="off" id="inquiry_upload_data" name="inquiry_upload_data" type="file" class="custom-file-input form-control @error ('inquiry_upload_data') is-invalid @enderror">
                                                     <span>  Ekstensi file upload: rar/zip <br>
                                                             Max ukuran file: 100MB
                                                     </span>

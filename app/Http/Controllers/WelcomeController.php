@@ -28,8 +28,8 @@ class WelcomeController extends Controller
         ->join('klien', 'klien.id', '=', 'portofolio.klien_id')
         ->join('jenis', 'jenis.id', '=', 'portofolio.jenis_id')
         ->join('status', 'status.id', '=', 'portofolio.status_id')
-        ->join('teknologi', 'teknologi.id', '=', 'portofolio.teknologi_id')
-        ->select('portofolio.*', 'klien.klien', 'jenis.jenis', 'status.status', 'teknologi.teknologi')
+        // ->join('teknologi', 'teknologi.id', '=', 'portofolio.teknologi_id')
+        ->select('portofolio.*', 'klien.klien', 'jenis.jenis', 'status.status')
         ->get();
         return DataTables::of($data)->make(true);
     }
@@ -73,10 +73,56 @@ class WelcomeController extends Controller
 
         if($request->file('inquiry_upload_data') != null){
             $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload/inquiry/'.$request->input('inquiry_perusahaan'));
+            // Email Notification
+            $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+            $detail = [
+                'inquiry_perusahaan' => $request->inquiry_perusahaan,
+                'inquiry_alamat' => $request->inquiry_alamat,
+                'inquiry_nama' => $request->inquiry_nama,
+                'inquiry_no_telp' => $request->inquiry_no_telp,
+                'inquiry_email' => $request->inquiry_email,
+                // Data Teknis
+                'inquiry_sumber_air_limbah_id' => $request->inquiry_sumber_air_limbah_id,
+                'inquiry_debit_air_limbah' => $request->inquiry_debit_air_limbah,
+                'inquiry_penggunaan_air_bersih' => $request->inquiry_penggunaan_air_bersih,
+                'inquiry_jumlah_karyawan' => $request->inquiry_jumlah_karyawan,
+                'inquiry_jumlah_penghuni' => $request->inquiry_jumlah_penghuni,
+                'inquiry_jumlah_kamar' => $request->inquiry_jumlah_kamar,
+                'inquiry_jumlah_bed' => $request->inquiry_jumlah_bed,
+                'inquiry_kapasitas_produksi' => $request->inquiry_kapasitas_produksi,
+                // Data Pendukung
+                'inquiry_luas_lahan_rencana' => $request->inquiry_luas_lahan_rencana,
+                'inquiry_upload_data' => $request->inquiry_upload_data,
+                'inquiry_keterangan_tambahan' => $request->inquiry_keterangan_tambahan,
+            ];
+            Mail::to($user)->send(new ContactMail($detail));
         }
 
-        // Email Notification
+
+
+
         $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+            $detail = [
+                'inquiry_perusahaan' => $request->inquiry_perusahaan,
+                'inquiry_alamat' => $request->inquiry_alamat,
+                'inquiry_nama' => $request->inquiry_nama,
+                'inquiry_no_telp' => $request->inquiry_no_telp,
+                'inquiry_email' => $request->inquiry_email,
+                // Data Teknis
+                'inquiry_sumber_air_limbah_id' => $request->inquiry_sumber_air_limbah_id,
+                'inquiry_debit_air_limbah' => $request->inquiry_debit_air_limbah,
+                'inquiry_penggunaan_air_bersih' => $request->inquiry_penggunaan_air_bersih,
+                'inquiry_jumlah_karyawan' => $request->inquiry_jumlah_karyawan,
+                'inquiry_jumlah_penghuni' => $request->inquiry_jumlah_penghuni,
+                'inquiry_jumlah_kamar' => $request->inquiry_jumlah_kamar,
+                'inquiry_jumlah_bed' => $request->inquiry_jumlah_bed,
+                'inquiry_kapasitas_produksi' => $request->inquiry_kapasitas_produksi,
+                // Data Pendukung
+                'inquiry_luas_lahan_rencana' => $request->inquiry_luas_lahan_rencana,
+                'inquiry_upload_data' => $request->inquiry_upload_data,
+                'inquiry_keterangan_tambahan' => $request->inquiry_keterangan_tambahan,
+            ];
+        Mail::to($user)->send(new ContactMail($detail));
         // $details = [
         //     'greeting' => 'Halo, Ada Klien Baru!',
         //     'body' => 'Klien Baru dengan nama '.$request->inquiry_nama.' dari perusahaan '.$request->inquiry_perusahaan.' telah mendaftar di website kami. Rincian sebaga berikut.',
@@ -110,29 +156,7 @@ class WelcomeController extends Controller
 
 
 
-        $detail = [
-            'inquiry_perusahaan' => $request->inquiry_perusahaan,
-            'inquiry_alamat' => $request->inquiry_alamat,
-            'inquiry_nama' => $request->inquiry_nama,
-            'inquiry_no_telp' => $request->inquiry_no_telp,
-            'inquiry_email' => $request->inquiry_email,
-            // Data Teknis
-            'inquiry_sumber_air_limbah_id' => $request->inquiry_sumber_air_limbah_id,
-            'inquiry_debit_air_limbah' => $request->inquiry_debit_air_limbah,
-            'inquiry_penggunaan_air_bersih' => $request->inquiry_penggunaan_air_bersih,
-            'inquiry_jumlah_karyawan' => $request->inquiry_jumlah_karyawan,
-            'inquiry_jumlah_penghuni' => $request->inquiry_jumlah_penghuni,
-            'inquiry_jumlah_kamar' => $request->inquiry_jumlah_kamar,
-            'inquiry_jumlah_bed' => $request->inquiry_jumlah_bed,
-            'inquiry_kapasitas_produksi' => $request->inquiry_kapasitas_produksi,
-            // Data Pendukung
-            'inquiry_luas_lahan_rencana' => $request->inquiry_luas_lahan_rencana,
-            'inquiry_upload_data' => $request->inquiry_upload_data,
-            'inquiry_keterangan_tambahan' => $request->inquiry_keterangan_tambahan,
-        ];
 
-
-        Mail::to($user)->send(new ContactMail($detail));
 
         Inquiry::create($data);
         return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil dikirim');

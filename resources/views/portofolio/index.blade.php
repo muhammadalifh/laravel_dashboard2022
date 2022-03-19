@@ -107,14 +107,14 @@
                                 <h6>Tahun</h6>
                             </th>
                             <th>
-                                <h6>Jenis <br>(Project)</h6>
+                                <h6>Jenis IPAL</h6>
                             </th>
                             <th>
                                 <h6>Kapasitas <br> (m3/hari)</h6>
                             </th>
-                            <th>
+                            {{-- <th>
                                 <h6>Teknologi</h6>
-                            </th>
+                            </th> --}}
                             <th>
                                 <h6>Nilai <br> Kontrak</h6>
                             </th>
@@ -270,7 +270,7 @@
                                     </div>
 
                                     <div class="col-lg">
-                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis') }}</label>
+                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis IPAL') }}</label>
                                         <select required name="jenis_id" id="jenis_id" class="form-control @error ('jenis_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Jenis</option>
                                             <option value="1">IPAL DOMESTIK</option>
@@ -295,7 +295,7 @@
                                                     </div>
                                             @enderror
                                     </div>
-                                    <div class="col-lg">
+                                    {{-- <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Teknologi') }}</label>
                                         <select required name="teknologi_id" id="teknologi_id" class="form-control @error ('teknologi_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Teknologi</option>
@@ -309,18 +309,7 @@
                                                         {{$message}}
                                                     </div>
                                             @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
-                                        <input required type = "text" class="form-control @error ('nilai_kontrak') is-invalid @enderror" id="nilai_kontrak"  name="nilai_kontrak" placeholder="Masukkan Nilai Kontrak">
-                                        @error('nilai_kontrak')
-                                                    <div class="invalid-feedback">
-                                                        {{$message}}
-                                                    </div>
-                                            @enderror
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Status') }}</label>
                                         <select required name="status_id" id="status_id" class="form-control @error ('status_id') is-invalid @enderror">
@@ -336,7 +325,18 @@
                                         </select>
                                     </div>
                                 </div>
-                                    <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
+                                        <input required type = "text" class="form-control @error ('nilai_kontrak') is-invalid @enderror" id="nilai_kontrak"  name="nilai_kontrak" placeholder="Masukkan Nilai Kontrak">
+                                        @error('nilai_kontrak')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+
+                                    <div class="col-lg">
                                         <label for="gallery" class="form-label">Gallery Foto (Jika Ada)</label>
                                         <input id="gallery" name="gallery[]" multiple="true" type="file" class="form-control @error ('gallery') is-invalid @enderror">
                                         <span>  Ekstensi file upload: jpg/jpeg/png <br>
@@ -348,6 +348,7 @@
                                             </div>
                                     @enderror
                                     </div>
+                                </div>
 
                                 </div>
                             </div>
@@ -362,7 +363,7 @@
                                 <div class="row">
                                     <div class="col-lg">
                                         <label for="penawaran" class="form-label">PENAWARAN</label>
-                                        <input required id="penawaran" name="penawaran" type="file" class="form-control @error ('penawaran') is-invalid @enderror">
+                                        <input id="penawaran" name="penawaran" type="file" class="form-control @error ('penawaran') is-invalid @enderror">
                                         @error('penawaran')
                                             <div class="invalid-feedback">
                                                 {{$message}}
@@ -371,7 +372,7 @@
                                     </div>
                                     <div class="col-lg">
                                         <label for="spk_po_wo" class="form-label">SPK/PO/WO</label>
-                                        <input required id="spk_po_wo" name="spk_po_wo" type="file" class="form-control @error ('spk_po_wo') is-invalid @enderror">
+                                        <input id="spk_po_wo" name="spk_po_wo" type="file" class="form-control @error ('spk_po_wo') is-invalid @enderror">
                                         @error('spk_po_wo')
                                             <div class="invalid-feedback">
                                                 {{$message}}
@@ -390,7 +391,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg">
-                                        <label for="berita_acara_comisioning" class="form-label">BERITA ACARA COMISIONING</label>
+                                        <label for="berita_acara_comisioning" class="form-label">BERITA ACARA COMMISIONING</label>
                                         <input id="berita_acara_comisioning" name="berita_acara_comisioning" type="file" class="form-control @error ('berita_acara_comisioning') is-invalid @enderror">
                                         @error('berita_acara_comisioning')
                                             <div class="invalid-feedback">
@@ -420,7 +421,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg">
+                                    {{-- <div class="col-lg">
                                         <label for="berita_acara_kerja_tambah" class="form-label">BERITA ACARA KERJA TAMBAH</label>
                                         <input id="berita_acara_kerja_tambah" name="berita_acara_kerja_tambah" type="file" class="form-control @error ('berita_acara_kerja_tambah') is-invalid @enderror">
                                         @error('berita_acara_kerja_tambah')
@@ -428,7 +429,7 @@
                                                 {{$message}}
                                             </div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg">
                                         <label for="berita_acara_serah_terima" class="form-label">BERITA ACARA SERAH TERIMA (BAST)</label>
                                         <input id="berita_acara_serah_terima" name="berita_acara_serah_terima" type="file" class="form-control @error ('berita_acara_serah_terima') is-invalid @enderror">
@@ -665,7 +666,7 @@
                                     </div>
 
                                     <div class="col-lg">
-                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis') }}</label>
+                                        <label for="exampleFormControlInput1" class="form-label">{{ __('Jenis IPAL') }}</label>
                                         <select required name="jenis_id" id="edit_jenis_id" class="form-control @error ('edit_jenis_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Jenis</option>
                                             <option value="1">IPAL DOMESTIK</option>
@@ -690,7 +691,7 @@
                                                     </div>
                                             @enderror
                                     </div>
-                                    <div class="col-lg">
+                                    {{-- <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Teknologi') }}</label>
                                         <select required name="teknologi_id" id="edit_teknologi_id" class="form-control @error ('edit_teknologi_id') is-invalid @enderror">
                                             <option disabled value selected>Pilih Teknologi</option>
@@ -704,18 +705,8 @@
                                                         {{$message}}
                                                     </div>
                                             @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
-                                        <input  name="nilai_kontrak" id="edit_nilai_kontrak"  required type = "text" class="form-control @error ('edit_nilai_kontrak') is-invalid @enderror"placeholder="Masukkan Nilai Kontrak">
-                                        @error('edit_nilai_kontrak')
-                                                    <div class="invalid-feedback">
-                                                        {{$message}}
-                                                    </div>
-                                            @enderror
-                                    </div>
+                                    </div> --}}
+
                                     <div class="col-lg">
                                         <label for="exampleFormControlInput1" class="form-label">{{ __('Status') }}</label>
                                         <select required name="status_id" id="edit_status_id" class="form-control @error ('edit_status_id') is-invalid @enderror">
@@ -730,8 +721,21 @@
                                     @enderror
                                         </select>
                                     </div>
+
                                 </div>
-                                    <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <label for="exampleFormControlInput1" class="form-label">Nilai Kontrak</label>
+                                        <input  name="nilai_kontrak" id="edit_nilai_kontrak"  required type = "text" class="form-control @error ('edit_nilai_kontrak') is-invalid @enderror"placeholder="Masukkan Nilai Kontrak">
+                                        @error('edit_nilai_kontrak')
+                                                    <div class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                            @enderror
+                                    </div>
+
+
+                                    <div class="col-lg">
                                         <label for="gallery" class="form-label">Gallery Foto (Jika Ada)</label>
                                         <input name="gallery[]" multiple="true" id="gallery" type="file" class="form-control @error ('gallery') is-invalid @enderror">
                                         <span>  Ekstensi file upload: jpg/jpeg/png <br>
@@ -743,6 +747,9 @@
                                             </div>
                                     @enderror
                                     </div>
+
+                                </div>
+
 
                                 </div>
                             </div>
@@ -785,7 +792,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg">
-                                    <label for="berita_acara_comisioning" class="form-label">BERITA ACARA COMISIONING</label>
+                                    <label for="berita_acara_comisioning" class="form-label">BERITA ACARA COMMISIONING</label>
                                     <input id="edit_berita_acara_comisioning" name="berita_acara_comisioning" type="file" class="form-control @error ('berita_acara_comisioning') is-invalid @enderror">
                                     @error('berita_acara_comisioning')
                                         <div class="invalid-feedback">
@@ -815,7 +822,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg">
+                                {{-- <div class="col-lg">
                                     <label for="berita_acara_kerja_tambah" class="form-label">BERITA ACARA KERJA TAMBAH</label>
                                     <input id="edit_berita_acara_kerja_tambah" name="berita_acara_kerja_tambah" type="file" class="form-control @error ('berita_acara_kerja_tambah') is-invalid @enderror">
                                     @error('berita_acara_kerja_tambah')
@@ -823,7 +830,7 @@
                                             {{$message}}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 <div class="col-lg">
                                     <label for="berita_acara_serah_terima" class="form-label">BERITA ACARA SERAH TERIMA (BAST)</label>
                                     <input id="edit_berita_acara_serah_terima" name="berita_acara_serah_terima" type="file" class="form-control @error ('berita_acara_serah_terima') is-invalid @enderror">
@@ -946,7 +953,7 @@
                                 </center>
                                 <br>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">NAMA: </label>
+                                    <label class="col-sm-2 col-form-label">NAMA PERUSAHAAN: </label>
                                     <div class="col-sm-10">
                                         <input disabled name="inquiry_perusahaan" id="inquiry_perusahaan"  type="text" class="form-control">
                                     </div>
@@ -1087,7 +1094,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">PROJECT: </label>
+                                    <label class="col-sm-2 col-form-label">JENIS IPAL: </label>
                                     <div class="col-sm-10">
                                         <select disabled name="jenis_id" id="detail_jenis_id"
                                             class="form-control @error ('edit_jenis_id') is-invalid @enderror">
@@ -1109,7 +1116,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">TEKNOLOGI: </label>
                                     <div class="col-sm-10">
                                         <select disabled required name="teknologi_id" id="detail_teknologi_id"
@@ -1121,7 +1128,7 @@
                                             <option value="4">WETLAND</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">STATUS: </label>
@@ -1193,7 +1200,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">BERITA ACARA COMISIONING: </label>
+                                    <label class="col-sm-4 col-form-label">BERITA ACARA COMMISIONING: </label>
                                     <div class="col-sm-5">
                                         <a href="#" id="detail_berita_acara_comisioning" name="detail_berita_acara_comisioning" class="btn btn-warning"></a>
                                         <a href="#" id="download_detail_berita_acara_comisioning" name="download_detail_berita_acara_comisioning" class="btn btn-info"></a>
@@ -1216,13 +1223,13 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label class="col-sm-5 col-form-label">BERITA ACARA KERJA TAMBAH: </label>
                                     <div class="col-sm-5">
                                         <a id="detail_berita_acara_kerja_tambah" name="detail_berita_acara_kerja_tambah" href="#" class="btn btn-warning"></a>
                                         <a id="download_detail_berita_acara_kerja_tambah" name="download_detail_berita_acara_kerja_tambah" href="#" class="btn btn-info"></a>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <br>
                                 <div class="form-group row">
                                     <label class="col-sm-5 col-form-label">BERITA ACARA SERAH TERIMA (BAST): </label>
