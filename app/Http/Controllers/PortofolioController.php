@@ -195,7 +195,7 @@ class PortofolioController extends Controller
                 }
                 else{
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
-                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
                     $portofolio_detail = [
                     'perusahaan' => $request->input('perusahaan'),
                     'penawaran' => $request->penawaran,
@@ -311,7 +311,7 @@ class PortofolioController extends Controller
                 }
                 else{
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
-                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
                     $portofolio_detail = [
                     'perusahaan' => $request->input('perusahaan'),
                     'penawaran' => $request->penawaran,
@@ -610,7 +610,7 @@ class PortofolioController extends Controller
                 }
                 if($request->file('spk_po_wo') != null){
                     $datas->spk_po_wo = $request->file('spk_po_wo')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
-                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
 
                     $portofolio_detail = [
                         'perusahaan' => $request->input('perusahaan'),
@@ -700,7 +700,7 @@ class PortofolioController extends Controller
                 }
                 if($request->file('spk_po_wo') != null){
                     $datas->spk_po_wo = $request->file('spk_po_wo')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
-                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+                    $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
 
                     $portofolio_detail = [
                         'perusahaan' => $request->input('perusahaan'),
