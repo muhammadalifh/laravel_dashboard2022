@@ -72,9 +72,9 @@ class WelcomeController extends Controller
         ]);
 
         if($request->file('inquiry_upload_data') != null){
-            $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload/inquiry/'.$request->input('inquiry_perusahaan'));
+            $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload/inquiry/');
             // Email Notification
-            $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
+            $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
             $detail = [
                 'inquiry_perusahaan' => $request->inquiry_perusahaan,
                 'inquiry_alamat' => $request->inquiry_alamat,
@@ -96,15 +96,12 @@ class WelcomeController extends Controller
                 'inquiry_keterangan_tambahan' => $request->inquiry_keterangan_tambahan,
             ];
             Mail::to($user)->send(new ContactMail($detail));
-
-            Inquiry::create($data);
-        return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil dikirim');
         }
 
 
 
 
-        $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
+        $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
             $detail = [
                 'inquiry_perusahaan' => $request->inquiry_perusahaan,
                 'inquiry_alamat' => $request->inquiry_alamat,

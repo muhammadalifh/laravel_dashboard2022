@@ -96,7 +96,7 @@
                 </tr>
                 <td colspan="2" style="padding:15px;">
                     <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Luas Lahan Rencana (m2)</span> {{ $detail['inquiry_luas_lahan_rencana'] }} <b style="font-size:12px;font-weight:300;"></b></p>
-                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Upload Data</span> Jika terdapat upload data dari klien. Bagian paling bawah dari email ini, akan muncul file dengan ekstensi rar/zip <b style="font-size:12px;font-weight:300;"></b></p>
+                    <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Upload Data</span> Jika ada upload data dari klien, bagian paling bawah dari email ini akan ada file dengan ekstensi rar/zip <b style="font-size:12px;font-weight:300;"></b></p>
                     <p style="font-size:14px;margin:0;padding:10px;border:solid 1px #ddd;font-weight:bold;"><span style="display:block;font-size:13px;font-weight:normal;">Keterangan Tambahan</span> {{ $detail['inquiry_keterangan_tambahan'] }} <b style="font-size:12px;font-weight:300;"></b></p>
                 </td>
             </tbody>
