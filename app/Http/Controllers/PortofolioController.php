@@ -194,13 +194,11 @@ class PortofolioController extends Controller
                     $datas->penawaran = null;
                 }
                 else{
-<<<<<<< HEAD
+
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin');
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
-=======
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
->>>>>>> parent of 2e36dbc (tambah notifikasi di owner (role = 0))
                     $portofolio_detail = [
                     'perusahaan' => $request->input('perusahaan'),
                     'penawaran' => $request->penawaran,
@@ -315,13 +313,10 @@ class PortofolioController extends Controller
                     $datas->penawaran = null;
                 }
                 else{
-<<<<<<< HEAD
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin');
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
-=======
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
->>>>>>> parent of 2e36dbc (tambah notifikasi di owner (role = 0))
                     $portofolio_detail = [
                     'perusahaan' => $request->input('perusahaan'),
                     'penawaran' => $request->penawaran,
@@ -619,13 +614,10 @@ class PortofolioController extends Controller
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin');
                 }
                 if($request->file('spk_po_wo') != null){
-<<<<<<< HEAD
                     $datas->spk_po_wo = $request->file('spk_po_wo')->store('upload/data_admin');
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
-=======
                     $datas->spk_po_wo = $request->file('spk_po_wo')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
->>>>>>> parent of 2e36dbc (tambah notifikasi di owner (role = 0))
 
                     $portofolio_detail = [
                         'perusahaan' => $request->input('perusahaan'),
@@ -714,14 +706,10 @@ class PortofolioController extends Controller
                     $datas->penawaran = $request->file('penawaran')->store('upload/data_admin');
                 }
                 if($request->file('spk_po_wo') != null){
-<<<<<<< HEAD
                     $datas->spk_po_wo = $request->file('spk_po_wo')->store('upload/data_admin');
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
-=======
                     $datas->spk_po_wo = $request->file('spk_po_wo')->store('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'));
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
->>>>>>> parent of 2e36dbc (tambah notifikasi di owner (role = 0))
-
                     $portofolio_detail = [
                         'perusahaan' => $request->input('perusahaan'),
                         // 'penawaran' => $request->penawaran,
