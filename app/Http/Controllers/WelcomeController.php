@@ -72,7 +72,7 @@ class WelcomeController extends Controller
         ]);
 
         if($request->file('inquiry_upload_data') != null){
-            $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload/inquiry/');
+            $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload/inquiry/'.$request->inquiry_perusahaan.'/'.date('Y-m-d'));
             // Email Notification
             $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
             $detail = [
