@@ -21,6 +21,7 @@ $(function(){
             {data:'inquiry_nama', name:'inquiry_nama'},
             {data:'inquiry_no_telp', name:'inquiry_no_telp'},
             {data:'inquiry_email', name:'inquiry_email'},
+            {data: 'created_at', name:'created_at'},
             // {data:'inquiry_jenis_kegiatan', name:'inquiry_jenis_kegiatan'},
             // {data:'inquiry_lokasi_kegiatan', name:'inquiry_lokasi_kegiatan'},
             {data:'sumberairlimbah', name:'sumberairlimbah'},
@@ -35,7 +36,6 @@ $(function(){
             // {data:'inquiry_upload_data', name:'inquiry_upload_data'},
             {data:'inquiry_luas_lahan_rencana', name:'inquiry_luas_lahan_rencana'},
             {data:'inquiry_keterangan_tambahan', name:'inquiry_keterangan_tambahan'},
-            {data: 'created_at', name:'created_at'},
             {data: 'action', name:'action'}
         ]
     });

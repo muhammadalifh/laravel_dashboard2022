@@ -128,7 +128,7 @@
             <ul class="fab-options">
                 <li>
                     <span class="fab-label-WhatsApp fab-label">WhatsApp</span>
-                    <a style="text-decoration:none" target="_blank" href="https://api.whatsapp.com/send/?phone=6281259429377&text=Halo,%20Salam%20Kenal.%20Saya%20ingin%20bertanya%20tentang%20jasa,%20layanan,%20dan%20produk%20PT%20MITRA%20PRIMA%20ENVIRO">
+                    <a style="text-decoration:none" target="_blank" href="https://wa.me/6281336173893?text=Halo,%20Salam%20Kenal.%20Saya%20ingin%20bertanya%20tentang%20jasa,%20layanan,%20dan%20produk%20PT%20MITRA%20PRIMA%20ENVIRO">
                         <div class="fab-WhatsApp fab-icon-holder">
                             <i class="material-icons">whatsapp</i>
                         </div>
@@ -847,8 +847,8 @@
                     <div class="col-md-6">
                         <div class="social-icons">
                             <a href="https://www.facebook.com/mitraenviro" target="_blank"><i class="fa fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/enviroprima/" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="mailto:mitraprimaenviro15@gmail.com" target="_blank" ><i class="fa fa-envelope-o"></i></a>
+                            <a href="https://www.instagram.com/mitraprimaenviro.pt/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="mailto:marketingmpesby@gmail.com" target="_blank" ><i class="fa fa-envelope-o"></i></a>
                         </div>
                     </div>
                 </div>

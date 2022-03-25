@@ -84,6 +84,7 @@
                             <th><h6>Nama</h6></th>
                             <th><h6>No. Telp/HP</h6></th>
                             <th><h6>Email</h6></th>
+                            <th><h6>Tanggal Dibuat</h6></th>
                             {{-- <th><h6>Jenis Kegiatan</h6></th>
                             <th><h6>Lokasi Kegiatan</h6></th> --}}
                             <th><h6>Sumber Air Limbah</h6></th>
@@ -98,7 +99,6 @@
                             {{-- <th><h6>Upload Data</h6></th> --}}
                             <th><h6>Luas Lahan Rencana IPAL (m2)</h6></th>
                             <th><h6>Keterangan Tambahan</h6></th>
-                            <th><h6>Tanggal Dibuat</h6></th>
                             {{-- @if(auth()->user()->role == "2") --}}
                                 <th><h6>Action</h6></th>
                             {{-- @endif --}}
