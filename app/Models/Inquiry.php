@@ -16,6 +16,7 @@ class Inquiry extends Model
         'inquiry_nama',
         'inquiry_no_telp',
         'inquiry_email',
+        'inquiry_status_penawaran',
         // 'inquiry_jenis_kegiatan',
         // 'inquiry_lokasi_kegiatan',
         'inquiry_sumber_air_limbah_id',

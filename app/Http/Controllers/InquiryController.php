@@ -46,6 +46,18 @@ class InquiryController extends Controller
         return DataTables::of($data)->make(true);
     }
 
+
+    public function update_data_klien(Request $request)
+    {
+        if ($request->ajax()) {
+            Inquiry::find($request->pk)
+                ->update([
+                    $request->name => $request->value
+                ]);
+            return response()->json(['success' => true]);
+        }
+    }
+
     public function hapus_data_klien()
     {
         $id = request()->id;

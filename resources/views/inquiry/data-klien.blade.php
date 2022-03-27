@@ -81,10 +81,11 @@
                             <th><h6>ID/ Kode Pelanggan</h6></th>
                             <th><h6>Perusahaan/<br> Instansi</h6></th>
                             <th><h6>Alamat</h6></th>
-                            <th><h6>Nama</h6></th>
                             <th><h6>No. Telp/HP</h6></th>
+                            <th><h6>Nama</h6></th>
                             <th><h6>Email</h6></th>
                             <th><h6>Tanggal Dibuat</h6></th>
+                            <th><h6>Status Penawaran</h6></th>
                             {{-- <th><h6>Jenis Kegiatan</h6></th>
                             <th><h6>Lokasi Kegiatan</h6></th> --}}
                             <th><h6>Sumber Air Limbah</h6></th>

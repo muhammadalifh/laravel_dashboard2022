@@ -21,6 +21,7 @@ class CreateInquiriesTable extends Migration
             $table->string('inquiry_nama');
             $table->string('inquiry_no_telp', 12);
             $table->string('inquiry_email');
+            $table->string('inquiry_status_penawaran')->default('Belum Ditawarkan');
 
 
             // Data TEKNIS

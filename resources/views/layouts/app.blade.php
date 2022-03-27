@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ config('app.name', 'Sistem Informasi Pelanggan Mitra Prima Enviro') }}</title>
-
     <!-- ========== All CSS files linkup ========= -->
     <link rel="icon" href="{{ asset('images/logo/prima2.png') }}">
     <link rel="stylesheet" href="{{ asset('css/lineicons.css') }}"/>
@@ -141,6 +140,12 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+
+{{-- Inline --}}
+<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/css/jquery-editable.css" rel="stylesheet"/>
+<script>$.fn.poshytip={defaults:null}</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js"></script>
+
 <script>
 
 $(document).ready( function () {
@@ -193,6 +198,22 @@ $.ajaxSetup({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+$.fn.editable.defaults.mode = 'inline';
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+    $('#update').editable({
+            url: "data-klien/update",
+            type: 'text',
+            pk: 1,
+            name: 'name',
+            title: 'Enter name'
+    });
 
 </script>
 

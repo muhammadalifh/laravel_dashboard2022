@@ -103,6 +103,7 @@ Route::middleware('auth','cekrole:1,2')->group(function () { //Auth cekrole midd
 
 Route::get('/data-klien/json', [\App\Http\Controllers\InquiryController::class, 'data_klien_json'])->name('inquiry.data-klien');
 Route::get('/data-klien', [\App\Http\Controllers\InquiryController::class, 'data_klien'])->name('inquiry.data-klien');
+Route::post('/data-klien/update', [\App\Http\Controllers\InquiryController::class, 'update_data_klien'])->name('inquiry.update-data-klien');
 Route::post('/data-klien/hapus', [\App\Http\Controllers\InquiryController::class, 'hapus_data_klien'])->name('inquiry.hapus-data-klien');
 
     //Data portofolio + CRUD

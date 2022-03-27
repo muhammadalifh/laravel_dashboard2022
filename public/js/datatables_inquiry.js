@@ -1,4 +1,3 @@
-
 $(function(){
     $('#table-inquiry').DataTable({
         scrollX:true,
@@ -18,10 +17,14 @@ $(function(){
             {data: 'id', name: 'id'},
             {data:'inquiry_perusahaan', name:'inquiry_perusahaan'},
             {data:'inquiry_alamat', name:'inquiry_alamat'},
-            {data:'inquiry_nama', name:'inquiry_nama'},
             {data:'inquiry_no_telp', name:'inquiry_no_telp'},
+            {data:'inquiry_nama', name:'inquiry_nama'},
             {data:'inquiry_email', name:'inquiry_email'},
             {data: 'created_at', name:'created_at'},
+            {data: 'inquiry_status_penawaran', name: 'inquiry_status_penawaran',render:function(data, type, row){
+                id = row.id;
+                return '<a href="" id="update-inquiry" data-name="inquiry_status_penawaran" data-type="text" data-pk="'+id+'" data-title="Enter name">'+data+'</a>'
+            }},
             // {data:'inquiry_jenis_kegiatan', name:'inquiry_jenis_kegiatan'},
             // {data:'inquiry_lokasi_kegiatan', name:'inquiry_lokasi_kegiatan'},
             {data:'sumberairlimbah', name:'sumberairlimbah'},
@@ -39,9 +42,28 @@ $(function(){
             {data: 'action', name:'action'}
         ]
     });
+});
 
-
-
+$('#table-inquiry').on('click', '#update-inquiry', function(e){
+    e.preventDefault();
+    var id = $(this).attr('data-pk');
+    var name = $(this).attr('data-name');
+    var type = $(this).attr('data-type');
+    var title = $(this).attr('data-title');
+    var value = $(this).text();
+    $.fn.editable.defaults.mode = 'inline';
+    $(this).editable({
+        url: 'data-klien/update',
+        type: type,
+        pk: id,
+        name: name,
+        title: title,
+        value: value,
+        validate: function(value){
+            if($.trim(value) == '')
+                return 'Data tidak boleh kosong';
+        }
+    });
 });
 
 $(document).on('click','.hapus_inquiry', function(event){
