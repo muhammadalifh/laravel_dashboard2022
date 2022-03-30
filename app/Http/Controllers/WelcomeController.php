@@ -74,7 +74,7 @@ class WelcomeController extends Controller
         if($request->file('inquiry_upload_data') != null){
             $data['inquiry_upload_data'] = $request->file('inquiry_upload_data')->store('upload/inquiry/'.$request->inquiry_perusahaan.'/'.date('Y-m-d'));
             // Email Notification
-            $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+            $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
             $detail = [
                 'inquiry_perusahaan' => $request->inquiry_perusahaan,
                 'inquiry_alamat' => $request->inquiry_alamat,
@@ -101,7 +101,7 @@ class WelcomeController extends Controller
 
 
 
-        $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->get();
+        $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
             $detail = [
                 'inquiry_perusahaan' => $request->inquiry_perusahaan,
                 'inquiry_alamat' => $request->inquiry_alamat,
