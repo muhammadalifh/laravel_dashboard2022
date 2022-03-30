@@ -194,7 +194,7 @@ class PortofolioController extends Controller
                     $name = $request->file('penawaran')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('penawaran'),$name);
                     $datas->penawaran = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
                     $portofolio_detail = [
                     'perusahaan' => $request->input('perusahaan'),
@@ -211,7 +211,7 @@ class PortofolioController extends Controller
                     $name = $request->file('spk_po_wo')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('spk_po_wo'),$name);
                     $datas->spk_po_wo = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->spk_po_wo = null;
@@ -220,7 +220,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_instal')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_instal'),$name);
                     $datas->berita_acara_instal = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_instal = null;
@@ -229,7 +229,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_comisioning')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_comisioning'),$name);
                     $datas->berita_acara_comisioning = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_comisioning = null;
@@ -238,7 +238,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_sampling')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_sampling'),$name);
                     $datas->berita_acara_sampling = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_sampling = null;
@@ -247,7 +247,7 @@ class PortofolioController extends Controller
                     $name = $request->file('laporan_hasil_uji')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('laporan_hasil_uji'),$name);
                     $datas->laporan_hasil_uji = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->laporan_hasil_uji = null;
@@ -262,7 +262,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_serah_terima')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_serah_terima'),$name);
                     $datas->berita_acara_serah_terima = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_serah_terima = null;
@@ -273,7 +273,7 @@ class PortofolioController extends Controller
                     $name = $request->file('gambar_desain')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('gambar_desain'),$name);
                     $datas->gambar_desain = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->gambar_desain = null;
@@ -282,7 +282,7 @@ class PortofolioController extends Controller
                     $name = $request->file('gambar_asbuilt')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('gambar_asbuilt'),$name);
                     $datas->gambar_asbuilt = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->gambar_asbuilt = null;
@@ -291,7 +291,7 @@ class PortofolioController extends Controller
                     $name = $request->file('sop')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('sop'),$name);
                     $datas->sop = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->sop = null;
@@ -300,7 +300,7 @@ class PortofolioController extends Controller
                     $name = $request->file('dokumentasi')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('dokumentasi'),$name);
                     $datas->dokumentasi = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->dokumentasi = null;
@@ -343,7 +343,7 @@ class PortofolioController extends Controller
                     $name = $request->file('penawaran')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('penawaran'),$name);
                     $datas->penawaran = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
                     $portofolio_detail = [
                     'perusahaan' => $request->input('perusahaan'),
@@ -360,7 +360,7 @@ class PortofolioController extends Controller
                     $name = $request->file('spk_po_wo')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('spk_po_wo'),$name);
                     $datas->spk_po_wo = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->spk_po_wo = null;
@@ -369,7 +369,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_instal')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_instal'),$name);
                     $datas->berita_acara_instal = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_instal = null;
@@ -378,7 +378,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_comisioning')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_comisioning'),$name);
                     $datas->berita_acara_comisioning = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_comisioning = null;
@@ -387,7 +387,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_sampling')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_sampling'),$name);
                     $datas->berita_acara_sampling = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_sampling = null;
@@ -396,7 +396,7 @@ class PortofolioController extends Controller
                     $name = $request->file('laporan_hasil_uji')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('laporan_hasil_uji'),$name);
                     $datas->laporan_hasil_uji = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->laporan_hasil_uji = null;
@@ -411,7 +411,7 @@ class PortofolioController extends Controller
                     $name = $request->file('berita_acara_serah_terima')->getClientOriginalName();
                     Storage::putFileAs('upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('berita_acara_serah_terima'),$name);
                     $datas->berita_acara_serah_terima = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->berita_acara_serah_terima = null;
@@ -422,7 +422,7 @@ class PortofolioController extends Controller
                     $name = $request->file('gambar_desain')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('gambar_desain'),$name);
                     $datas->gambar_desain = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->gambar_desain = null;
@@ -431,7 +431,7 @@ class PortofolioController extends Controller
                     $name = $request->file('gambar_asbuilt')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('gambar_asbuilt'),$name);
                     $datas->gambar_asbuilt = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->gambar_asbuilt = null;
@@ -440,7 +440,7 @@ class PortofolioController extends Controller
                     $name = $request->file('sop')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('sop'),$name);
                     $datas->sop = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->sop = null;
@@ -449,7 +449,7 @@ class PortofolioController extends Controller
                     $name = $request->file('dokumentasi')->getClientOriginalName();
                     Storage::putFileAs('upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $request->file('dokumentasi'),$name);
                     $datas->dokumentasi = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
-                    $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
+                    // $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/', $name);
                 }
                 else{
                     $datas->dokumentasi = null;
@@ -676,7 +676,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->penawaran);
                     }
                     $name = $request->file('penawaran')->getClientOriginalName();
-                    $path = $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->penawaran = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('spk_po_wo') != null){
@@ -684,7 +684,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->spk_po_wo);
                     }
                     $name = $request->file('spk_po_wo')->getClientOriginalName();
-                    $path = $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->spk_po_wo = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
 
@@ -702,7 +702,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_instal);
                     }
                     $name = $request->file('berita_acara_instal')->getClientOriginalName();
-                    $path = $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_instal = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('berita_acara_comisioning') != null){
@@ -710,7 +710,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_comisioning);
                     }
                     $name = $request->file('berita_acara_comisioning')->getClientOriginalName();
-                    $path = $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_comisioning = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('berita_acara_sampling') != null){
@@ -718,7 +718,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_sampling);
                     }
                     $name = $request->file('berita_acara_sampling')->getClientOriginalName();
-                    $path = $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_sampling = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('laporan_hasil_uji') != null){
@@ -726,7 +726,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->laporan_hasil_uji);
                     }
                     $name = $request->file('laporan_hasil_uji')->getClientOriginalName();
-                    $path = $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->laporan_hasil_uji = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 // if($request->file('berita_acara_kerja_tambah') != null){
@@ -737,7 +737,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_serah_terima);
                     }
                     $name = $request->file('berita_acara_serah_terima')->getClientOriginalName();
-                    $path = $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_serah_terima = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
 
@@ -747,7 +747,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->gambar_desain);
                     }
                     $name = $request->file('gambar_desain')->getClientOriginalName();
-                    $path = $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->gambar_desain = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('gambar_asbuilt') != null){
@@ -755,7 +755,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->gambar_asbuilt);
                     }
                     $name = $request->file('gambar_asbuilt')->getClientOriginalName();
-                    $path = $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->gambar_asbuilt = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('sop') != null){
@@ -763,7 +763,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->sop);
                     }
                     $name = $request->file('sop')->getClientOriginalName();
-                    $path = $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->sop = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('dokumentasi') != null){
@@ -771,7 +771,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->dokumentasi);
                     }
                     $name = $request->file('dokumentasi')->getClientOriginalName();
-                    $path = $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->dokumentasi = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
 
@@ -821,7 +821,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->penawaran);
                     }
                     $name = $request->file('penawaran')->getClientOriginalName();
-                    $path = $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('penawaran')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->penawaran = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('spk_po_wo') != null){
@@ -829,7 +829,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->spk_po_wo);
                     }
                     $name = $request->file('spk_po_wo')->getClientOriginalName();
-                    $path = $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('spk_po_wo')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->spk_po_wo = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                     $user = User::where('role', '=', 2)->orWhere('role', '=', 1)->orWhere('role', '=', 0)->get();
 
@@ -847,7 +847,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_instal);
                     }
                     $name = $request->file('berita_acara_instal')->getClientOriginalName();
-                    $path = $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_instal')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_instal = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('berita_acara_comisioning') != null){
@@ -855,7 +855,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_comisioning);
                     }
                     $name = $request->file('berita_acara_comisioning')->getClientOriginalName();
-                    $path = $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_comisioning')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_comisioning = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('berita_acara_sampling') != null){
@@ -863,7 +863,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_sampling);
                     }
                     $name = $request->file('berita_acara_sampling')->getClientOriginalName();
-                    $path = $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_sampling')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_sampling = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('laporan_hasil_uji') != null){
@@ -871,7 +871,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->laporan_hasil_uji);
                     }
                     $name = $request->file('laporan_hasil_uji')->getClientOriginalName();
-                    $path = $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('laporan_hasil_uji')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->laporan_hasil_uji = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 // if($request->file('berita_acara_kerja_tambah') != null){
@@ -882,7 +882,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->berita_acara_serah_terima);
                     }
                     $name = $request->file('berita_acara_serah_terima')->getClientOriginalName();
-                    $path = $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('berita_acara_serah_terima')->move('storage/upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->berita_acara_serah_terima = 'upload/data_admin/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
 
@@ -892,7 +892,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->gambar_desain);
                     }
                     $name = $request->file('gambar_desain')->getClientOriginalName();
-                    $path = $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('gambar_desain')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->gambar_desain = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('gambar_asbuilt') != null){
@@ -900,7 +900,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->gambar_asbuilt);
                     }
                     $name = $request->file('gambar_asbuilt')->getClientOriginalName();
-                    $path = $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('gambar_asbuilt')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->gambar_asbuilt = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('sop') != null){
@@ -908,7 +908,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->sop);
                     }
                     $name = $request->file('sop')->getClientOriginalName();
-                    $path = $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('sop')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->sop = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                 if($request->file('dokumentasi') != null){
@@ -916,7 +916,7 @@ class PortofolioController extends Controller
                         Storage::delete($datas->dokumentasi);
                     }
                     $name = $request->file('dokumentasi')->getClientOriginalName();
-                    $path = $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
+                    // $path = $request->file('dokumentasi')->move('storage/upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id'), $name);
                     $datas->dokumentasi = 'upload/data_teknis/'.$request->input('perusahaan').'/'.$request->input('inquiry_id').'/'.$name;
                 }
                     // $file = $request->file('gallery');
