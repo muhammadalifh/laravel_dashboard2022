@@ -96,6 +96,8 @@ class WelcomeController extends Controller
                 'inquiry_keterangan_tambahan' => $request->inquiry_keterangan_tambahan,
             ];
             Mail::to($user)->send(new ContactMail($detail));
+            Inquiry::create($data);
+            return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil dikirim');
         }
 
 
