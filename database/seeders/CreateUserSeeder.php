@@ -47,12 +47,12 @@ class CreateUserSeeder extends Seeder
                 'password' => bcrypt('12345678'),
             ],
 
-            // [
-            //     'name' => 'M Alif',
-            //     'email' => 'muhammadalifhidayatullah123@gmail.com',
-            //     'role' => '1',
-            //     'password' => bcrypt('12345678'),
-            // ],
+            [
+                'name' => 'M Alif',
+                'email' => 'muhammadalifhidayatullah123@gmail.com',
+                'role' => '1',
+                'password' => bcrypt('12345678'),
+            ],
             // [
             //     'name' => 'Alif',
             //     'email' => 'muhammad.19065@mhs.unesa.ac.id',

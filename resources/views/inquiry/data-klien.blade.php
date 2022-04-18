@@ -93,8 +93,12 @@
                             <th><h6>Penggunaan Air Bersih <br> (m3/bulan)</h6></th>
                             <th><h6>Jumlah Karyawan</h6></th>
                             <th><h6>Jumlah Penghuni</h6></th>
+                            <th><h6>Jumlah Pengunjung</h6></th>
                             <th><h6>Jumlah Kamar</h6></th>
                             <th><h6>Jumlah Bed</h6></th>
+                            <th><h6>Jumlah Pasien</h6></th>
+                            <th><h6>Jenis Bahan Baku</h6></th>
+                            <th><h6>Jenis Bahan Penlong/Tambahan</h6></th>
                             <th><h6>Kapasitas Produksi</h6></th>
                             {{-- <th><h6>Jumlah Tamu/ <br> Pengunjung/Bed</h6></th> --}}
                             {{-- <th><h6>Upload Data</h6></th> --}}

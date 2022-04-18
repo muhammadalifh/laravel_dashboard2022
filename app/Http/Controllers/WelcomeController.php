@@ -60,10 +60,14 @@ class WelcomeController extends Controller
             'inquiry_sumber_air_limbah_id' => 'required',
             'inquiry_debit_air_limbah' => 'required|numeric',
             'inquiry_penggunaan_air_bersih' => 'required|numeric',
-            'inquiry_jumlah_karyawan' => 'required|numeric',
+            'inquiry_jumlah_karyawan' => 'nullable|numeric',
             'inquiry_jumlah_penghuni' => 'nullable|numeric',
+            'inquiry_jumlah_pengunjung' => 'nullable|numeric',
             'inquiry_jumlah_kamar' => 'nullable|numeric',
             'inquiry_jumlah_bed' => 'nullable|numeric',
+            'inquiry_jumlah_pasien' => 'nullable|numeric',
+            'inquiry_jenis_bahan_baku' => 'nullable|string',
+            'inquiry_jenis_bahan_penolong_tambahan' => 'nullable|string',
             'inquiry_kapasitas_produksi' => 'nullable|numeric',
             // 'inquiry_jumlah_tamu' => 'required|numeric',
             'inquiry_luas_lahan_rencana' => 'required|numeric',
@@ -87,8 +91,12 @@ class WelcomeController extends Controller
                 'inquiry_penggunaan_air_bersih' => $request->inquiry_penggunaan_air_bersih,
                 'inquiry_jumlah_karyawan' => $request->inquiry_jumlah_karyawan,
                 'inquiry_jumlah_penghuni' => $request->inquiry_jumlah_penghuni,
+                'inquiry_jumlah_pengunjung' => $request->inquiry_jumlah_pengunjung,
                 'inquiry_jumlah_kamar' => $request->inquiry_jumlah_kamar,
                 'inquiry_jumlah_bed' => $request->inquiry_jumlah_bed,
+                'inquiry_jumlah_pasien' => $request->inquiry_jumlah_pasien,
+                'inquiry_jenis_bahan_baku' => $request->inquiry_jenis_bahan_baku,
+                'inquiry_jenis_bahan_penolong_tambahan' => $request->inquiry_jenis_bahan_penolong_tambahan,
                 'inquiry_kapasitas_produksi' => $request->inquiry_kapasitas_produksi,
                 // Data Pendukung
                 'inquiry_luas_lahan_rencana' => $request->inquiry_luas_lahan_rencana,
@@ -97,7 +105,7 @@ class WelcomeController extends Controller
             ];
             Mail::to($user)->send(new ContactMail($detail));
             Inquiry::create($data);
-            return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil dikirim');
+            return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil terkirim');
         }
 
 
@@ -116,8 +124,12 @@ class WelcomeController extends Controller
                 'inquiry_penggunaan_air_bersih' => $request->inquiry_penggunaan_air_bersih,
                 'inquiry_jumlah_karyawan' => $request->inquiry_jumlah_karyawan,
                 'inquiry_jumlah_penghuni' => $request->inquiry_jumlah_penghuni,
+                'inquiry_jumlah_pengunjung' => $request->inquiry_jumlah_pengunjung,
                 'inquiry_jumlah_kamar' => $request->inquiry_jumlah_kamar,
                 'inquiry_jumlah_bed' => $request->inquiry_jumlah_bed,
+                'inquiry_jumlah_pasien' => $request->inquiry_jumlah_pasien,
+                'inquiry_jenis_bahan_baku' => $request->inquiry_jenis_bahan_baku,
+                'inquiry_jenis_bahan_penolong_tambahan' => $request->inquiry_jenis_bahan_penolong_tambahan,
                 'inquiry_kapasitas_produksi' => $request->inquiry_kapasitas_produksi,
                 // Data Pendukung
                 'inquiry_luas_lahan_rencana' => $request->inquiry_luas_lahan_rencana,
@@ -161,7 +173,7 @@ class WelcomeController extends Controller
 
 
         Inquiry::create($data);
-        return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil dikirim');
+        return redirect()->route('pesan-diterima')->with('success', 'Pesan anda berhasil terkirim');
         // $this->validate($request, [
         //     'dokumen' => 'mimes:doc,docx,pdf,xls,xlsx,ppt,pptx',
         // ]);

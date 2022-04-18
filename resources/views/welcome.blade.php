@@ -396,13 +396,13 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-12">
+                                                <div class="col-md-12" id="id_karyawan">
                                                     <div class="form-group">
                                                         <label for="inquiry_jumlah_karyawan">Jumlah Karyawan <span style="color:#ff0000">*</span></label>
-                                                        <input required autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
+                                                        <input autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
                                                         @error('inquiry_jumlah_karyawan')
                                                         <script>
-                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah karayawan');
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah karyawan');
                                                         </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
@@ -410,19 +410,48 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-
-
 
 
                                                 <div class="hilang" id="pdetails">
                                                 <div class="row">
-                                                <div class="col-md-6">
+
+                                                    {{-- <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="inquiry_jumlah_karyawan">Jumlah Karyawan <span style="color:#ff0000">*</span></label>
+                                                            <input autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
+                                                            @error('inquiry_jumlah_karyawan')
+                                                            <script>
+                                                                alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah karyawan');
+                                                            </script>
+                                                            <div class="invalid-feedback">
+                                                                {{$message}}
+                                                            </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div> --}}
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="inquiry_jumlah_penghuni">Jumlah Penghuni <span style="color:#ff0000">*</span></label>
+                                                            <input  autocomplete="off" id="inquiry_jumlah_penghuni" type="number" name="inquiry_jumlah_penghuni" class="form-control @error ('inquiry_jumlah_penghuni') is-invalid @enderror" placeholder="Masukkan Jumlah Penghuni" >
+                                                            @error('inquiry_jumlah_penghuni')
+                                                            <script>
+                                                                alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah penghuni');
+                                                            </script>
+                                                            <div class="invalid-feedback">
+                                                                {{$message}}
+                                                            </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label for="inquiry_jumlah_penghuni">Jumlah Penghuni <span style="color:#ff0000">*</span></label>
-                                                        <input  autocomplete="off" id="inquiry_jumlah_penghuni" type="number" name="inquiry_jumlah_penghuni" class="form-control @error ('inquiry_jumlah_penghuni') is-invalid @enderror" placeholder="Masukkan Jumlah Penghuni" >
-                                                        @error('inquiry_jumlah_penghuni')
+                                                        <label for="inquiry_jumlah_pengunjung">Jumlah Pengunjung <span style="color:#ff0000">*</span></label>
+                                                        <input  autocomplete="off" id="inquiry_jumlah_pengunjung" type="number" name="inquiry_jumlah_pengunjung" class="form-control @error ('inquiry_jumlah_pengunjung') is-invalid @enderror" placeholder="Masukkan Jumlah Pengunjung" >
+                                                        @error('inquiry_jumlah_pengunjung')
                                                         <script>
-                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah penghuni');
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah pengunjung');
                                                         </script>
                                                         <div class="invalid-feedback">
                                                             {{$message}}
@@ -431,7 +460,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="inquiry_jumlah_kamar">Jumlah Kamar <span style="color:#ff0000">*</span></label>
                                                         <input  autocomplete="off" id="inquiry_jumlah_kamar" type="number" name="inquiry_jumlah_kamar" class="form-control @error ('inquiry_jumlah_kamar') is-invalid @enderror" placeholder="Masukkan Jumlah Kamar" >
@@ -445,7 +474,6 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-
 
                                             </div>
                                             </div>
@@ -490,7 +518,37 @@
                                                         </div>
                                                     </div> --}}
 
-                                                    <div class="col-md-12">
+                                                    {{-- <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="inquiry_jumlah_karyawan">Jumlah Karyawan <span style="color:#ff0000">*</span></label>
+                                                            <input autocomplete="off" id="inquiry_jumlah_karyawan" type="number" name="inquiry_jumlah_karyawan" class="form-control @error ('inquiry_jumlah_karyawan') is-invalid @enderror" placeholder="Masukkan Jumlah Karyawan" >
+                                                            @error('inquiry_jumlah_karyawan')
+                                                            <script>
+                                                                alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah karyawan');
+                                                            </script>
+                                                            <div class="invalid-feedback">
+                                                                {{$message}}
+                                                            </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div> --}}
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="inquiry_jumlah_pasien">Jumlah Pasien <span style="color:#ff0000">*</span></label>
+                                                        <input  autocomplete="off" id="inquiry_jumlah_pasien" type="number" name="inquiry_jumlah_pasien" class="form-control @error ('inquiry_jumlah_pasien') is-invalid @enderror" placeholder="Masukkan Jumlah Pasien" >
+                                                        @error('inquiry_jumlah_pasien')
+                                                        <script>
+                                                            alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah pasien');
+                                                        </script>
+                                                        <div class="invalid-feedback">
+                                                            {{$message}}
+                                                        </div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="inquiry_jumlah_bed">Jumlah Bed <span style="color:#ff0000">*</span></label>
                                                             <input  autocomplete="off" id="inquiry_jumlah_bed" type="number" name="inquiry_jumlah_bed" class="form-control @error ('inquiry_jumlah_bed') is-invalid @enderror" placeholder="Masukkan Jumlah Bed" >
@@ -511,6 +569,37 @@
                                             {{-- INDUSTRI --}}
                                             <div class="hilang" id="pdetails3">
                                                 <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="inquiry_jenis_bahan_baku">Jenis Bahan Baku <span style="color:#ff0000">*</span></label>
+                                                            <input  autocomplete="off" id="inquiry_jenis_bahan_baku" type="text" name="inquiry_jenis_bahan_baku" class="form-control @error ('inquiry_jenis_bahan_baku') is-invalid @enderror" placeholder="Masukkan Jenis Bahan Baku" >
+                                                            @error('inquiry_jenis_bahan_baku')
+                                                            <script>
+                                                                alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jenis bahan baku');
+                                                            </script>
+                                                            <div class="invalid-feedback">
+                                                                {{$message}}
+                                                            </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="inquiry_jenis_bahan_penolong_tambahan">Jenis Bahan Penolong/Tambahan <span style="color:#ff0000">*</span></label>
+                                                                <input  autocomplete="off" id="inquiry_jenis_bahan_penolong_tambahan" type="text" name="inquiry_jenis_bahan_penolong_tambahan" class="form-control @error ('inquiry_jenis_bahan_penolong_tambahan') is-invalid @enderror" placeholder="Masukkan Jenis Bahan Penolong/Tambahan" >
+                                                                @error('inquiry_jenis_bahan_penolong_tambahan')
+                                                                <script>
+                                                                    alert('Gagal mengirim data, Silakan cek error pada bagian inquiry jumlah bed');
+                                                                </script>
+                                                                <div class="invalid-feedback">
+                                                                    {{$message}}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label for="inquiry_kapasitas_produksi">Kapasitas Produksi (ton/tahun) <span style="color:#ff0000">*</span></label>
@@ -573,9 +662,16 @@
                                                     let responseID = $(this).val();
                                                     if(responseID == "1")
                                                     {
+                                                        $('#id_karyawan').removeClass("hilang");
+                                                        // $('#id_karyawan').addClass("muncul");
+                                                        $('#inquiry_jumlah_karyawan').val(null);
+                                                        $('#inquiry_jumlah_pengunjung').val(null);
                                                         $('#inquiry_jumlah_penghuni').val(null);
                                                         $('#inquiry_jumlah_kamar').val(null);
+                                                        $('#inquiry_jumlah_pasien').val(null);
                                                         $('#inquiry_jumlah_bed').val(null);
+                                                        $('#inquiry_jenis_bahan_penolong_tambahan').val(null);
+                                                        $('#inquiry_jenis_bahan_baku').val(null);
                                                         $('#inquiry_kapasitas_produksi').val(null);
                                                         $('#pdetails2').removeClass("muncul");
                                                         $('#pdetails2').addClass("hilang");
@@ -586,9 +682,16 @@
                                                     }
                                                     else if(responseID == "2")
                                                     {
+                                                        $('#id_karyawan').removeClass("hilang");
+                                                        // $('#id_karyawan').addClass("muncul");
+                                                        $('#inquiry_jumlah_karyawan').val(null);
+                                                        $('#inquiry_jumlah_pengunjung').val(null)
                                                         $('#inquiry_jumlah_penghuni').val(null);
                                                         $('#inquiry_jumlah_kamar').val(null);
+                                                        $('#inquiry_jumlah_pasien').val(null);
                                                         $('#inquiry_jumlah_bed').val(null);
+                                                        $('#inquiry_jenis_bahan_penolong_tambahan').val(null);
+                                                        $('#inquiry_jenis_bahan_baku').val(null);
                                                         $('#inquiry_kapasitas_produksi').val(null);
                                                         $('#pdetails').removeClass("muncul");
                                                         $('#pdetails').addClass("hilang");
@@ -599,9 +702,15 @@
                                                     }
                                                     else if(responseID == "3")
                                                     {
+                                                        $('#id_karyawan').addClass("hilang");
+                                                        $('#inquiry_jumlah_karyawan').val(null);
+                                                        $('#inquiry_jumlah_pengunjung').val(null);
                                                         $('#inquiry_jumlah_penghuni').val(null);
                                                         $('#inquiry_jumlah_kamar').val(null);
+                                                        $('#inquiry_jumlah_pasien').val(null);
                                                         $('#inquiry_jumlah_bed').val(null);
+                                                        $('#inquiry_jenis_bahan_penolong_tambahan').val(null);
+                                                        $('#inquiry_jenis_bahan_baku').val(null);
                                                         $('#inquiry_kapasitas_produksi').val(null);
                                                         $('#pdetails').removeClass("muncul");
                                                         $('#pdetails').addClass("hilang");
@@ -1075,5 +1184,6 @@
                 })
             })
         </script> --}}
+        @include('sweetalert::alert')
     </body>
 </html>
