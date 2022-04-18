@@ -1,4 +1,3 @@
-<script src="https://kit.fontawesome.com/a420508792.js" crossorigin="anonymous"></script>
 <ul>
     <li class="nav-item @if(request()->routeIs('home')) active @endif">
         <a href="{{ route('home') }}">
